@@ -1,0 +1,273 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+CAUTION: Do not modify this file unless you know what you are doing.
+         Unexpected results may occur if the code is changed deliberately.
+-->
+<dbmodel pgmodeler-ver="0.9.0-alpha1" last-position="0,0" last-zoom="1"
+	 default-schema="public" default-owner="postgres">
+<role name="bancoideas"
+      inherit="true"
+      login="true"
+      encrypted="true"
+      password="********">
+</role>
+
+<database name="runa" encoding="UTF8" lc-collate="es_EC.utf8" lc-ctype="es_EC.utf8">
+	<role name="postgres"/>
+	<tablespace name="pg_default"/>
+</database>
+
+<schema name="public" rect-visible="true" fill-color="#e1e1e1" sql-disabled="true">
+</schema>
+
+<table name="cliente">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="480" y="420"/>
+	<column name="id" not-null="true">
+		<type name="bigserial" length="0"/>
+	</column>
+	<column name="Nombre">
+		<type name="&quot;char&quot;" length="0"/>
+	</column>
+	<column name="Cargo">
+		<type name="&quot;char&quot;" length="0"/>
+	</column>
+	<column name="revisado_por">
+		<type name="character varying" length="0"/>
+	</column>
+	<column name="activo" default-value="true">
+		<type name="boolean" length="0"/>
+	</column>
+	<constraint name="Cliente_pk" type="pk-constr" table="public.cliente">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="orden_trabajo">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="80" y="120"/>
+	<column name="id" not-null="true">
+		<type name="bigserial" length="0"/>
+	</column>
+	<column name="num_ticket">
+		<type name="bigint" length="0"/>
+	</column>
+	<column name="num_ord_trab">
+		<type name="bigint" length="0"/>
+		<comment><![CDATA[numero de laorden de trabajo impreso]]></comment>
+	</column>
+	<column name="empresa_id">
+		<type name="bigint" length="0"/>
+	</column>
+	<column name="ct_sistema">
+		<type name="bigint" length="0"/>
+	</column>
+	<column name="ct_servicio">
+		<type name="bigint" length="0"/>
+	</column>
+	<column name="descripcion">
+		<type name="character varying" length="500"/>
+	</column>
+	<column name="fecha_Inicio">
+		<type name="timestamp" length="0"/>
+	</column>
+	<column name="fecha_termino">
+		<type name="timestamp" length="0"/>
+	</column>
+	<column name="Hora_Termino">
+		<type name="time with time zone" length="0" with-timezone="true"/>
+	</column>
+	<column name="activo" default-value="true">
+		<type name="boolean" length="0"/>
+	</column>
+	<column name="fecha_creacion">
+		<type name="timestamp" length="0"/>
+	</column>
+	<column name="cliente_id">
+		<type name="bigint" length="0"/>
+	</column>
+	<column name="tecnico_id">
+		<type name="bigint" length="0"/>
+	</column>
+	<column name="detalle_orden_trabajo_id">
+		<type name="bigint" length="0"/>
+	</column>
+	<constraint name="orden_trabajo_pk" type="pk-constr" table="public.orden_trabajo">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="tecnico">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="820" y="400"/>
+	<column name="id" not-null="true">
+		<type name="bigserial" length="0"/>
+	</column>
+	<column name="nombres">
+		<type name="character varying" length="0"/>
+	</column>
+	<column name="apellidos">
+		<type name="character varying" length="0"/>
+	</column>
+	<column name="celular">
+		<type name="character varying" length="0"/>
+	</column>
+	<constraint name="Tecnico_pk" type="pk-constr" table="public.tecnico">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="empresa">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="640" y="80"/>
+	<column name="id" not-null="true">
+		<type name="bigserial" length="0"/>
+	</column>
+	<column name="nombre">
+		<type name="character varying" length="0"/>
+	</column>
+	<column name="direccion">
+		<type name="character varying" length="250"/>
+	</column>
+	<column name="edificio">
+		<type name="character varying" length="100"/>
+	</column>
+	<column name="ubicacion">
+		<type name="character varying" length="0"/>
+	</column>
+	<column name="activo" default-value="true">
+		<type name="boolean" length="0"/>
+	</column>
+	<constraint name="empresa_pk" type="pk-constr" table="public.empresa">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="catalogo">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="700" y="280"/>
+	<column name="id" not-null="true">
+		<type name="bigserial" length="0"/>
+	</column>
+	<column name="nombre">
+		<type name="character varying" length="0"/>
+	</column>
+	<column name="catalogo_id">
+		<type name="bigint" length="0"/>
+	</column>
+	<column name="orden">
+		<type name="smallint" length="0"/>
+	</column>
+	<column name="valor">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="activo">
+		<type name="boolean" length="0"/>
+	</column>
+	<constraint name="catalogo_pk" type="pk-constr" table="public.catalogo">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="detalle_orden_trabajo">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="100" y="440"/>
+	<column name="id" not-null="true">
+		<type name="bigserial" length="0"/>
+	</column>
+	<column name="cantidad">
+		<type name="smallint" length="0"/>
+	</column>
+	<column name="descripcion">
+		<type name="character varying" length="50"/>
+	</column>
+	<column name="activo" default-value="true">
+		<type name="boolean" length="0"/>
+	</column>
+</table>
+
+<constraint name="fk_cliente_orden_trabajo" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="public.cliente" table="public.orden_trabajo">
+	<columns names="cliente_id" ref-type="src-columns"/>
+	<columns names="id" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="fk_empresa_orden_trabjo" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="public.empresa" table="public.orden_trabajo">
+	<columns names="empresa_id" ref-type="src-columns"/>
+	<columns names="id" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="fk_catalogoSistema_orden_trabajo" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="public.catalogo" table="public.orden_trabajo">
+	<columns names="ct_sistema" ref-type="src-columns"/>
+	<columns names="id" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="fk_servicio" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="public.catalogo" table="public.orden_trabajo">
+	<columns names="ct_servicio" ref-type="src-columns"/>
+	<columns names="id" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="fk_tecnico_orden_trabajo" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="public.tecnico" table="public.orden_trabajo">
+	<columns names="tecnico_id" ref-type="src-columns"/>
+	<columns names="id" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="fk_detalle_orden_trabajo" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="public.detalle_orden_trabajo" table="public.orden_trabajo">
+	<columns names="detalle_orden_trabajo_id" ref-type="src-columns"/>
+	<columns names="id" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="fk_recusividad" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="public.catalogo" table="public.catalogo">
+	<columns names="catalogo_id" ref-type="src-columns"/>
+	<columns names="id" ref-type="dst-columns"/>
+</constraint>
+
+<relationship name="rel_catalogo_catalogo" type="relfk"
+	 src-table="public.catalogo"
+	 dst-table="public.catalogo"
+	 src-required="false" dst-required="false">
+	<line>
+		<position x="965.297" y="322.96"/>
+	<position x="965.297" y="271"/>
+	<position x="870.865" y="271"/>
+	</line>
+</relationship>
+
+<relationship name="&quot;rel_orden_trabajo_Cliente&quot;" type="relfk"
+	 src-table="public.orden_trabajo"
+	 dst-table="public.cliente"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_orden_trabajo_empresa" type="relfk"
+	 src-table="public.orden_trabajo"
+	 dst-table="public.empresa"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_orden_trabajo_catalogo" type="relfk"
+	 src-table="public.orden_trabajo"
+	 dst-table="public.catalogo"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="&quot;rel_orden_trabajo_Tecnico&quot;" type="relfk"
+	 src-table="public.orden_trabajo"
+	 dst-table="public.tecnico"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_orden_trabajo_detalle_orden_trabajo" type="relfk"
+	 src-table="public.orden_trabajo"
+	 dst-table="public.detalle_orden_trabajo"
+	 src-required="false" dst-required="false"/>
+
+</dbmodel>
