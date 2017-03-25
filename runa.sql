@@ -4,6 +4,7 @@
 -- Project Site: pgmodeler.com.br
 -- Model Author: ---
 
+-- object: bancoideas | type: ROLE --
 
 
 -- Database creation must be done outside an multicommand file.
@@ -95,7 +96,7 @@ ALTER TABLE public.empresa OWNER TO postgres;
 -- object: public.catalogo | type: TABLE --
 -- DROP TABLE IF EXISTS public.catalogo CASCADE;
 CREATE TABLE public.catalogo(
-	id bigserial NOT NULL,
+	id bigint NOT NULL,
 	nombre character varying,
 	catalogo_id bigint,
 	orden smallint,

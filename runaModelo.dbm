@@ -152,7 +152,7 @@ CAUTION: Do not modify this file unless you know what you are doing.
 	<role name="postgres"/>
 	<position x="700" y="280"/>
 	<column name="id" not-null="true">
-		<type name="bigserial" length="0"/>
+		<type name="bigint" length="0"/>
 	</column>
 	<column name="nombre">
 		<type name="character varying" length="0"/>
