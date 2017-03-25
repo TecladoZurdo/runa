@@ -190,6 +190,9 @@ CAUTION: Do not modify this file unless you know what you are doing.
 	<column name="activo" default-value="true">
 		<type name="boolean" length="0"/>
 	</column>
+	<constraint name="detalle_orden_trabajo_pk" type="pk-constr" table="public.detalle_orden_trabajo">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
 </table>
 
 <constraint name="fk_cliente_orden_trabajo" type="fk-constr" comparison-type="MATCH FULL"

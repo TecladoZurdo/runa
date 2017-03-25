@@ -1,16 +1,9 @@
--- Database generated with pgModeler (PostgreSQL Database Modeler).
+﻿-- Database generated with pgModeler (PostgreSQL Database Modeler).
 -- pgModeler  version: 0.9.0-alpha1
 -- PostgreSQL version: 9.6
 -- Project Site: pgmodeler.com.br
 -- Model Author: ---
 
--- object: bancoideas | type: ROLE --
--- DROP ROLE IF EXISTS bancoideas;
-CREATE ROLE bancoideas WITH 
-	INHERIT
-	LOGIN
-	ENCRYPTED PASSWORD '********';
--- ddl-end --
 
 
 -- Database creation must be done outside an multicommand file.
@@ -121,7 +114,9 @@ CREATE TABLE public.detalle_orden_trabajo(
 	id bigserial NOT NULL,
 	cantidad smallint,
 	descripcion character varying(50),
-	activo boolean DEFAULT true
+	activo boolean DEFAULT true,
+	CONSTRAINT detalle_orden_trabajo_pk PRIMARY KEY (id)
+
 );
 -- ddl-end --
 ALTER TABLE public.detalle_orden_trabajo OWNER TO postgres;
