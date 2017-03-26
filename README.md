@@ -13,9 +13,13 @@ Esta construido con el framework Symfony 2.8
 
   * Contiene Assetic;
 
-  * Contiene integrado Semantic UI.
+  * Contiene integrado Semantic UI 2.2.8
 
   * Utiliza Doctrine ORM/DBAL;
+
+  * DataTables 1.10.12
+
+  * JQuery 3.1.1
 
   * Swiftmailer;
 
@@ -24,7 +28,7 @@ Esta construido con el framework Symfony 2.8
  Luego de descargar el proyecto que hacer?
 
   * Ejecutar en la carpeta donde esta el proyecto composer para que instale
-    las dependencias necesarias requeridas pro ejemplo:
+    las dependencias necesarias requeridas por ejemplo:
 
     [tecladozurdo@server runa]$ composer install
 
@@ -33,7 +37,7 @@ Esta construido con el framework Symfony 2.8
     En este caso hay que crear un directorio virtual
     el cual debe apuntar a la carpeta del proyecto.
 
-     
+
 
 
 
