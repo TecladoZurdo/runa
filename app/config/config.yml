@@ -30,6 +30,65 @@ framework:
     fragments: ~
     http_method_override: true
 
+    
+# Assetic Configuration
+assetic:
+    debug:          "%kernel.debug%"
+    use_controller: false
+    bundles:        [  ]
+
+    filters:
+        cssrewrite: ~
+    assets:
+        semantic_css:
+            inputs:
+                - %kernel.root_dir%/../vendor/semantic/ui/dist/semantic.min.css
+
+        semantic_js:
+            inputs:
+                - %kernel.root_dir%/../vendor/semantic/ui/dist/semantic.min.js
+
+        semantic_icon_woff:
+            inputs:
+                - %kernel.root_dir%/../vendor/semantic/ui/dist/themes/default/assets/fonts/icons.woff
+            output: "css/themes/default/assets/fonts/icons.woff"
+        semantic_icon_woff2:
+            inputs:
+                - %kernel.root_dir%/../vendor/semantic/ui/dist/themes/default/assets/fonts/icons.woff2
+            output: "css/themes/default/assets/fonts/icons.woff2"
+        semantic_icon_eot:
+            inputs:
+                - %kernel.root_dir%/../vendor/semantic/ui/dist/themes/default/assets/fonts/icons.eot
+            output: "css/themes/default/assets/fonts/icons.eot"
+        semantic_icon_otf:
+            inputs:
+                - %kernel.root_dir%/../vendor/semantic/ui/dist/themes/default/assets/fonts/icons.otf
+            output: "css/themes/default/assets/fonts/icons.otf"
+        semantic_icon_svg:
+            inputs:
+                - %kernel.root_dir%/../vendor/semantic/ui/dist/themes/default/assets/fonts/icons.svg
+            output: "css/themes/default/assets/fonts/icons.svg"
+        semantic_icon_ttf:
+            inputs:
+                - %kernel.root_dir%/../vendor/semantic/ui/dist/themes/default/assets/fonts/icons.ttf
+            output: "css/themes/default/assets/fonts/icons.ttf"
+
+        jquery:
+            inputs:
+                - %kernel.root_dir%/../vendor/components/jquery/jquery.min.js
+
+        dataTables_css:
+            inputs:
+                - %kernel.root_dir%/../vendor/datatables/datatables/media/css/dataTables.semanticui.min.css
+
+        dataTable_semantic_js:
+            inputs:
+                - %kernel.root_dir%/../vendor/datatables/datatables/media/js/dataTables.semanticui.min.js
+
+        jquery_dataTable_js:
+              inputs:
+                 - %kernel.root_dir%/../vendor/datatables/datatables/media/js/jquery.dataTables.min.js
+
 # Twig Configuration
 twig:
     debug: '%kernel.debug%'

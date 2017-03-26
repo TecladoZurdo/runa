@@ -1,13 +1,26 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8" />
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
-        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
-    </head>
-    <body>
-        {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
-    </body>
+<head>
+  <meta charset="UTF-8" />
+  <title>{% block title %}Bienvenido{% endblock %}</title>
+  {% stylesheets '@semantic_css' %}
+  <link rel="stylesheet" type="text/css" media="screen" href="{{ asset_url }}">
+  {% endstylesheets %}
+  {% block stylesheets %}{% endblock %}
+  <link rel="icon" type="image/x-icon" href="{{ asset('img/favicon.ico') }}" />
+</head>
+<body>
+  {{include("header.html.twig")}}
+  {{include("menu.html.twig")}}
+  <div class="ui container">
+    {% block body %}{% endblock %}
+  </div>
+  <div class="ui divider"></div>
+  {{include("footer.html.twig")}}
+
+  {% javascripts '@jquery' '@semantic_js' %}
+  <script type="text/javascript" src="{{ asset_url }}"></script>
+  {% endjavascripts %}
+  {% block javascripts %}{% endblock %}
+</body>
 </html>
