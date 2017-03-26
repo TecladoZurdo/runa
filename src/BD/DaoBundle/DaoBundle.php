@@ -1,9 +1,9 @@
 <?php
 
-namespace AppBundle;
+namespace BD\DaoBundle;
 
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
-class AppBundle extends Bundle
+class DaoBundle extends Bundle
 {
 }

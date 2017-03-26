@@ -1,0 +1,4 @@
+services:
+#    operaciones.example:
+#        class: elyte\OperacionesBundle\Example
+#        arguments: ["@service_id", "plain_value", "%parameter%"]

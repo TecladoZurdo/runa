@@ -1,0 +1,4 @@
+services:
+#    dao.example:
+#        class: BD\DaoBundle\Example
+#        arguments: ["@service_id", "plain_value", "%parameter%"]
