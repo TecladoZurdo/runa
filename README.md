@@ -27,7 +27,7 @@ Esta construido con el framework Symfony 2.8
 
  Luego de descargar el proyecto que hacer?
 
-  * Ejecutar en la carpeta donde esta el proyecto composer para que instale
+  * Ejecutar en la carpeta donde esta el proyecto el comando composer para que se instale
     las dependencias necesarias requeridas por ejemplo:
 
     [tecladozurdo@server runa]$ composer install
