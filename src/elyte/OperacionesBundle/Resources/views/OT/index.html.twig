@@ -1,5 +1,10 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-<p>hola desde horden de trabajo</p>  
+	<div class="ui divider"></div>
+{{form_start(form ,{'attr':{'class':'ui form'}})}}
+<div class="ui divider"></div>
+<div class="ui button">Enviar</div>
+{{form_end(form)}}
+
 {% endblock %}
