@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * DetalleOrdenTrabajo
  *
- * @ORM\Table(name="detalle_orden_trabajo")
+ * @ORM\Table(name="detalle_orden_trabajo", indexes={@ORM\Index(name="IDX_9BF158CB92B24E62", columns={"orden_trabajo_id"})})
  * @ORM\Entity
  */
 class DetalleOrdenTrabajo
@@ -42,6 +42,16 @@ class DetalleOrdenTrabajo
      * @ORM\Column(name="activo", type="boolean", nullable=true)
      */
     private $activo;
+
+    /**
+     * @var \OrdenTrabajo
+     *
+     * @ORM\ManyToOne(targetEntity="OrdenTrabajo")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="orden_trabajo_id", referencedColumnName="id")
+     * })
+     */
+    private $ordenTrabajo;
 
 
 }

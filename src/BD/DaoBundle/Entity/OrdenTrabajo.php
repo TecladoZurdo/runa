@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * OrdenTrabajo
  *
- * @ORM\Table(name="orden_trabajo", indexes={@ORM\Index(name="IDX_4158A024DE734E51", columns={"cliente_id"}), @ORM\Index(name="IDX_4158A024521E1991", columns={"empresa_id"}), @ORM\Index(name="IDX_4158A024F4BDD0A9", columns={"ct_sistema"}), @ORM\Index(name="IDX_4158A0245E5CC7D3", columns={"ct_servicio"}), @ORM\Index(name="IDX_4158A024841DB1E7", columns={"tecnico_id"}), @ORM\Index(name="IDX_4158A0244363A9DC", columns={"detalle_orden_trabajo_id"})})
+ * @ORM\Table(name="orden_trabajo", indexes={@ORM\Index(name="IDX_4158A024DE734E51", columns={"cliente_id"}), @ORM\Index(name="IDX_4158A024521E1991", columns={"empresa_id"}), @ORM\Index(name="IDX_4158A024F4BDD0A9", columns={"ct_sistema"}), @ORM\Index(name="IDX_4158A0245E5CC7D3", columns={"ct_servicio"}), @ORM\Index(name="IDX_4158A024841DB1E7", columns={"tecnico_id"})})
  * @ORM\Entity
  */
 class OrdenTrabajo
@@ -79,6 +79,13 @@ class OrdenTrabajo
     private $fechaCreacion;
 
     /**
+     * @var jsonarray
+     *
+     * @ORM\Column(name="equipos", type="jsonarray", nullable=true)
+     */
+    private $equipos;
+
+    /**
      * @var \Cliente
      *
      * @ORM\ManyToOne(targetEntity="Cliente")
@@ -127,16 +134,6 @@ class OrdenTrabajo
      * })
      */
     private $tecnico;
-
-    /**
-     * @var \DetalleOrdenTrabajo
-     *
-     * @ORM\ManyToOne(targetEntity="DetalleOrdenTrabajo")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="detalle_orden_trabajo_id", referencedColumnName="id")
-     * })
-     */
-    private $detalleOrdenTrabajo;
 
 
 
@@ -335,6 +332,29 @@ class OrdenTrabajo
     }
 
     /**
+     * Set equipos
+     *
+     * @param \jsonarray $equipos
+     * @return OrdenTrabajo
+     */
+    public function setEquipos(\jsonarray $equipos)
+    {
+        $this->equipos = $equipos;
+
+        return $this;
+    }
+
+    /**
+     * Get equipos
+     *
+     * @return \jsonarray 
+     */
+    public function getEquipos()
+    {
+        return $this->equipos;
+    }
+
+    /**
      * Set cliente
      *
      * @param \BD\DaoBundle\Entity\Cliente $cliente
@@ -447,28 +467,5 @@ class OrdenTrabajo
     public function getTecnico()
     {
         return $this->tecnico;
-    }
-
-    /**
-     * Set detalleOrdenTrabajo
-     *
-     * @param \BD\DaoBundle\Entity\DetalleOrdenTrabajo $detalleOrdenTrabajo
-     * @return OrdenTrabajo
-     */
-    public function setDetalleOrdenTrabajo(\BD\DaoBundle\Entity\DetalleOrdenTrabajo $detalleOrdenTrabajo = null)
-    {
-        $this->detalleOrdenTrabajo = $detalleOrdenTrabajo;
-
-        return $this;
-    }
-
-    /**
-     * Get detalleOrdenTrabajo
-     *
-     * @return \BD\DaoBundle\Entity\DetalleOrdenTrabajo 
-     */
-    public function getDetalleOrdenTrabajo()
-    {
-        return $this->detalleOrdenTrabajo;
     }
 }
