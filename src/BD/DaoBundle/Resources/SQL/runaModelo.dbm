@@ -67,6 +67,9 @@ CAUTION: Do not modify this file unless you know what you are doing.
 	<column name="ct_servicio">
 		<type name="bigint" length="0"/>
 	</column>
+	<column name="equipos">
+		<type name="json" length="0"/>
+	</column>
 	<column name="descripcion">
 		<type name="character varying" length="500"/>
 	</column>
@@ -89,9 +92,6 @@ CAUTION: Do not modify this file unless you know what you are doing.
 		<type name="bigint" length="0"/>
 	</column>
 	<column name="tecnico_id">
-		<type name="bigint" length="0"/>
-	</column>
-	<column name="detalle_orden_trabajo_id">
 		<type name="bigint" length="0"/>
 	</column>
 	<constraint name="orden_trabajo_pk" type="pk-constr" table="public.orden_trabajo">
@@ -150,7 +150,7 @@ CAUTION: Do not modify this file unless you know what you are doing.
 <table name="catalogo">
 	<schema name="public"/>
 	<role name="postgres"/>
-	<position x="700" y="280"/>
+	<position x="720" y="220"/>
 	<column name="id" not-null="true">
 		<type name="bigint" length="0"/>
 	</column>
@@ -190,7 +190,70 @@ CAUTION: Do not modify this file unless you know what you are doing.
 	<column name="activo" default-value="true">
 		<type name="boolean" length="0"/>
 	</column>
+	<column name="orden_trabajo_id">
+		<type name="bigint" length="0"/>
+	</column>
 	<constraint name="detalle_orden_trabajo_pk" type="pk-constr" table="public.detalle_orden_trabajo">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="camaras">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="1140" y="200"/>
+	<column name="id" not-null="true">
+		<type name="bigserial" length="0"/>
+	</column>
+	<column name="ct_tipo">
+		<type name="bigint" length="0"/>
+	</column>
+	<column name="codigo">
+		<type name="character varying" length="0"/>
+	</column>
+	<column name="modelo">
+		<type name="character varying" length="0"/>
+	</column>
+	<column name="marca">
+		<type name="character varying" length="0"/>
+	</column>
+	<column name="activo" default-value="true">
+		<type name="boolean" length="0"/>
+	</column>
+	<column name="estado">
+		<type name="character varying" length="0"/>
+	</column>
+	<constraint name="camaras_pk" type="pk-constr" table="public.camaras">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="puertas">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="1140" y="380"/>
+	<column name="id" not-null="true">
+		<type name="bigserial" length="0"/>
+	</column>
+	<column name="ct_tipo">
+		<type name="bigint" length="0"/>
+	</column>
+	<column name="codigo">
+		<type name="character varying" length="0"/>
+	</column>
+	<column name="modelo">
+		<type name="character varying" length="0"/>
+	</column>
+	<column name="marca">
+		<type name="character varying" length="0"/>
+	</column>
+	<column name="activo" default-value="true">
+		<type name="boolean" length="0"/>
+	</column>
+	<column name="estado">
+		<type name="character varying" length="0"/>
+	</column>
+	<constraint name="puertas_pk" type="pk-constr" table="public.puertas">
 		<columns names="id" ref-type="src-columns"/>
 	</constraint>
 </table>
@@ -225,15 +288,27 @@ CAUTION: Do not modify this file unless you know what you are doing.
 	<columns names="id" ref-type="dst-columns"/>
 </constraint>
 
-<constraint name="fk_detalle_orden_trabajo" type="fk-constr" comparison-type="MATCH FULL"
-	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="public.detalle_orden_trabajo" table="public.orden_trabajo">
-	<columns names="detalle_orden_trabajo_id" ref-type="src-columns"/>
-	<columns names="id" ref-type="dst-columns"/>
-</constraint>
-
 <constraint name="fk_recusividad" type="fk-constr" comparison-type="MATCH FULL"
 	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="public.catalogo" table="public.catalogo">
 	<columns names="catalogo_id" ref-type="src-columns"/>
+	<columns names="id" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="fk_orden_trabajo_detalle" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="public.orden_trabajo" table="public.detalle_orden_trabajo">
+	<columns names="orden_trabajo_id" ref-type="src-columns"/>
+	<columns names="id" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="fk_tipo_catalogo" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="public.catalogo" table="public.camaras">
+	<columns names="ct_tipo" ref-type="src-columns"/>
+	<columns names="id" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="fk_tipo_catalogo" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="public.catalogo" table="public.puertas">
+	<columns names="ct_tipo" ref-type="src-columns"/>
 	<columns names="id" ref-type="dst-columns"/>
 </constraint>
 
@@ -242,9 +317,9 @@ CAUTION: Do not modify this file unless you know what you are doing.
 	 dst-table="public.catalogo"
 	 src-required="false" dst-required="false">
 	<line>
-		<position x="965.297" y="322.96"/>
-	<position x="965.297" y="271"/>
-	<position x="870.865" y="271"/>
+		<position x="985.297" y="262.96"/>
+	<position x="985.297" y="211"/>
+	<position x="890.865" y="211"/>
 	</line>
 </relationship>
 
@@ -268,9 +343,19 @@ CAUTION: Do not modify this file unless you know what you are doing.
 	 dst-table="public.tecnico"
 	 src-required="false" dst-required="false"/>
 
-<relationship name="rel_orden_trabajo_detalle_orden_trabajo" type="relfk"
-	 src-table="public.orden_trabajo"
-	 dst-table="public.detalle_orden_trabajo"
+<relationship name="rel_detalle_orden_trabajo_orden_trabajo" type="relfk"
+	 src-table="public.detalle_orden_trabajo"
+	 dst-table="public.orden_trabajo"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_camaras_catalogo" type="relfk"
+	 src-table="public.camaras"
+	 dst-table="public.catalogo"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_puertas_catalogo" type="relfk"
+	 src-table="public.puertas"
+	 dst-table="public.catalogo"
 	 src-required="false" dst-required="false"/>
 
 </dbmodel>

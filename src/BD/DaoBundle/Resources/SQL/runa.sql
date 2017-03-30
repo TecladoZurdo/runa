@@ -1,10 +1,16 @@
-﻿-- Database generated with pgModeler (PostgreSQL Database Modeler).
+-- Database generated with pgModeler (PostgreSQL Database Modeler).
 -- pgModeler  version: 0.9.0-alpha1
 -- PostgreSQL version: 9.6
 -- Project Site: pgmodeler.com.br
 -- Model Author: ---
 
 -- object: bancoideas | type: ROLE --
+-- DROP ROLE IF EXISTS bancoideas;
+CREATE ROLE bancoideas WITH 
+	INHERIT
+	LOGIN
+	ENCRYPTED PASSWORD '********';
+-- ddl-end --
 
 
 -- Database creation must be done outside an multicommand file.
@@ -45,6 +51,7 @@ CREATE TABLE public.orden_trabajo(
 	empresa_id bigint,
 	ct_sistema bigint,
 	ct_servicio bigint,
+	equipos json,
 	descripcion character varying(500),
 	"fecha_Inicio" timestamp,
 	fecha_termino timestamp,
@@ -53,7 +60,6 @@ CREATE TABLE public.orden_trabajo(
 	fecha_creacion timestamp,
 	cliente_id bigint,
 	tecnico_id bigint,
-	detalle_orden_trabajo_id bigint,
 	CONSTRAINT orden_trabajo_pk PRIMARY KEY (id)
 
 );
@@ -116,11 +122,46 @@ CREATE TABLE public.detalle_orden_trabajo(
 	cantidad smallint,
 	descripcion character varying(50),
 	activo boolean DEFAULT true,
+	orden_trabajo_id bigint,
 	CONSTRAINT detalle_orden_trabajo_pk PRIMARY KEY (id)
 
 );
 -- ddl-end --
 ALTER TABLE public.detalle_orden_trabajo OWNER TO postgres;
+-- ddl-end --
+
+-- object: public.camaras | type: TABLE --
+-- DROP TABLE IF EXISTS public.camaras CASCADE;
+CREATE TABLE public.camaras(
+	id bigserial NOT NULL,
+	ct_tipo bigint,
+	codigo character varying,
+	modelo character varying,
+	marca character varying,
+	activo boolean DEFAULT true,
+	estado character varying,
+	CONSTRAINT camaras_pk PRIMARY KEY (id)
+
+);
+-- ddl-end --
+ALTER TABLE public.camaras OWNER TO postgres;
+-- ddl-end --
+
+-- object: public.puertas | type: TABLE --
+-- DROP TABLE IF EXISTS public.puertas CASCADE;
+CREATE TABLE public.puertas(
+	id bigserial NOT NULL,
+	ct_tipo bigint,
+	codigo character varying,
+	modelo character varying,
+	marca character varying,
+	activo boolean DEFAULT true,
+	estado character varying,
+	CONSTRAINT puertas_pk PRIMARY KEY (id)
+
+);
+-- ddl-end --
+ALTER TABLE public.puertas OWNER TO postgres;
 -- ddl-end --
 
 -- object: fk_cliente_orden_trabajo | type: CONSTRAINT --
@@ -158,16 +199,30 @@ REFERENCES public.tecnico (id) MATCH FULL
 ON DELETE NO ACTION ON UPDATE NO ACTION;
 -- ddl-end --
 
--- object: fk_detalle_orden_trabajo | type: CONSTRAINT --
--- ALTER TABLE public.orden_trabajo DROP CONSTRAINT IF EXISTS fk_detalle_orden_trabajo CASCADE;
-ALTER TABLE public.orden_trabajo ADD CONSTRAINT fk_detalle_orden_trabajo FOREIGN KEY (detalle_orden_trabajo_id)
-REFERENCES public.detalle_orden_trabajo (id) MATCH FULL
-ON DELETE NO ACTION ON UPDATE NO ACTION;
--- ddl-end --
-
 -- object: fk_recusividad | type: CONSTRAINT --
 -- ALTER TABLE public.catalogo DROP CONSTRAINT IF EXISTS fk_recusividad CASCADE;
 ALTER TABLE public.catalogo ADD CONSTRAINT fk_recusividad FOREIGN KEY (catalogo_id)
+REFERENCES public.catalogo (id) MATCH FULL
+ON DELETE NO ACTION ON UPDATE NO ACTION;
+-- ddl-end --
+
+-- object: fk_orden_trabajo_detalle | type: CONSTRAINT --
+-- ALTER TABLE public.detalle_orden_trabajo DROP CONSTRAINT IF EXISTS fk_orden_trabajo_detalle CASCADE;
+ALTER TABLE public.detalle_orden_trabajo ADD CONSTRAINT fk_orden_trabajo_detalle FOREIGN KEY (orden_trabajo_id)
+REFERENCES public.orden_trabajo (id) MATCH FULL
+ON DELETE NO ACTION ON UPDATE NO ACTION;
+-- ddl-end --
+
+-- object: fk_tipo_catalogo | type: CONSTRAINT --
+-- ALTER TABLE public.camaras DROP CONSTRAINT IF EXISTS fk_tipo_catalogo CASCADE;
+ALTER TABLE public.camaras ADD CONSTRAINT fk_tipo_catalogo FOREIGN KEY (ct_tipo)
+REFERENCES public.catalogo (id) MATCH FULL
+ON DELETE NO ACTION ON UPDATE NO ACTION;
+-- ddl-end --
+
+-- object: fk_tipo_catalogo | type: CONSTRAINT --
+-- ALTER TABLE public.puertas DROP CONSTRAINT IF EXISTS fk_tipo_catalogo CASCADE;
+ALTER TABLE public.puertas ADD CONSTRAINT fk_tipo_catalogo FOREIGN KEY (ct_tipo)
 REFERENCES public.catalogo (id) MATCH FULL
 ON DELETE NO ACTION ON UPDATE NO ACTION;
 -- ddl-end --
