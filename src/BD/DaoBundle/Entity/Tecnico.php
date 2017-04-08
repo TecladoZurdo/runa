@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Tecnico
  *
  * @ORM\Table(name="tecnico")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="BD\DaoBundle\Entity\Repository\TecnicoRepository")
  */
 class Tecnico
 {
@@ -43,12 +43,17 @@ class Tecnico
      */
     private $celular;
 
-
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="activo", type="boolean", nullable=true)
+     */
+    private $activo;
 
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -71,7 +76,7 @@ class Tecnico
     /**
      * Get nombres
      *
-     * @return string 
+     * @return string
      */
     public function getNombres()
     {
@@ -94,7 +99,7 @@ class Tecnico
     /**
      * Get apellidos
      *
-     * @return string 
+     * @return string
      */
     public function getApellidos()
     {
@@ -117,10 +122,33 @@ class Tecnico
     /**
      * Get celular
      *
-     * @return string 
+     * @return string
      */
     public function getCelular()
     {
         return $this->celular;
+    }
+
+    /**
+     * Set activo
+     *
+     * @param boolean $activo
+     * @return Tecnico
+     */
+    public function setActivo($activo)
+    {
+        $this->activo = $activo;
+
+        return $this;
+    }
+
+    /**
+     * Get activo
+     *
+     * @return boolean 
+     */
+    public function getActivo()
+    {
+        return $this->activo;
     }
 }

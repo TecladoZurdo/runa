@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Empresa
  *
  * @ORM\Table(name="empresa")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="BD\DaoBundle\Entity\Repository\EmpresaRepository")
  */
 class Empresa
 {
@@ -62,7 +62,7 @@ class Empresa
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -85,7 +85,7 @@ class Empresa
     /**
      * Get nombre
      *
-     * @return string 
+     * @return string
      */
     public function getNombre()
     {
@@ -108,7 +108,7 @@ class Empresa
     /**
      * Get direccion
      *
-     * @return string 
+     * @return string
      */
     public function getDireccion()
     {
@@ -131,7 +131,7 @@ class Empresa
     /**
      * Get edificio
      *
-     * @return string 
+     * @return string
      */
     public function getEdificio()
     {
@@ -154,7 +154,7 @@ class Empresa
     /**
      * Get ubicacion
      *
-     * @return string 
+     * @return string
      */
     public function getUbicacion()
     {
@@ -177,7 +177,7 @@ class Empresa
     /**
      * Get activo
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getActivo()
     {

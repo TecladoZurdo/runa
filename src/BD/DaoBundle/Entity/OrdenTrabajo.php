@@ -79,13 +79,6 @@ class OrdenTrabajo
     private $fechaCreacion;
 
     /**
-     * @var jsonarray
-     *
-     * @ORM\Column(name="equipos", type="jsonarray", nullable=true)
-     */
-    private $equipos;
-
-    /**
      * @var \Cliente
      *
      * @ORM\ManyToOne(targetEntity="Cliente")
@@ -329,29 +322,6 @@ class OrdenTrabajo
     public function getFechaCreacion()
     {
         return $this->fechaCreacion;
-    }
-
-    /**
-     * Set equipos
-     *
-     * @param \jsonarray $equipos
-     * @return OrdenTrabajo
-     */
-    public function setEquipos(\jsonarray $equipos)
-    {
-        $this->equipos = $equipos;
-
-        return $this;
-    }
-
-    /**
-     * Get equipos
-     *
-     * @return \jsonarray 
-     */
-    public function getEquipos()
-    {
-        return $this->equipos;
     }
 
     /**

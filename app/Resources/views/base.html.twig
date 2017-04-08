@@ -10,18 +10,16 @@
   <link rel="icon" type="image/x-icon" href="{{ asset('img/favicon.ico') }}" />
 </head>
 <body>
-  {{include("header.html.twig")}}
-  {{include("menu.html.twig")}}
-  <div class="ui divider"></div>
-  <div class="ui container">
-    {% block body %}{% endblock %}
-  </div>
+    {{include("menu.html.twig")}}
+    
+    <div class="ui container">
+          {% block contenido %}{% endblock %}
+    </div>
   <div class="ui divider"></div>
   {{include("footer.html.twig")}}
-
-  {% javascripts '@jquery' '@semantic_js' %}
-  <script type="text/javascript" src="{{ asset_url }}"></script>
-  {% endjavascripts %}
-  {% block javascripts %}{% endblock %}
 </body>
+{% javascripts '@jquery' '@semantic_js' %}
+<script type="text/javascript" src="{{ asset_url }}"></script>
+{% endjavascripts %}
+{% block javascripts %}{% endblock %}
 </html>

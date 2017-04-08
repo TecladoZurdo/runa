@@ -19,6 +19,7 @@ class AppKernel extends Kernel
             new BD\DaoBundle\DaoBundle(),
             new Admin\AdministradorBundle\AdministradorBundle(),
             new elyte\OperacionesBundle\OperacionesBundle(),
+            new Utilitarios\UtilBundle\UtilBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'), true)) {

@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Catalogo
  *
  * @ORM\Table(name="catalogo", indexes={@ORM\Index(name="IDX_E7AC6B454979D753", columns={"catalogo_id"})})
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="BD\DaoBundle\Entity\Repository\CatalogoRepository")
  */
 class Catalogo
 {
@@ -65,7 +65,7 @@ class Catalogo
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -88,7 +88,7 @@ class Catalogo
     /**
      * Get nombre
      *
-     * @return string 
+     * @return string
      */
     public function getNombre()
     {
@@ -111,7 +111,7 @@ class Catalogo
     /**
      * Get orden
      *
-     * @return integer 
+     * @return integer
      */
     public function getOrden()
     {
@@ -134,7 +134,7 @@ class Catalogo
     /**
      * Get valor
      *
-     * @return integer 
+     * @return integer
      */
     public function getValor()
     {
@@ -157,7 +157,7 @@ class Catalogo
     /**
      * Get activo
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getActivo()
     {
@@ -180,7 +180,7 @@ class Catalogo
     /**
      * Get catalogo
      *
-     * @return \BD\DaoBundle\Entity\Catalogo 
+     * @return \BD\DaoBundle\Entity\Catalogo
      */
     public function getCatalogo()
     {

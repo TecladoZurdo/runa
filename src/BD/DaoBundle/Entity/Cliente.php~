@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Cliente
  *
  * @ORM\Table(name="cliente")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="BD\DaoBundle\Entity\Repository\ClienteRepository")
  */
 class Cliente
 {

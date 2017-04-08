@@ -79,13 +79,6 @@ class OrdenTrabajo
     private $fechaCreacion;
 
     /**
-     * @var jsonarray
-     *
-     * @ORM\Column(name="equipos", type="jsonarray", nullable=true)
-     */
-    private $equipos;
-
-    /**
      * @var \Cliente
      *
      * @ORM\ManyToOne(targetEntity="Cliente")

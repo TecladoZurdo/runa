@@ -1,10 +1,46 @@
 {% extends 'base.html.twig' %}
-
-{% block body %}
-	<div class="ui divider"></div>
+{% block contenido %}
+<div class="ui container">
+	<h2 class="ui header">
+		<i class="sticky note icon"></i>
+		<div class="content">
+			Orden de Trabajo
+			<div class="sub header">Elyte</div>
+		</div>
+	</h2>
+</div>
+<div class="ui container">
 {{form_start(form ,{'attr':{'class':'ui form'}})}}
-<div class="ui divider"></div>
+<div class="fields">
+	<div class="five wide field">
+		<label for="">Número de Ticket</label>
+		{{form_widget(form.numTicket)}}
+	</div>
+	<div class="five wide field">
+		<label for="">Número Orden de Trabajo</label>
+		{{form_widget(form.numOrdTrab)}}
+	</div>
+	<div class="five wide field">
+		{{form_label(form.empresa)}}
+		{{form_widget(form.empresa)}}
+	</div>
+</div>
+<div class="field">
+	{{form_widget(form.descripcion)}}
+</div>
+<div class="fields">
+	<div class="eight wide field">
+		{{form_label(form.cliente)}}
+		{{form_widget(form.cliente)}}
+	</div>
+	<div class="eight wide field">
+		{{form_label(form.tecnico)}}
+		{{form_widget(form.tecnico)}}
+	</div>
+</div>
+
 <div class="ui button">Enviar</div>
 {{form_end(form)}}
+</div>
 
 {% endblock %}
