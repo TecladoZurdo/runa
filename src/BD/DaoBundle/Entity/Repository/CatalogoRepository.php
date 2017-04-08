@@ -12,4 +12,27 @@ use Doctrine\ORM\EntityRepository;
  */
 class CatalogoRepository extends EntityRepository
 {
+
+  /**
+     * Retorna el resultado de la consulta
+     *
+     * @param integer $catalogo_id
+     */
+    public function getCatalogoByIdQueryBuilder($catalogo_id, $activo=true) {
+
+
+        $qb = $this->createQueryBuilder('cat')
+                        ->select('cat')
+                        ->Where('cat.catalogo_id=:catalogo_id');
+        if($activo){
+            $qb->andWhere('cat.activo=:activo')
+            ->setParameter('activo', true);
+        }
+
+        $qb ->setParameter('catalogo_id', $catalogo_id)
+            ->orderBy('cat.orden,cat.nombre', 'ASC');
+
+            return $qb;
+
+    }
 }

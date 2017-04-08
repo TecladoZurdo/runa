@@ -60,7 +60,12 @@ class Catalogo
      */
     private $catalogo;
 
-
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="catalogo_id", type="integer", nullable=true)
+     */
+    private $catalogo_id;
 
     /**
      * Get id
@@ -185,5 +190,28 @@ class Catalogo
     public function getCatalogo()
     {
         return $this->catalogo;
+    }
+
+    /**
+     * Set catalogo_id
+     *
+     * @param integer $catalogoId
+     * @return Catalogo
+     */
+    public function setCatalogoId($catalogoId)
+    {
+        $this->catalogo_id = $catalogoId;
+
+        return $this;
+    }
+
+    /**
+     * Get catalogo_id
+     *
+     * @return integer 
+     */
+    public function getCatalogoId()
+    {
+        return $this->catalogo_id;
     }
 }

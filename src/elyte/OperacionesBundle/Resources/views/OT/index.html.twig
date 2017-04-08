@@ -25,8 +25,24 @@
 		{{form_widget(form.empresa)}}
 	</div>
 </div>
+<div class="fields">
+	<div class="six wide field">
+		{{form_label(form.ctSistema)}}
+		{{form_widget(form.ctSistema)}}
+	</div>
+	<div class="six wide field">
+		{{form_label(form.ctServicio)}}
+		{{form_widget(form.ctServicio)}}
+	</div>
+</div>
 <div class="field">
 	{{form_widget(form.descripcion)}}
+</div>
+<div class="fields">
+	<div class="field">
+		{#{{form_label(form.fechaInicio)}}#}
+		{#{{form_datewidget(form.fechaIncio)}}#}
+	</div>
 </div>
 <div class="fields">
 	<div class="eight wide field">

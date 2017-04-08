@@ -8,8 +8,11 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
+
 
 use Utilitarios\UtilBundle\Controller\Repositorios;
+use Utilitarios\UtilBundle\Controller\VarCatalogo;
 
 class OrdenTrabajoType extends AbstractType
 {
@@ -21,8 +24,16 @@ class OrdenTrabajoType extends AbstractType
         $builder
         ->add('numTicket')->add('numOrdTrab')
         ->add('descripcion',TextareaType::class)
-        //->add('fechaInicio')->add('fechaTermino')
-        //->add('horaTermino')->add('activo')->add('fechaCreacion')
+    //     ->add('fechaInicio',DateTimeType::class,array(
+    //       'placeholder' => array(
+    //     'year' => 'Year', 'month' => 'Month', 'day' => 'Day',
+    //     'hour' => 'Hour', 'minute' => 'Minute', 'second' => 'Second',
+    // )
+    //     ))
+        //->add('fechaTermino')
+        //->add('horaTermino')
+        //->add('activo')
+        //->add('fechaCreacion')
         ->add('cliente',EntityType::class,array(
           'label'=>'Cliente',
           'class'=>Repositorios::$cliente
@@ -40,7 +51,26 @@ class OrdenTrabajoType extends AbstractType
             ,'property'=>'nombre'
             ,'empty_value'=>'--seleccione--')
             )
-        //->add('ctSistema')->add('ctServicio')
+        ->add('ctSistema',EntityType::class,array(
+          'label'=>'Sistema'
+          ,'class' => Repositorios::$catalogo
+          ,'query_builder' => function ($er){
+            return $er->getCatalogoByIdQueryBuilder(VarCatalogo::$sistemas);
+          }
+          ,'property'=>'nombre'
+          ,'empty_value'=>'--seleccione--'
+          // ,'multiple'=>true
+          // ,'attr'=>array('class'=>'ui dropdown')
+        ))
+        ->add('ctServicio',EntityType::class,array(
+          'label'=>'Servicio'
+          ,'class' => Repositorios::$catalogo
+          ,'query_builder' => function ($er){
+            return $er->getCatalogoByIdQueryBuilder(VarCatalogo::$servicio);
+          }
+          ,'property'=>'nombre'
+          ,'empty_value'=>'--seleccione--'
+        ))
         ->add('tecnico',EntityType::class,array(
           'label'=>'Técnico'
           ,'class'=>Repositorios::$tecnico

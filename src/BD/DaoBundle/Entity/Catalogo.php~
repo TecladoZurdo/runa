@@ -60,7 +60,12 @@ class Catalogo
      */
     private $catalogo;
 
-
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="catalogo_id", type="integer", nullable=true)
+     */
+    private $catalogo_id;
 
     /**
      * Get id
