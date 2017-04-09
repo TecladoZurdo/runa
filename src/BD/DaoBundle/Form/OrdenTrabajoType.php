@@ -9,6 +9,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 
 
 use Utilitarios\UtilBundle\Controller\Repositorios;
@@ -24,6 +25,7 @@ class OrdenTrabajoType extends AbstractType
         $builder
         ->add('numTicket')->add('numOrdTrab')
         ->add('descripcion',TextareaType::class)
+        ->add('fechaIni',TextType::class,array('mapped'=>false))
     //     ->add('fechaInicio',DateTimeType::class,array(
     //       'placeholder' => array(
     //     'year' => 'Year', 'month' => 'Month', 'day' => 'Day',
@@ -31,6 +33,7 @@ class OrdenTrabajoType extends AbstractType
     // )
     //     ))
         //->add('fechaTermino')
+        ->add('fechaFin',TextType::class,array('mapped'=>false))
         //->add('horaTermino')
         //->add('activo')
         //->add('fechaCreacion')

@@ -42,6 +42,12 @@
 	<div class="field">
 		{#{{form_label(form.fechaInicio)}}#}
 		{#{{form_datewidget(form.fechaIncio)}}#}
+		<label for="">Fecha Inicio Año-mes-día Hora:minutos</label>
+		{{form_widget(form.fechaIni,{attr:{'placeholder':'aaaa-mm-dd hh:mm'}})}}
+	</div>
+	<div class="field">
+		<label for="">Fecha Termino Año-mes-día Hora:minutos</label>
+		{{form_widget(form.fechaFin,{attr:{'placeholder':'aaaa-mm-dd hh:mm'}})}}
 	</div>
 </div>
 <div class="fields">
@@ -55,7 +61,7 @@
 	</div>
 </div>
 
-<div class="ui button">Enviar</div>
+<button type="submmit" name="button" class="ui primary button">Enviar</button>
 {{form_end(form)}}
 </div>
 

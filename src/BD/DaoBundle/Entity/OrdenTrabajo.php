@@ -46,7 +46,7 @@ class OrdenTrabajo
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="fecha_Inicio", type="datetime", nullable=true)
+     * @ORM\Column(name="fecha_inicio", type="datetime", nullable=true)
      */
     private $fechaInicio;
 
@@ -60,7 +60,7 @@ class OrdenTrabajo
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="Hora_Termino", type="time", nullable=true)
+     * @ORM\Column(name="hora_termino", type="time", nullable=true)
      */
     private $horaTermino;
 
@@ -133,7 +133,7 @@ class OrdenTrabajo
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -156,7 +156,7 @@ class OrdenTrabajo
     /**
      * Get numTicket
      *
-     * @return integer 
+     * @return integer
      */
     public function getNumTicket()
     {
@@ -179,7 +179,7 @@ class OrdenTrabajo
     /**
      * Get numOrdTrab
      *
-     * @return integer 
+     * @return integer
      */
     public function getNumOrdTrab()
     {
@@ -202,7 +202,7 @@ class OrdenTrabajo
     /**
      * Get descripcion
      *
-     * @return string 
+     * @return string
      */
     public function getDescripcion()
     {
@@ -225,7 +225,7 @@ class OrdenTrabajo
     /**
      * Get fechaInicio
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getFechaInicio()
     {
@@ -248,7 +248,7 @@ class OrdenTrabajo
     /**
      * Get fechaTermino
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getFechaTermino()
     {
@@ -271,7 +271,7 @@ class OrdenTrabajo
     /**
      * Get horaTermino
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getHoraTermino()
     {
@@ -294,7 +294,7 @@ class OrdenTrabajo
     /**
      * Get activo
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getActivo()
     {
@@ -317,7 +317,7 @@ class OrdenTrabajo
     /**
      * Get fechaCreacion
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getFechaCreacion()
     {
@@ -340,7 +340,7 @@ class OrdenTrabajo
     /**
      * Get cliente
      *
-     * @return \BD\DaoBundle\Entity\Cliente 
+     * @return \BD\DaoBundle\Entity\Cliente
      */
     public function getCliente()
     {
@@ -363,7 +363,7 @@ class OrdenTrabajo
     /**
      * Get empresa
      *
-     * @return \BD\DaoBundle\Entity\Empresa 
+     * @return \BD\DaoBundle\Entity\Empresa
      */
     public function getEmpresa()
     {
@@ -386,7 +386,7 @@ class OrdenTrabajo
     /**
      * Get ctSistema
      *
-     * @return \BD\DaoBundle\Entity\Catalogo 
+     * @return \BD\DaoBundle\Entity\Catalogo
      */
     public function getCtSistema()
     {
@@ -409,7 +409,7 @@ class OrdenTrabajo
     /**
      * Get ctServicio
      *
-     * @return \BD\DaoBundle\Entity\Catalogo 
+     * @return \BD\DaoBundle\Entity\Catalogo
      */
     public function getCtServicio()
     {
@@ -432,7 +432,7 @@ class OrdenTrabajo
     /**
      * Get tecnico
      *
-     * @return \BD\DaoBundle\Entity\Tecnico 
+     * @return \BD\DaoBundle\Entity\Tecnico
      */
     public function getTecnico()
     {
