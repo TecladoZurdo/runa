@@ -27,11 +27,11 @@ CAUTION: Do not modify this file unless you know what you are doing.
 	<column name="id" not-null="true">
 		<type name="bigserial" length="0"/>
 	</column>
-	<column name="Nombre">
-		<type name="&quot;char&quot;" length="0"/>
+	<column name="nombre">
+		<type name="character varying" length="0"/>
 	</column>
-	<column name="Cargo">
-		<type name="&quot;char&quot;" length="0"/>
+	<column name="cargo">
+		<type name="character varying" length="0"/>
 	</column>
 	<column name="revisado_por">
 		<type name="character varying" length="0"/>
@@ -67,19 +67,16 @@ CAUTION: Do not modify this file unless you know what you are doing.
 	<column name="ct_servicio">
 		<type name="bigint" length="0"/>
 	</column>
-	<column name="equipos">
-		<type name="json" length="0"/>
-	</column>
 	<column name="descripcion">
 		<type name="character varying" length="500"/>
 	</column>
-	<column name="fecha_Inicio">
+	<column name="fecha_inicio">
 		<type name="timestamp" length="0"/>
 	</column>
 	<column name="fecha_termino">
 		<type name="timestamp" length="0"/>
 	</column>
-	<column name="Hora_Termino">
+	<column name="hora_termino">
 		<type name="time with time zone" length="0" with-timezone="true"/>
 	</column>
 	<column name="activo" default-value="true">
@@ -114,6 +111,9 @@ CAUTION: Do not modify this file unless you know what you are doing.
 	</column>
 	<column name="celular">
 		<type name="character varying" length="0"/>
+	</column>
+	<column name="activo" default-value="true">
+		<type name="boolean" length="0"/>
 	</column>
 	<constraint name="Tecnico_pk" type="pk-constr" table="public.tecnico">
 		<columns names="id" ref-type="src-columns"/>

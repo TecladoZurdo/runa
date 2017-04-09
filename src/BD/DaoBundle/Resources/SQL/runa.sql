@@ -1,4 +1,4 @@
--- Database generated with pgModeler (PostgreSQL Database Modeler).
+﻿-- Database generated with pgModeler (PostgreSQL Database Modeler).
 -- pgModeler  version: 0.9.0-alpha1
 -- PostgreSQL version: 9.6
 -- Project Site: pgmodeler.com.br
@@ -6,11 +6,7 @@
 
 -- object: bancoideas | type: ROLE --
 -- DROP ROLE IF EXISTS bancoideas;
-CREATE ROLE bancoideas WITH 
-	INHERIT
-	LOGIN
-	ENCRYPTED PASSWORD '********';
--- ddl-end --
+
 
 
 -- Database creation must be done outside an multicommand file.
@@ -31,8 +27,8 @@ CREATE ROLE bancoideas WITH
 -- DROP TABLE IF EXISTS public.cliente CASCADE;
 CREATE TABLE public.cliente(
 	id bigserial NOT NULL,
-	"Nombre" "char",
-	"Cargo" "char",
+	nombre character varying,
+	cargo character varying,
 	revisado_por character varying,
 	activo boolean DEFAULT true,
 	CONSTRAINT "Cliente_pk" PRIMARY KEY (id)
@@ -51,11 +47,10 @@ CREATE TABLE public.orden_trabajo(
 	empresa_id bigint,
 	ct_sistema bigint,
 	ct_servicio bigint,
-	equipos json,
 	descripcion character varying(500),
-	"fecha_Inicio" timestamp,
+	fecha_inicio timestamp,
 	fecha_termino timestamp,
-	"Hora_Termino" time with time zone,
+	hora_termino time with time zone,
 	activo boolean DEFAULT true,
 	fecha_creacion timestamp,
 	cliente_id bigint,
@@ -76,6 +71,7 @@ CREATE TABLE public.tecnico(
 	nombres character varying,
 	apellidos character varying,
 	celular character varying,
+	activo boolean DEFAULT true,
 	CONSTRAINT "Tecnico_pk" PRIMARY KEY (id)
 
 );
