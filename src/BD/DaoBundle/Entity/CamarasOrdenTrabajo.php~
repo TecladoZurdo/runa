@@ -1,0 +1,53 @@
+<?php
+
+namespace BD\DaoBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * CamarasOrdenTrabajo
+ *
+ * @ORM\Table(name="camaras_orden_trabajo", indexes={@ORM\Index(name="IDX_485DFB12F65F51BE", columns={"camaras_id"}), @ORM\Index(name="IDX_485DFB1292B24E62", columns={"orden_trabajo_id"})})
+ * @ORM\Entity
+ */
+class CamarasOrdenTrabajo
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="bigint", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="SEQUENCE")
+     * @ORM\SequenceGenerator(sequenceName="camaras_orden_trabajo_id_seq", allocationSize=1, initialValue=1)
+     */
+    private $id;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="activo", type="boolean", nullable=true)
+     */
+    private $activo;
+
+    /**
+     * @var \Camaras
+     *
+     * @ORM\ManyToOne(targetEntity="Camaras")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="camaras_id", referencedColumnName="id")
+     * })
+     */
+    private $camaras;
+
+    /**
+     * @var \OrdenTrabajo
+     *
+     * @ORM\ManyToOne(targetEntity="OrdenTrabajo")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="orden_trabajo_id", referencedColumnName="id")
+     * })
+     */
+    private $ordenTrabajo;
+
+
+}

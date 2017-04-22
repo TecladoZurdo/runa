@@ -1,11 +1,8 @@
-﻿-- Database generated with pgModeler (PostgreSQL Database Modeler).
+-- Database generated with pgModeler (PostgreSQL Database Modeler).
 -- pgModeler  version: 0.9.0-alpha1
 -- PostgreSQL version: 9.6
 -- Project Site: pgmodeler.com.br
 -- Model Author: ---
-
--- object: bancoideas | type: ROLE --
--- DROP ROLE IF EXISTS bancoideas;
 
 
 
@@ -21,7 +18,7 @@
 -- 	OWNER = postgres
 -- ;
 -- -- ddl-end --
--- 
+--
 
 -- object: public.cliente | type: TABLE --
 -- DROP TABLE IF EXISTS public.cliente CASCADE;
@@ -160,6 +157,34 @@ CREATE TABLE public.puertas(
 ALTER TABLE public.puertas OWNER TO postgres;
 -- ddl-end --
 
+-- object: public.camaras_orden_trabajo | type: TABLE --
+-- DROP TABLE IF EXISTS public.camaras_orden_trabajo CASCADE;
+CREATE TABLE public.camaras_orden_trabajo(
+	id bigserial NOT NULL,
+	orden_trabajo_id bigint,
+	camaras_id bigint,
+	activo boolean DEFAULT true,
+	CONSTRAINT camaras_orden_trabajo_pk PRIMARY KEY (id)
+
+);
+-- ddl-end --
+ALTER TABLE public.camaras_orden_trabajo OWNER TO postgres;
+-- ddl-end --
+
+-- object: public.puertas_orden_trabajo | type: TABLE --
+-- DROP TABLE IF EXISTS public.puertas_orden_trabajo CASCADE;
+CREATE TABLE public.puertas_orden_trabajo(
+	id bigserial NOT NULL,
+	orden_trabajo_id bigint,
+	puertas_id bigint,
+	activo boolean,
+	CONSTRAINT puertas_orden_trabajo_pk PRIMARY KEY (id)
+
+);
+-- ddl-end --
+ALTER TABLE public.puertas_orden_trabajo OWNER TO postgres;
+-- ddl-end --
+
 -- object: fk_cliente_orden_trabajo | type: CONSTRAINT --
 -- ALTER TABLE public.orden_trabajo DROP CONSTRAINT IF EXISTS fk_cliente_orden_trabajo CASCADE;
 ALTER TABLE public.orden_trabajo ADD CONSTRAINT fk_cliente_orden_trabajo FOREIGN KEY (cliente_id)
@@ -223,4 +248,30 @@ REFERENCES public.catalogo (id) MATCH FULL
 ON DELETE NO ACTION ON UPDATE NO ACTION;
 -- ddl-end --
 
+-- object: fk_camaras | type: CONSTRAINT --
+-- ALTER TABLE public.camaras_orden_trabajo DROP CONSTRAINT IF EXISTS fk_camaras CASCADE;
+ALTER TABLE public.camaras_orden_trabajo ADD CONSTRAINT fk_camaras FOREIGN KEY (camaras_id)
+REFERENCES public.camaras (id) MATCH FULL
+ON DELETE NO ACTION ON UPDATE NO ACTION;
+-- ddl-end --
 
+-- object: fk_orden_trabajo | type: CONSTRAINT --
+-- ALTER TABLE public.camaras_orden_trabajo DROP CONSTRAINT IF EXISTS fk_orden_trabajo CASCADE;
+ALTER TABLE public.camaras_orden_trabajo ADD CONSTRAINT fk_orden_trabajo FOREIGN KEY (orden_trabajo_id)
+REFERENCES public.orden_trabajo (id) MATCH FULL
+ON DELETE NO ACTION ON UPDATE NO ACTION;
+-- ddl-end --
+
+-- object: fk_orden_trabajo | type: CONSTRAINT --
+-- ALTER TABLE public.puertas_orden_trabajo DROP CONSTRAINT IF EXISTS fk_orden_trabajo CASCADE;
+ALTER TABLE public.puertas_orden_trabajo ADD CONSTRAINT fk_orden_trabajo FOREIGN KEY (orden_trabajo_id)
+REFERENCES public.orden_trabajo (id) MATCH FULL
+ON DELETE NO ACTION ON UPDATE NO ACTION;
+-- ddl-end --
+
+-- object: fk_puertas | type: CONSTRAINT --
+-- ALTER TABLE public.puertas_orden_trabajo DROP CONSTRAINT IF EXISTS fk_puertas CASCADE;
+ALTER TABLE public.puertas_orden_trabajo ADD CONSTRAINT fk_puertas FOREIGN KEY (puertas_id)
+REFERENCES public.puertas (id) MATCH FULL
+ON DELETE NO ACTION ON UPDATE NO ACTION;
+-- ddl-end --

@@ -35,7 +35,19 @@
 		{{form_widget(form.ctServicio)}}
 	</div>
 </div>
+<div class="fields">
+	<div class="six wide field">
+		{{form_label(form.camaras)}}
+		{{form_widget(form.camaras)}}
+	</div>
+	<div class="six wide field">
+		{{form_label(form.puertas)}}
+		{{form_widget(form.puertas)}}
+	</div>
+</div>
 <div class="field">
+	<div class="ui blue ribbon label">Descripcion</div>
+
 	{{form_widget(form.descripcion)}}
 </div>
 <div class="fields">
@@ -60,9 +72,122 @@
 		{{form_widget(form.tecnico)}}
 	</div>
 </div>
-
 <button type="submmit" name="button" class="ui primary button">Enviar</button>
+<div class="ui error message"></div>
 {{form_end(form)}}
 </div>
 
+{% endblock %}
+
+{% block javascripts %}
+<script type="text/javascript">
+$('.ui.normal.dropdown')
+.dropdown({
+	maxSelections: 10
+})
+;
+
+
+$('.ui.form').form({
+	fields : {
+		numTicket: {
+			identifier : 'bd_daobundle_ordentrabajo[numTicket]',
+			rules : [
+				{
+					type : 'empty',
+					prompt : 'Ingrese el numero de ticket'
+				}
+			]
+		},
+		numOrdTrabajo: {
+			identifier : 'bd_daobundle_ordentrabajo[numOrdTrab]',
+			rules : [
+				{
+					type : 'empty',
+					prompt : 'Ingrese el numero de Orden de trabajo'
+				}
+			]
+		},
+		empresa : {
+			identifier : 'bd_daobundle_ordentrabajo[empresa]',
+			rules : [
+				{
+					type : 'empty',
+					prompt : 'Seleccione un empresa'
+				}
+			]
+		},
+		sistema : {
+			identifier : 'bd_daobundle_ordentrabajo[ctSistema]',
+			rules : [
+				{
+					type : 'empty',
+					prompt: 'Seleccione un sistema'
+				}
+			]
+		},
+		servicio : {
+			identifier : 'bd_daobundle_ordentrabajo[ctServicio]',
+			rules : [
+				{
+					type : 'empty',
+					prompt : 'Selecciones el servicio'
+				}
+			]
+		},
+		descripcion : {
+			identifier : 'bd_daobundle_ordentrabajo[descripcion]',
+			rules : [
+				{
+					type : 'empty',
+					prompt : 'Ingrese una descripcion'
+				},
+				{
+					type : 'minLength[10]',
+					prompt : 'Ingrese un minimo de 10 caracteres'
+				}
+			]
+		},
+		fechainicio : {
+			identifier : 'bd_daobundle_ordentrabajo[fechaIni]',
+			rules : [
+				{
+					type : 'empty',
+					prompt : 'Ingrese la fecha de inicio'
+				}
+			]
+		},
+		fechafin : {
+			identifier : 'bd_daobundle_ordentrabajo[fechaFin]',
+			rules : [
+				{
+					type : 'empty',
+					prompt : 'Ingrese la fecha de termino'
+				}
+			]
+		},
+		cliente : {
+			identifier : 'bd_daobundle_ordentrabajo[cliente]',
+			rules : [
+				{
+					type : 'empty',
+					prompt : 'Seleccione un cliente'
+				}
+			]
+		},
+		tecnico : {
+			identifier: 'bd_daobundle_ordentrabajo[tecnico]',
+			rules : [
+				{
+					type : 'empty',
+					prompt : 'Seleccione un tecnico'
+				}
+			]
+		}
+	}
+}
+)
+;
+
+</script>
 {% endblock %}

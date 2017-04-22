@@ -83,6 +83,30 @@ class OrdenTrabajoType extends AbstractType
           ,'property' => 'nombres'
           ,'empty_value' =>'--seleccione--'
         ))
+        ->add('camaras',EntityType::class,array(
+          'label'=>'Camaras'
+          ,'class'=>Repositorios::$camaras
+          ,'query_builder' => function ($er){
+            return $er->getCamarasQueryBuilder();
+            }
+          ,'property' => 'codigo'
+          ,'empty_value' =>'--seleccione--'
+          ,'mapped'=>false
+          ,'multiple'=>true
+          ,'attr'=>array('class'=>'ui fluid normal dropdown')
+        ))
+        ->add('puertas',EntityType::class,array(
+          'label'=>'Puertas'
+          ,'class'=>Repositorios::$puertas
+          ,'query_builder' => function ($er){
+            return $er->getPuertasQueryBuilder();
+            }
+          ,'property' => 'codigo'
+          ,'empty_value' =>'--seleccione--'
+          ,'mapped'=>false
+          ,'multiple'=>true
+          ,'attr'=>array('class'=>'ui fluid normal dropdown')
+        ))
         //->add('detalleOrdenTrabajo')
         ;
     }
@@ -93,7 +117,8 @@ class OrdenTrabajoType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'BD\DaoBundle\Entity\OrdenTrabajo'
+            'data_class' => 'BD\DaoBundle\Entity\OrdenTrabajo',
+            'required'=>false
         ));
     }
 

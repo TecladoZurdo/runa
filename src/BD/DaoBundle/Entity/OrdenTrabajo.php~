@@ -3,6 +3,7 @@
 namespace BD\DaoBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * OrdenTrabajo
@@ -46,7 +47,7 @@ class OrdenTrabajo
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="fecha_Inicio", type="datetime", nullable=true)
+     * @ORM\Column(name="fecha_inicio", type="datetime", nullable=true)
      */
     private $fechaInicio;
 
@@ -60,7 +61,7 @@ class OrdenTrabajo
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="Hora_Termino", type="time", nullable=true)
+     * @ORM\Column(name="hora_termino", type="time", nullable=true)
      */
     private $horaTermino;
 
@@ -128,5 +129,318 @@ class OrdenTrabajo
      */
     private $tecnico;
 
+    /**
+    *@Assert\Type(type="Camaras")
+    */
+    private $camaras;
 
+
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set numTicket
+     *
+     * @param integer $numTicket
+     * @return OrdenTrabajo
+     */
+    public function setNumTicket($numTicket)
+    {
+        $this->numTicket = $numTicket;
+
+        return $this;
+    }
+
+    /**
+     * Get numTicket
+     *
+     * @return integer
+     */
+    public function getNumTicket()
+    {
+        return $this->numTicket;
+    }
+
+    /**
+     * Set numOrdTrab
+     *
+     * @param integer $numOrdTrab
+     * @return OrdenTrabajo
+     */
+    public function setNumOrdTrab($numOrdTrab)
+    {
+        $this->numOrdTrab = $numOrdTrab;
+
+        return $this;
+    }
+
+    /**
+     * Get numOrdTrab
+     *
+     * @return integer
+     */
+    public function getNumOrdTrab()
+    {
+        return $this->numOrdTrab;
+    }
+
+    /**
+     * Set descripcion
+     *
+     * @param string $descripcion
+     * @return OrdenTrabajo
+     */
+    public function setDescripcion($descripcion)
+    {
+        $this->descripcion = $descripcion;
+
+        return $this;
+    }
+
+    /**
+     * Get descripcion
+     *
+     * @return string
+     */
+    public function getDescripcion()
+    {
+        return $this->descripcion;
+    }
+
+    /**
+     * Set fechaInicio
+     *
+     * @param \DateTime $fechaInicio
+     * @return OrdenTrabajo
+     */
+    public function setFechaInicio($fechaInicio)
+    {
+        $this->fechaInicio = $fechaInicio;
+
+        return $this;
+    }
+
+    /**
+     * Get fechaInicio
+     *
+     * @return \DateTime
+     */
+    public function getFechaInicio()
+    {
+        return $this->fechaInicio;
+    }
+
+    /**
+     * Set fechaTermino
+     *
+     * @param \DateTime $fechaTermino
+     * @return OrdenTrabajo
+     */
+    public function setFechaTermino($fechaTermino)
+    {
+        $this->fechaTermino = $fechaTermino;
+
+        return $this;
+    }
+
+    /**
+     * Get fechaTermino
+     *
+     * @return \DateTime
+     */
+    public function getFechaTermino()
+    {
+        return $this->fechaTermino;
+    }
+
+    /**
+     * Set horaTermino
+     *
+     * @param \DateTime $horaTermino
+     * @return OrdenTrabajo
+     */
+    public function setHoraTermino($horaTermino)
+    {
+        $this->horaTermino = $horaTermino;
+
+        return $this;
+    }
+
+    /**
+     * Get horaTermino
+     *
+     * @return \DateTime
+     */
+    public function getHoraTermino()
+    {
+        return $this->horaTermino;
+    }
+
+    /**
+     * Set activo
+     *
+     * @param boolean $activo
+     * @return OrdenTrabajo
+     */
+    public function setActivo($activo)
+    {
+        $this->activo = $activo;
+
+        return $this;
+    }
+
+    /**
+     * Get activo
+     *
+     * @return boolean
+     */
+    public function getActivo()
+    {
+        return $this->activo;
+    }
+
+    /**
+     * Set fechaCreacion
+     *
+     * @param \DateTime $fechaCreacion
+     * @return OrdenTrabajo
+     */
+    public function setFechaCreacion($fechaCreacion)
+    {
+        $this->fechaCreacion = $fechaCreacion;
+
+        return $this;
+    }
+
+    /**
+     * Get fechaCreacion
+     *
+     * @return \DateTime
+     */
+    public function getFechaCreacion()
+    {
+        return $this->fechaCreacion;
+    }
+
+    /**
+     * Set cliente
+     *
+     * @param \BD\DaoBundle\Entity\Cliente $cliente
+     * @return OrdenTrabajo
+     */
+    public function setCliente(\BD\DaoBundle\Entity\Cliente $cliente = null)
+    {
+        $this->cliente = $cliente;
+
+        return $this;
+    }
+
+    /**
+     * Get cliente
+     *
+     * @return \BD\DaoBundle\Entity\Cliente
+     */
+    public function getCliente()
+    {
+        return $this->cliente;
+    }
+
+    /**
+     * Set empresa
+     *
+     * @param \BD\DaoBundle\Entity\Empresa $empresa
+     * @return OrdenTrabajo
+     */
+    public function setEmpresa(\BD\DaoBundle\Entity\Empresa $empresa = null)
+    {
+        $this->empresa = $empresa;
+
+        return $this;
+    }
+
+    /**
+     * Get empresa
+     *
+     * @return \BD\DaoBundle\Entity\Empresa
+     */
+    public function getEmpresa()
+    {
+        return $this->empresa;
+    }
+
+    /**
+     * Set ctSistema
+     *
+     * @param \BD\DaoBundle\Entity\Catalogo $ctSistema
+     * @return OrdenTrabajo
+     */
+    public function setCtSistema(\BD\DaoBundle\Entity\Catalogo $ctSistema = null)
+    {
+        $this->ctSistema = $ctSistema;
+
+        return $this;
+    }
+
+    /**
+     * Get ctSistema
+     *
+     * @return \BD\DaoBundle\Entity\Catalogo
+     */
+    public function getCtSistema()
+    {
+        return $this->ctSistema;
+    }
+
+    /**
+     * Set ctServicio
+     *
+     * @param \BD\DaoBundle\Entity\Catalogo $ctServicio
+     * @return OrdenTrabajo
+     */
+    public function setCtServicio(\BD\DaoBundle\Entity\Catalogo $ctServicio = null)
+    {
+        $this->ctServicio = $ctServicio;
+
+        return $this;
+    }
+
+    /**
+     * Get ctServicio
+     *
+     * @return \BD\DaoBundle\Entity\Catalogo
+     */
+    public function getCtServicio()
+    {
+        return $this->ctServicio;
+    }
+
+    /**
+     * Set tecnico
+     *
+     * @param \BD\DaoBundle\Entity\Tecnico $tecnico
+     * @return OrdenTrabajo
+     */
+    public function setTecnico(\BD\DaoBundle\Entity\Tecnico $tecnico = null)
+    {
+        $this->tecnico = $tecnico;
+
+        return $this;
+    }
+
+    /**
+     * Get tecnico
+     *
+     * @return \BD\DaoBundle\Entity\Tecnico
+     */
+    public function getTecnico()
+    {
+        return $this->tecnico;
+    }
 }

@@ -123,7 +123,7 @@ CAUTION: Do not modify this file unless you know what you are doing.
 <table name="empresa">
 	<schema name="public"/>
 	<role name="postgres"/>
-	<position x="640" y="80"/>
+	<position x="620" y="100"/>
 	<column name="id" not-null="true">
 		<type name="bigserial" length="0"/>
 	</column>
@@ -150,7 +150,7 @@ CAUTION: Do not modify this file unless you know what you are doing.
 <table name="catalogo">
 	<schema name="public"/>
 	<role name="postgres"/>
-	<position x="720" y="220"/>
+	<position x="720" y="240"/>
 	<column name="id" not-null="true">
 		<type name="bigint" length="0"/>
 	</column>
@@ -258,6 +258,48 @@ CAUTION: Do not modify this file unless you know what you are doing.
 	</constraint>
 </table>
 
+<table name="camaras_orden_trabajo">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="660" y="0"/>
+	<column name="id" not-null="true">
+		<type name="bigserial" length="0"/>
+	</column>
+	<column name="orden_trabajo_id">
+		<type name="bigint" length="0"/>
+	</column>
+	<column name="camaras_id">
+		<type name="bigint" length="0"/>
+	</column>
+	<column name="activo" default-value="true">
+		<type name="boolean" length="0"/>
+	</column>
+	<constraint name="camaras_orden_trabajo_pk" type="pk-constr" table="public.camaras_orden_trabajo">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="puertas_orden_trabajo">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="540" y="580"/>
+	<column name="id" not-null="true">
+		<type name="bigserial" length="0"/>
+	</column>
+	<column name="orden_trabajo_id">
+		<type name="bigint" length="0"/>
+	</column>
+	<column name="puertas_id">
+		<type name="bigint" length="0"/>
+	</column>
+	<column name="activo">
+		<type name="boolean" length="0"/>
+	</column>
+	<constraint name="puertas_orden_trabajo_pk" type="pk-constr" table="public.puertas_orden_trabajo">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
 <constraint name="fk_cliente_orden_trabajo" type="fk-constr" comparison-type="MATCH FULL"
 	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="public.cliente" table="public.orden_trabajo">
 	<columns names="cliente_id" ref-type="src-columns"/>
@@ -312,14 +354,38 @@ CAUTION: Do not modify this file unless you know what you are doing.
 	<columns names="id" ref-type="dst-columns"/>
 </constraint>
 
+<constraint name="fk_camaras" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="public.camaras" table="public.camaras_orden_trabajo">
+	<columns names="camaras_id" ref-type="src-columns"/>
+	<columns names="id" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="fk_orden_trabajo" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="public.orden_trabajo" table="public.camaras_orden_trabajo">
+	<columns names="orden_trabajo_id" ref-type="src-columns"/>
+	<columns names="id" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="fk_orden_trabajo" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="public.orden_trabajo" table="public.puertas_orden_trabajo">
+	<columns names="orden_trabajo_id" ref-type="src-columns"/>
+	<columns names="id" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="fk_puertas" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="public.puertas" table="public.puertas_orden_trabajo">
+	<columns names="puertas_id" ref-type="src-columns"/>
+	<columns names="id" ref-type="dst-columns"/>
+</constraint>
+
 <relationship name="rel_catalogo_catalogo" type="relfk"
 	 src-table="public.catalogo"
 	 dst-table="public.catalogo"
 	 src-required="false" dst-required="false">
 	<line>
-		<position x="985.297" y="262.96"/>
-	<position x="985.297" y="211"/>
-	<position x="890.865" y="211"/>
+		<position x="985.297" y="282.96"/>
+	<position x="985.297" y="231"/>
+	<position x="890.865" y="231"/>
 	</line>
 </relationship>
 
@@ -356,6 +422,26 @@ CAUTION: Do not modify this file unless you know what you are doing.
 <relationship name="rel_puertas_catalogo" type="relfk"
 	 src-table="public.puertas"
 	 dst-table="public.catalogo"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_camaras_orden_trabajo_camaras" type="relfk"
+	 src-table="public.camaras_orden_trabajo"
+	 dst-table="public.camaras"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_camaras_orden_trabajo_orden_trabajo" type="relfk"
+	 src-table="public.camaras_orden_trabajo"
+	 dst-table="public.orden_trabajo"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_puertas_orden_trabajo_orden_trabajo" type="relfk"
+	 src-table="public.puertas_orden_trabajo"
+	 dst-table="public.orden_trabajo"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_puertas_orden_trabajo_puertas" type="relfk"
+	 src-table="public.puertas_orden_trabajo"
+	 dst-table="public.puertas"
 	 src-required="false" dst-required="false"/>
 
 </dbmodel>

@@ -14,6 +14,8 @@ class Repositorios
   public static $cliente = "DaoBundle:Cliente";
   public static $tecnico = "DaoBundle:Tecnico";
   public static $catalogo = "DaoBundle:Catalogo";
+  public static $camaras = "DaoBundle:Camaras";
+  public static $puertas = "DaoBundle:Puertas";
 
   function __construct()
   {

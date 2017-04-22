@@ -3,6 +3,7 @@
 namespace BD\DaoBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * OrdenTrabajo
@@ -128,7 +129,18 @@ class OrdenTrabajo
      */
     private $tecnico;
 
-
+    // /**
+    // *@Assert\Type(type="Camaras")
+    // */
+    // private $camaras;
+    //
+    // public function getCamaras(){
+    //   return $this->camaras;
+    // }
+    //
+    // public function setCamaras(Camaras $camaras = null){
+    //   $this->camaras = $camaras;
+    // }
 
     /**
      * Get id

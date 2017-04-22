@@ -6,9 +6,13 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
 
+//use BD\DaoBundle\Entity;
 use BD\DaoBundle\Entity\OrdenTrabajo;
+use BD\DaoBundle\Entity\CamarasOrdenTrabajo;
+use BD\DaoBundle\Entity\PuertasOrdenTrabajo;
 
 use BD\DaoBundle\Form\OrdenTrabajoType;
+use Utilitarios\UtilBundle\Controller\Repositorios;
 
 class OrdenTrabajoController extends Controller
 {
@@ -28,7 +32,39 @@ class OrdenTrabajoController extends Controller
         $ordenTrabajo->setFechaInicio(\Datetime::createFromFormat('Y-m-d H:i',$dataForm['fechaIni']));
         $ordenTrabajo->setFechaTermino(\Datetime::createFromFormat('Y-m-d H:i',$dataForm['fechaFin']));
         $em->persist($ordenTrabajo);
-        $em->flush($ordenTrabajo);
+
+        $listCamaras = $dataForm['camaras'];
+
+        if ($listCamaras){
+          $camaraRepo = $em->getRepository(Repositorios::$camaras);
+          foreach ($listCamaras as $key => $value) {
+            # code...
+              $camara= $camaraRepo->findOneBy(array('id'=>$value));
+              $camarasOrdenTrabajo = new CamarasOrdenTrabajo();
+
+              $camarasOrdenTrabajo->setCamaras($camara);
+              $camarasOrdenTrabajo->setOrdenTrabajo($ordenTrabajo);
+              $camarasOrdenTrabajo->setActivo(true);
+              $em->persist($camarasOrdenTrabajo);
+          }
+        }
+          $listPuertas = $dataForm['puertas'];
+          if ($listPuertas){
+            $puertasRepo = $em->getRepository(Repositorios::$puertas);
+            foreach ($listPuertas as $key => $value) {
+              # code...
+                $puertas= $puertasRepo->findOneBy(array('id'=>$value));
+
+                $puertasOrdenTrabajo = new PuertasOrdenTrabajo();
+                $puertasOrdenTrabajo->setPuertas($puertas);
+                $puertasOrdenTrabajo->setOrdenTrabajo($ordenTrabajo);
+                $puertasOrdenTrabajo->setActivo(true);
+                $em->persist($puertasOrdenTrabajo);
+            }
+
+        }
+
+        $em->flush();
         return $this->redirectToRoute("_registroOk");
       }else {
 
