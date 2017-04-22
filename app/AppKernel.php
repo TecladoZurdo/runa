@@ -20,6 +20,7 @@ class AppKernel extends Kernel
             new Admin\AdministradorBundle\AdministradorBundle(),
             new elyte\OperacionesBundle\OperacionesBundle(),
             new Utilitarios\UtilBundle\UtilBundle(),
+            new elyte\ReportesBundle\ReportesBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'), true)) {
