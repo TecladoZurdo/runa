@@ -1,0 +1,33 @@
+{% block stylesheets %}
+  <link rel="stylesheet" href="{{asset("assetic/dataTables_css.css")}}">
+{% endblock %}
+<table id="{{id}}" class="ui celled table" cellspacing="0" width="100%">
+<thead>
+  <tr>
+{% for header in dtTable.header %}
+ <th>{{header}}</th>
+{% endfor %}
+</tr>
+</thead>
+<tfoot>
+<tr>
+  {% for footer in dtTable.footer %}
+  <th>{{footer}}</th>
+  {% endfor %}
+</tr>
+</tfoot>
+<tbody>
+
+{% for body in dtTable.body %}
+   {% if body is iterable %}
+   <tr>
+     {% for key in dtTable.campos %}
+      <td>{{attribute(body,key)}}</td>
+     {% endfor %}
+   {% endif %}
+   </tr>
+{% endfor %}
+
+</tbody>
+</table>
+{# {{dump(dtTable)}} #}

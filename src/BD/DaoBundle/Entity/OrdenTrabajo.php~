@@ -40,6 +40,13 @@ class OrdenTrabajo
     /**
      * @var string
      *
+     * @ORM\Column(name="solucion", type="string", length=1500, nullable=true)
+     */
+    private $solucion;
+
+    /**
+     * @var string
+     *
      * @ORM\Column(name="descripcion", type="string", length=500, nullable=true)
      */
     private $descripcion;
@@ -129,11 +136,18 @@ class OrdenTrabajo
      */
     private $tecnico;
 
-    /**
-    *@Assert\Type(type="Camaras")
-    */
-    private $camaras;
-
+    // /**
+    // *@Assert\Type(type="Camaras")
+    // */
+    // private $camaras;
+    //
+    // public function getCamaras(){
+    //   return $this->camaras;
+    // }
+    //
+    // public function setCamaras(Camaras $camaras = null){
+    //   $this->camaras = $camaras;
+    // }
 
     /**
      * Get id

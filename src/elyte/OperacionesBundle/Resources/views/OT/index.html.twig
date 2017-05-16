@@ -46,9 +46,14 @@
 	</div>
 </div>
 <div class="field">
-	<div class="ui blue ribbon label">Descripcion</div>
-
+	<div class="ui blue ribbon label">Descripcion (requerimiento)</div>
+	<br><br>
 	{{form_widget(form.descripcion)}}
+</div>
+<div class="field">
+	<div class="ui red ribbon label">Solucion (requerimiento)</div>
+	<br><br>
+	{{form_widget(form.solucion)}}
 </div>
 <div class="fields">
 	<div class="field">
@@ -141,6 +146,19 @@ $('.ui.form').form({
 				{
 					type : 'empty',
 					prompt : 'Ingrese una descripcion'
+				},
+				{
+					type : 'minLength[10]',
+					prompt : 'Ingrese un minimo de 10 caracteres'
+				}
+			]
+		},
+		solucion : {
+			identifier : 'bd_daobundle_ordentrabajo[solucion]',
+			rules : [
+				{
+					type : 'empty',
+					prompt : 'Ingrese una solucion'
 				},
 				{
 					type : 'minLength[10]',

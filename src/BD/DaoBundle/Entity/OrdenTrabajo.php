@@ -40,6 +40,13 @@ class OrdenTrabajo
     /**
      * @var string
      *
+     * @ORM\Column(name="solucion", type="string", length=1500, nullable=true)
+     */
+    private $solucion;
+
+    /**
+     * @var string
+     *
      * @ORM\Column(name="descripcion", type="string", length=500, nullable=true)
      */
     private $descripcion;
@@ -449,5 +456,28 @@ class OrdenTrabajo
     public function getTecnico()
     {
         return $this->tecnico;
+    }
+
+    /**
+     * Set solucion
+     *
+     * @param string $solucion
+     * @return OrdenTrabajo
+     */
+    public function setSolucion($solucion)
+    {
+        $this->solucion = $solucion;
+
+        return $this;
+    }
+
+    /**
+     * Get solucion
+     *
+     * @return string 
+     */
+    public function getSolucion()
+    {
+        return $this->solucion;
     }
 }

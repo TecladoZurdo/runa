@@ -25,7 +25,8 @@ class OrdenTrabajoType extends AbstractType
         $builder
         ->add('numTicket')->add('numOrdTrab')
         ->add('descripcion',TextareaType::class)
-        ->add('fechaIni',TextType::class,array('mapped'=>false))
+        ->add('solucion',TextareaType::class)
+        ->add('fechaIni',TextType::class,array('mapped'=>false,'data'=>date('Y-m-d H:m')))
     //     ->add('fechaInicio',DateTimeType::class,array(
     //       'placeholder' => array(
     //     'year' => 'Year', 'month' => 'Month', 'day' => 'Day',

@@ -31,6 +31,7 @@ class OrdenTrabajoController extends Controller
         $em = $this->getDoctrine()->getManager();
         $ordenTrabajo->setFechaInicio(\Datetime::createFromFormat('Y-m-d H:i',$dataForm['fechaIni']));
         $ordenTrabajo->setFechaTermino(\Datetime::createFromFormat('Y-m-d H:i',$dataForm['fechaFin']));
+        $ordenTrabajo->setActivo(true);
         $em->persist($ordenTrabajo);
 
         $listCamaras = $dataForm['camaras'];
