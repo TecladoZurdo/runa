@@ -34,7 +34,13 @@ class OrdenTrabajoController extends Controller
         $ordenTrabajo->setActivo(true);
         $em->persist($ordenTrabajo);
 
-        $listCamaras = $dataForm['camaras'];
+
+        if (@$dataForm['camaras']){
+          $listCamaras = $dataForm['camaras'];
+        }else {
+          $listCamaras=null;
+        }
+
 
         if ($listCamaras){
           $camaraRepo = $em->getRepository(Repositorios::$camaras);
@@ -49,7 +55,12 @@ class OrdenTrabajoController extends Controller
               $em->persist($camarasOrdenTrabajo);
           }
         }
-          $listPuertas = $dataForm['puertas'];
+          if (@$dataForm['puertas']){
+            $listPuertas = $dataForm['puertas'];
+          }else {
+            $listPuertas = null;
+          }
+
           if ($listPuertas){
             $puertasRepo = $em->getRepository(Repositorios::$puertas);
             foreach ($listPuertas as $key => $value) {
