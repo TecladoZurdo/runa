@@ -47,7 +47,7 @@ class ReportesController extends Controller
 
             $tableDatos[]=array('num_ticket'=>$value->getNumTicket(),'num_ord_trab'=>$value->getNumOrdTrab(),'descripcion'=>$value->getDescripcion()
           ,'listCamaras'=>$listCamaras,'listPuertas'=>$listPuertas,'solucion'=>$value->getSolucion(),
-          'fechaFin'=>$value->getFechaTermino()->format('Y-m-d H:i'),'tecnico'=>$value->getTecnico()->getNombres(),"accion"=>"<a href='#'>Editar</a>");
+          'fechaFin'=>$value->getFechaTermino()->format('Y-m-d H:i'),'tecnico'=>$value->getTecnico()->getNombres(),"accion"=>"");
          }
 
          $dtOrdenPago['body'] =$tableDatos;
