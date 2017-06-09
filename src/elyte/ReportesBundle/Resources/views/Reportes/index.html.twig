@@ -35,6 +35,11 @@ $('#TdataOrdenTrabajo').DataTable({
         buttons: [
             'copy', 'csv', 'excel', 'pdf', 'print'
         ],
+        "columnDefs": [ {
+            "targets": -1,
+            "data": null,
+            "defaultContent": "<button class='ui primary button'>Editar</button>"
+        } ],
   responsive: {
             details: {
                 display: $.fn.dataTable.Responsive.display.modal( {
@@ -50,5 +55,8 @@ $('#TdataOrdenTrabajo').DataTable({
         }
 
 });
+$('#TdataOrdenTrabajo tbody').on( 'click', 'button', function () {
+        alert('aqui construir la edicion');
+    } );
 </script>
 {% endblock %}

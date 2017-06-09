@@ -55,6 +55,11 @@
 	<br><br>
 	{{form_widget(form.solucion)}}
 </div>
+<div class="field">
+	<div class="ui teal ribbon label">Solucion Tecnica</div>
+	<br><br>
+	{{form_widget(form.solucionTecnica)}}
+</div>
 <div class="fields">
 	<div class="field">
 		{#{{form_label(form.fechaInicio)}}#}
@@ -159,6 +164,19 @@ $('.ui.form').form({
 				{
 					type : 'empty',
 					prompt : 'Ingrese una solucion'
+				},
+				{
+					type : 'minLength[10]',
+					prompt : 'Ingrese un minimo de 10 caracteres'
+				}
+			]
+		},
+		solucionTecnica : {
+			identifier : 'bd_daobundle_ordentrabajo[solucionTecnica]',
+			rules : [
+				{
+					type : 'empty',
+					prompt : 'Ingrese una solucion tecnica'
 				},
 				{
 					type : 'minLength[10]',

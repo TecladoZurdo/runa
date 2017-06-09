@@ -18,9 +18,9 @@ class ReportesController extends Controller
        $repoOrdenTrabajo = $em->getRepository(Repositorios::$ordenTrabajo);
        $ordenesTrabajo = $repoOrdenTrabajo->findAll();
        if ($ordenesTrabajo){
-         $dtOrdenPago['header']=array("Numero Ticket","Numero Orden","Descripcion","Camaras","Puertas","Solucion","Fecha Final","Tecnico");
-         $dtOrdenPago['footer']=array("Numero Ticket","Numero Orden","Descripcion","Camaras","Puertas","Solucion","Fecha Final","Tecnico");
-         $dtOrdenPago['campos']=array("num_ticket","num_ord_trab","descripcion","listCamaras","listPuertas","solucion","fechaFin","tecnico");
+         $dtOrdenPago['header']=array("Numero Ticket","Numero Orden","Descripcion","Camaras","Puertas","Solucion","Fecha Final","Tecnico","Accion");
+         $dtOrdenPago['footer']=array("Numero Ticket","Numero Orden","Descripcion","Camaras","Puertas","Solucion","Fecha Final","Tecnico","Acccion");
+         $dtOrdenPago['campos']=array("num_ticket","num_ord_trab","descripcion","listCamaras","listPuertas","solucion","fechaFin","tecnico","accion");
 
          $repoPuertas=$em->getRepository(Repositorios::$puertasOrdenTrabajo);
          $repoCamaras=$em->getRepository(Repositorios::$camarasOrdenTrabajo);
@@ -47,7 +47,7 @@ class ReportesController extends Controller
 
             $tableDatos[]=array('num_ticket'=>$value->getNumTicket(),'num_ord_trab'=>$value->getNumOrdTrab(),'descripcion'=>$value->getDescripcion()
           ,'listCamaras'=>$listCamaras,'listPuertas'=>$listPuertas,'solucion'=>$value->getSolucion(),
-          'fechaFin'=>$value->getFechaTermino()->format('Y-m-d H:i'),'tecnico'=>$value->getTecnico()->getNombres());
+          'fechaFin'=>$value->getFechaTermino()->format('Y-m-d H:i'),'tecnico'=>$value->getTecnico()->getNombres(),"accion"=>"<a href='#'>Editar</a>");
          }
 
          $dtOrdenPago['body'] =$tableDatos;

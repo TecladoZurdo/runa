@@ -3,9 +3,9 @@
 --
 
 -- Dumped from database version 9.6.0
--- Dumped by pg_dump version 9.6.2
+-- Dumped by pg_dump version 9.6.3
 
--- Started on 2017-05-21 21:13:59 -05
+-- Started on 2017-06-08 23:10:32 -05
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -40,7 +40,7 @@ SET default_tablespace = '';
 SET default_with_oids = false;
 
 --
--- TOC entry 185 (class 1259 OID 65281)
+-- TOC entry 185 (class 1259 OID 65529)
 -- Name: camaras; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -59,7 +59,7 @@ CREATE TABLE camaras (
 ALTER TABLE camaras OWNER TO postgres;
 
 --
--- TOC entry 186 (class 1259 OID 65288)
+-- TOC entry 186 (class 1259 OID 65536)
 -- Name: camaras_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -83,7 +83,7 @@ ALTER SEQUENCE camaras_id_seq OWNED BY camaras.id;
 
 
 --
--- TOC entry 187 (class 1259 OID 65290)
+-- TOC entry 187 (class 1259 OID 65538)
 -- Name: camaras_orden_trabajo; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -98,7 +98,7 @@ CREATE TABLE camaras_orden_trabajo (
 ALTER TABLE camaras_orden_trabajo OWNER TO postgres;
 
 --
--- TOC entry 188 (class 1259 OID 65294)
+-- TOC entry 188 (class 1259 OID 65542)
 -- Name: camaras_orden_trabajo_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -122,7 +122,7 @@ ALTER SEQUENCE camaras_orden_trabajo_id_seq OWNED BY camaras_orden_trabajo.id;
 
 
 --
--- TOC entry 189 (class 1259 OID 65296)
+-- TOC entry 189 (class 1259 OID 65544)
 -- Name: catalogo; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -139,7 +139,7 @@ CREATE TABLE catalogo (
 ALTER TABLE catalogo OWNER TO postgres;
 
 --
--- TOC entry 190 (class 1259 OID 65302)
+-- TOC entry 190 (class 1259 OID 65550)
 -- Name: cliente; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -155,7 +155,7 @@ CREATE TABLE cliente (
 ALTER TABLE cliente OWNER TO postgres;
 
 --
--- TOC entry 191 (class 1259 OID 65309)
+-- TOC entry 191 (class 1259 OID 65557)
 -- Name: cliente_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -179,7 +179,7 @@ ALTER SEQUENCE cliente_id_seq OWNED BY cliente.id;
 
 
 --
--- TOC entry 192 (class 1259 OID 65311)
+-- TOC entry 192 (class 1259 OID 65559)
 -- Name: detalle_orden_trabajo; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -194,7 +194,7 @@ CREATE TABLE detalle_orden_trabajo (
 ALTER TABLE detalle_orden_trabajo OWNER TO postgres;
 
 --
--- TOC entry 193 (class 1259 OID 65315)
+-- TOC entry 193 (class 1259 OID 65563)
 -- Name: detalle_orden_trabajo_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -218,7 +218,7 @@ ALTER SEQUENCE detalle_orden_trabajo_id_seq OWNED BY detalle_orden_trabajo.id;
 
 
 --
--- TOC entry 194 (class 1259 OID 65317)
+-- TOC entry 194 (class 1259 OID 65565)
 -- Name: empresa; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -235,7 +235,7 @@ CREATE TABLE empresa (
 ALTER TABLE empresa OWNER TO postgres;
 
 --
--- TOC entry 195 (class 1259 OID 65324)
+-- TOC entry 195 (class 1259 OID 65572)
 -- Name: empresa_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -259,7 +259,7 @@ ALTER SEQUENCE empresa_id_seq OWNED BY empresa.id;
 
 
 --
--- TOC entry 196 (class 1259 OID 65326)
+-- TOC entry 196 (class 1259 OID 65574)
 -- Name: orden_trabajo; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -279,7 +279,8 @@ CREATE TABLE orden_trabajo (
     cliente_id bigint,
     tecnico_id bigint,
     detalle_orden_trabajo_id bigint,
-    solucion character varying(1500)
+    solucion character varying(1500),
+    solucion_tecnica character varying(1500)
 );
 
 
@@ -295,7 +296,7 @@ COMMENT ON COLUMN orden_trabajo.num_ord_trab IS 'numero de laorden de trabajo im
 
 
 --
--- TOC entry 197 (class 1259 OID 65333)
+-- TOC entry 197 (class 1259 OID 65581)
 -- Name: orden_trabajo_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -319,7 +320,7 @@ ALTER SEQUENCE orden_trabajo_id_seq OWNED BY orden_trabajo.id;
 
 
 --
--- TOC entry 198 (class 1259 OID 65335)
+-- TOC entry 198 (class 1259 OID 65583)
 -- Name: puertas; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -337,7 +338,7 @@ CREATE TABLE puertas (
 ALTER TABLE puertas OWNER TO postgres;
 
 --
--- TOC entry 199 (class 1259 OID 65341)
+-- TOC entry 199 (class 1259 OID 65589)
 -- Name: puertas_orden_trabajo; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -352,7 +353,7 @@ CREATE TABLE puertas_orden_trabajo (
 ALTER TABLE puertas_orden_trabajo OWNER TO postgres;
 
 --
--- TOC entry 200 (class 1259 OID 65344)
+-- TOC entry 200 (class 1259 OID 65592)
 -- Name: puertas_orden_trabajo_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -376,7 +377,7 @@ ALTER SEQUENCE puertas_orden_trabajo_id_seq OWNED BY puertas_orden_trabajo.id;
 
 
 --
--- TOC entry 201 (class 1259 OID 65346)
+-- TOC entry 201 (class 1259 OID 65594)
 -- Name: tecnico; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -392,7 +393,7 @@ CREATE TABLE tecnico (
 ALTER TABLE tecnico OWNER TO postgres;
 
 --
--- TOC entry 202 (class 1259 OID 65353)
+-- TOC entry 202 (class 1259 OID 65601)
 -- Name: tecnico_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -416,7 +417,7 @@ ALTER SEQUENCE tecnico_id_seq OWNED BY tecnico.id;
 
 
 --
--- TOC entry 2064 (class 2604 OID 65355)
+-- TOC entry 2064 (class 2604 OID 65603)
 -- Name: camaras id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
@@ -424,7 +425,7 @@ ALTER TABLE ONLY camaras ALTER COLUMN id SET DEFAULT nextval('camaras_id_seq'::r
 
 
 --
--- TOC entry 2066 (class 2604 OID 65356)
+-- TOC entry 2066 (class 2604 OID 65604)
 -- Name: camaras_orden_trabajo id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
@@ -432,7 +433,7 @@ ALTER TABLE ONLY camaras_orden_trabajo ALTER COLUMN id SET DEFAULT nextval('cama
 
 
 --
--- TOC entry 2068 (class 2604 OID 65357)
+-- TOC entry 2068 (class 2604 OID 65605)
 -- Name: cliente id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
@@ -440,7 +441,7 @@ ALTER TABLE ONLY cliente ALTER COLUMN id SET DEFAULT nextval('cliente_id_seq'::r
 
 
 --
--- TOC entry 2070 (class 2604 OID 65358)
+-- TOC entry 2070 (class 2604 OID 65606)
 -- Name: detalle_orden_trabajo id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
@@ -448,7 +449,7 @@ ALTER TABLE ONLY detalle_orden_trabajo ALTER COLUMN id SET DEFAULT nextval('deta
 
 
 --
--- TOC entry 2072 (class 2604 OID 65359)
+-- TOC entry 2072 (class 2604 OID 65607)
 -- Name: empresa id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
@@ -456,7 +457,7 @@ ALTER TABLE ONLY empresa ALTER COLUMN id SET DEFAULT nextval('empresa_id_seq'::r
 
 
 --
--- TOC entry 2074 (class 2604 OID 65360)
+-- TOC entry 2074 (class 2604 OID 65608)
 -- Name: orden_trabajo id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
@@ -464,7 +465,7 @@ ALTER TABLE ONLY orden_trabajo ALTER COLUMN id SET DEFAULT nextval('orden_trabaj
 
 
 --
--- TOC entry 2075 (class 2604 OID 65361)
+-- TOC entry 2075 (class 2604 OID 65609)
 -- Name: puertas_orden_trabajo id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
@@ -472,7 +473,7 @@ ALTER TABLE ONLY puertas_orden_trabajo ALTER COLUMN id SET DEFAULT nextval('puer
 
 
 --
--- TOC entry 2077 (class 2604 OID 65362)
+-- TOC entry 2077 (class 2604 OID 65610)
 -- Name: tecnico id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
@@ -480,7 +481,7 @@ ALTER TABLE ONLY tecnico ALTER COLUMN id SET DEFAULT nextval('tecnico_id_seq'::r
 
 
 --
--- TOC entry 2219 (class 0 OID 65281)
+-- TOC entry 2219 (class 0 OID 65529)
 -- Dependencies: 185
 -- Data for Name: camaras; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -713,7 +714,6 @@ INSERT INTO camaras VALUES (292, NULL, 'C301A', 'fija', 'BDI', true, 'operativa'
 INSERT INTO camaras VALUES (293, NULL, 'C302A', 'fija', 'BDI', true, 'operativa', 'Terraza');
 INSERT INTO camaras VALUES (294, NULL, 'C303A', 'fija', 'BDI', true, 'operativa', 'Terraza');
 INSERT INTO camaras VALUES (296, NULL, 'C305A', 'fija', 'BDI', true, 'operativa', 'Terraza');
-INSERT INTO camaras VALUES (297, NULL, 'C253', 'ptz', 'AXIS', true, 'operativa', 'Corredor Interior');
 INSERT INTO camaras VALUES (298, NULL, 'C131A', 'fija', 'BDI', true, 'operativa', 'Banda de Equipaje');
 INSERT INTO camaras VALUES (300, NULL, 'C289', 'fija', 'BDI', true, 'operativa', NULL);
 INSERT INTO camaras VALUES (303, NULL, 'C292', 'fija', 'AXIS', true, 'operativa', NULL);
@@ -799,6 +799,7 @@ INSERT INTO camaras VALUES (274, NULL, 'C235A', 'fija', 'BDI', true, 'operativa'
 INSERT INTO camaras VALUES (284, NULL, 'C245A', 'fija', 'BDI', true, 'operativa', 'Corredor Mangas');
 INSERT INTO camaras VALUES (295, NULL, 'C304A', 'fija', 'BDI', true, 'operativa', 'Terraza');
 INSERT INTO camaras VALUES (213, NULL, 'S-C170A', 'fija', 'BDI', true, 'operativa', 'End of Taxi Way');
+INSERT INTO camaras VALUES (297, NULL, 'C253A', 'ptz', 'AXIS', true, 'operativa', 'Corredor Interior');
 
 
 --
@@ -811,14 +812,40 @@ SELECT pg_catalog.setval('camaras_id_seq', 314, true);
 
 
 --
--- TOC entry 2221 (class 0 OID 65290)
+-- TOC entry 2221 (class 0 OID 65538)
 -- Dependencies: 187
 -- Data for Name: camaras_orden_trabajo; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-INSERT INTO camaras_orden_trabajo VALUES (100, 2, 89, true);
-INSERT INTO camaras_orden_trabajo VALUES (101, 2, 94, true);
-INSERT INTO camaras_orden_trabajo VALUES (102, 3, 102, true);
+INSERT INTO camaras_orden_trabajo VALUES (103, 6, 128, true);
+INSERT INTO camaras_orden_trabajo VALUES (104, 8, 166, true);
+INSERT INTO camaras_orden_trabajo VALUES (105, 9, 88, true);
+INSERT INTO camaras_orden_trabajo VALUES (106, 11, 45, true);
+INSERT INTO camaras_orden_trabajo VALUES (107, 11, 47, true);
+INSERT INTO camaras_orden_trabajo VALUES (108, 12, 45, true);
+INSERT INTO camaras_orden_trabajo VALUES (109, 15, 206, true);
+INSERT INTO camaras_orden_trabajo VALUES (110, 16, 272, true);
+INSERT INTO camaras_orden_trabajo VALUES (111, 18, 199, true);
+INSERT INTO camaras_orden_trabajo VALUES (112, 21, 128, true);
+INSERT INTO camaras_orden_trabajo VALUES (113, 21, 146, true);
+INSERT INTO camaras_orden_trabajo VALUES (114, 21, 155, true);
+INSERT INTO camaras_orden_trabajo VALUES (115, 21, 156, true);
+INSERT INTO camaras_orden_trabajo VALUES (116, 21, 166, true);
+INSERT INTO camaras_orden_trabajo VALUES (117, 21, 167, true);
+INSERT INTO camaras_orden_trabajo VALUES (118, 21, 3, true);
+INSERT INTO camaras_orden_trabajo VALUES (119, 21, 19, true);
+INSERT INTO camaras_orden_trabajo VALUES (120, 21, 297, true);
+INSERT INTO camaras_orden_trabajo VALUES (121, 21, 67, true);
+INSERT INTO camaras_orden_trabajo VALUES (122, 22, 175, true);
+INSERT INTO camaras_orden_trabajo VALUES (123, 23, 297, true);
+INSERT INTO camaras_orden_trabajo VALUES (124, 26, 48, true);
+INSERT INTO camaras_orden_trabajo VALUES (125, 27, 45, true);
+INSERT INTO camaras_orden_trabajo VALUES (126, 28, 47, true);
+INSERT INTO camaras_orden_trabajo VALUES (127, 30, 89, true);
+INSERT INTO camaras_orden_trabajo VALUES (128, 30, 3, true);
+INSERT INTO camaras_orden_trabajo VALUES (129, 30, 67, true);
+INSERT INTO camaras_orden_trabajo VALUES (130, 31, 89, true);
+INSERT INTO camaras_orden_trabajo VALUES (131, 31, 91, true);
 
 
 --
@@ -827,11 +854,11 @@ INSERT INTO camaras_orden_trabajo VALUES (102, 3, 102, true);
 -- Name: camaras_orden_trabajo_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('camaras_orden_trabajo_id_seq', 102, true);
+SELECT pg_catalog.setval('camaras_orden_trabajo_id_seq', 131, true);
 
 
 --
--- TOC entry 2223 (class 0 OID 65296)
+-- TOC entry 2223 (class 0 OID 65544)
 -- Dependencies: 189
 -- Data for Name: catalogo; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -852,12 +879,23 @@ INSERT INTO catalogo VALUES (3, 'Mantenimiento', NULL, 5, NULL, true);
 
 
 --
--- TOC entry 2224 (class 0 OID 65302)
+-- TOC entry 2224 (class 0 OID 65550)
 -- Dependencies: 190
 -- Data for Name: cliente; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-INSERT INTO cliente VALUES (1, 'cliente final', NULL, NULL, true);
+INSERT INTO cliente VALUES (1, 'Marco Arboleda', 'Análista CCTV', NULL, true);
+INSERT INTO cliente VALUES (3, 'Carlos Rivera', 'Operador CCTV', NULL, true);
+INSERT INTO cliente VALUES (2, 'Pablo Sanchez', 'Supervisor CCTV', NULL, true);
+INSERT INTO cliente VALUES (6, 'Wendy Vaca', 'Centro de Control CCTV', NULL, true);
+INSERT INTO cliente VALUES (7, 'Luis Haro', 'Supervisor CCTV', NULL, true);
+INSERT INTO cliente VALUES (8, 'William Ñaurapi', 'Centro de Control CCTV', NULL, true);
+INSERT INTO cliente VALUES (9, 'David Andrade', 'ADC&HAS', NULL, true);
+INSERT INTO cliente VALUES (5, 'Christian Viñachi', 'ADC&HAS', NULL, true);
+INSERT INTO cliente VALUES (4, 'Aida Gomez', 'ADC&HAS', NULL, true);
+INSERT INTO cliente VALUES (10, 'Belén Rivera', NULL, NULL, true);
+INSERT INTO cliente VALUES (11, 'Lisbeth Negrete', 'Departamento de Operaciones ADC&HAS', NULL, true);
+INSERT INTO cliente VALUES (12, 'Pedro Montalvo', 'Centro de Control CCTV', NULL, true);
 
 
 --
@@ -866,11 +904,11 @@ INSERT INTO cliente VALUES (1, 'cliente final', NULL, NULL, true);
 -- Name: cliente_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('cliente_id_seq', 1, true);
+SELECT pg_catalog.setval('cliente_id_seq', 12, true);
 
 
 --
--- TOC entry 2226 (class 0 OID 65311)
+-- TOC entry 2226 (class 0 OID 65559)
 -- Dependencies: 192
 -- Data for Name: detalle_orden_trabajo; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -887,7 +925,7 @@ SELECT pg_catalog.setval('detalle_orden_trabajo_id_seq', 1, false);
 
 
 --
--- TOC entry 2228 (class 0 OID 65317)
+-- TOC entry 2228 (class 0 OID 65565)
 -- Dependencies: 194
 -- Data for Name: empresa; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -907,13 +945,38 @@ SELECT pg_catalog.setval('empresa_id_seq', 3, true);
 
 
 --
--- TOC entry 2230 (class 0 OID 65326)
+-- TOC entry 2230 (class 0 OID 65574)
 -- Dependencies: 196
 -- Data for Name: orden_trabajo; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-INSERT INTO orden_trabajo VALUES (2, 5, 4, 3, 1002, 1007, 'requerimiento determinado', '2017-05-16 20:05:00', '2017-05-16 20:10:00', NULL, true, NULL, 1, 4, NULL, 'solucion al requerimiento');
-INSERT INTO orden_trabajo VALUES (3, 1, 2, 1, 1000, 1004, 'en un caso de prueba', '2017-05-17 20:05:00', '2017-05-17 20:25:00', NULL, true, NULL, 1, 2, NULL, 'en un caso de prueba');
+INSERT INTO orden_trabajo VALUES (5, 23525, 0, 1, 1000, 1005, 'PUERTA P2E3009AB SEGURO MECANICO DESHABILITADO', '2017-05-12 08:11:00', '2017-05-12 08:52:00', NULL, true, NULL, 2, 3, NULL, 'Se  realizó una  inspección  física   a la puerta  P2E3009AB,  detectando  que está trabada la cerradura mecánica. Reportar  al personal de ADC & HAS mantenimiento. Revisión por personal de EPMSA:', NULL);
+INSERT INTO orden_trabajo VALUES (6, 23512, 0, 1, 1002, 1007, 'Cámara C133 presenta intermitencia de video', '2017-05-10 14:22:00', '2017-05-11 08:18:00', NULL, true, NULL, 1, 1, NULL, 'Se realizan pruebas de funcionamiento a la cámara C133, reiniciándole desde el sistema y revisándola físicamente, pero  la cámara presenta un daño interno en el lente lo que distorciona la imagen. Se recomienda su cambio.  Revisión por personal de EPMSA', NULL);
+INSERT INTO orden_trabajo VALUES (7, 23494, 0, 1, 1000, 1005, 'Puerta 2E075 del pit 11, permanece desarmada', '2017-05-08 12:31:00', '2017-05-09 15:48:00', NULL, true, NULL, 3, 3, NULL, 'Se  realizó una  inspección  física   a la puerta 2E075 del pit 11,  detectando  que presenta un  descuadre   en una de sus  hojas, por lo que no se puede armar y se activan las alarmas.  Reportar  al personal de ADC & HAS mantenimiento. .  Revisión por personal de EPMSA', NULL);
+INSERT INTO orden_trabajo VALUES (8, 23473, 0, 1, 1002, 1005, 'Cámara "C176" se reinicia automáticamente en varios lapsos de tiempo.', '2017-05-08 11:35:00', '2017-05-08 12:00:00', NULL, true, NULL, 3, 1, NULL, 'La cámara C176 debe ser reemplazada, como se reportó en el ticket No. 23203   y estamos a la espera que ADC & HAS nos entregue la nueva cámara.', NULL);
+INSERT INTO orden_trabajo VALUES (9, 23471, 0, 1, 1002, 1007, 'CAMARA C001 QUE SE ENCUENTRA CON PERDIDA DE VIDEO Y GRABACION', '2017-05-08 11:35:00', '2017-05-08 12:11:00', NULL, true, NULL, 2, 3, NULL, 'Se realizan pruebas de funcionamiento a la cámara C001, se reinicia desde el sistema y se revisa físicamente, pero  la cámara no responde, tiene daño interno en la tarjeta principal. Se recomienda su cambio.', NULL);
+INSERT INTO orden_trabajo VALUES (10, 23467, 0, 1, 1000, 1007, 'Revisión puerta 1G122', '2017-05-05 15:26:00', '2017-05-08 12:33:00', NULL, true, NULL, 1, 1, NULL, 'Se  realizaron  pruebas   físicas  a la  puerta   1G122,  detectando   que  los   dos  contactos magnéticos  se encuentran   dañados. Se realiza una conexion directa, provisional,  hasta  reemplazar los contactos.  Favor proporcionar 2 contactos  para    puertas  tipo A1.', NULL);
+INSERT INTO orden_trabajo VALUES (11, 23450, 4037, 1, 1002, 1007, 'Camaras C245 y C243 se presentan en blanco y negro', '2017-05-04 08:54:00', '2017-05-04 09:40:00', NULL, true, NULL, 1, 1, NULL, 'Se  procede a reiniciar  las cámaras C245 - C243 desde el sistema, dejándolas en normal funcionamiento..  Revisión por personal de EPMSA: Marco Arboleda', NULL);
+INSERT INTO orden_trabajo VALUES (12, 23450, 4037, 1, 1002, 1007, 'Camaras C245 y C243 se presentan en blanco y negro', '2017-05-04 08:54:00', '2017-05-04 09:40:00', NULL, true, NULL, 1, 1, NULL, 'Se  procede a reiniciar  las cámaras C245 - C243 desde el sistema, dejándolas en normal funcionamiento..  Revisión por personal de EPMSA: Marco Arboleda', NULL);
+INSERT INTO orden_trabajo VALUES (13, 23412, 0, 1, 1000, 1007, 'Puerta 1A030 Nivel 1 Arribo internacional no se la puede bloquear desde el sistema ni Fisicamente', '2017-05-02 09:48:00', '2017-05-02 16:16:00', NULL, true, NULL, 6, 1, NULL, 'Se revisó la puerta 1A030 Nivel 1 de arribo internacional, se realizaron pruebas de funcionamiento y no se detecta ningún daño. La puerta   se encuentra operando correctamente ya que se programó desde su instalación para que funcionara de la siguiente manera: Del   lado seguro la puerta se abre   con el sensor de movimiento, no es necesario pasar   la tarjeta TCA. Del   lado   público es necesario pasar la tarjeta TCA para    que    se abra la puerta, el   Key switch   es para realizar mantenimiento, la puerta queda abierta. Este    tipo de puerta no se la puede bloquear desde el sistema, ni físicamente, a menos que se apague el motor de la puerta. Las puertas de arribo internacional y de arribo nacional tienen el mismo funcionamiento.', NULL);
+INSERT INTO orden_trabajo VALUES (14, 23418, 4077, 1, 1000, 1006, 'la puerta 2E083 de la Sala A8 no se puede bloquear desde el sistema ni fisicamente', '2017-05-02 09:46:00', '2017-05-02 08:55:00', NULL, true, NULL, 10, 3, NULL, 'Se realiza un inspección física a la puerta 2E083, encontrándola   desconfigurada y sin alimentación eléctrica en las cerraduras magnéticas, debido a que fueron desconectadas por personal eléctrico de ADC-HAS, ya que la puerta estaba alarmada, por descuadre en la hoja derecha y el brazo mecánico flojo en su base. La puerta quedó en normal funcionamiento, sin embargo debe reportarse a ADC-HAS mantenimiento ya que la alarma se va a volver a presentar por este problema mecánico..  Revisión por personal de EPMSA: Belén Rivera"', NULL);
+INSERT INTO orden_trabajo VALUES (15, 23407, 0, 1, 1002, 1007, 'Para informales la cámara del pit 13 S-C090 se encuentra defectuosa no se puede mover; si nos pueden ayudar gracias.', '2017-04-28 08:49:00', '2017-04-28 10:48:00', NULL, true, NULL, 7, 1, NULL, 'SOLUCION:  Se realizan pruebas de funcionamiento a la cámara S-C090, reiniciándole desde el sistema y revisándola físicamente, pero  la cámara presenta un daño interno en el lente y motores del PTZ. Se recomienda su cambio.  Revisión por personal de EPMSA: email', NULL);
+INSERT INTO orden_trabajo VALUES (16, 23362, 4029, 1, 1002, 1007, 'CAMARA C233A EN BLANCO Y NEGRO', '2017-05-25 09:06:00', '2017-05-25 12:30:00', NULL, true, NULL, 1, 1, NULL, 'Se reinicia  la cámara C233A desde el sistema, al momento la cámara queda en normal funcionamiento..  Revisión por personal de EPMSA: Marco Arboleda', NULL);
+INSERT INTO orden_trabajo VALUES (17, 23343, 0, 1, 1000, 1005, 'puerta 2F095A se encuentra ligeramente descuadrada', '2017-05-24 09:02:00', '2017-05-24 14:27:00', NULL, true, NULL, 11, 1, NULL, 'Se  realizó una  inspección  física   a la puerta 2F095A,  detectando  que presenta un  descuadre   de  las  hojas,  los dispositivos de control de accesos se encuentran en normal funcionamiento. Reportar  al personal de ADC & HAS mantenimiento. .  Revisión por personal de EPMSA: email', NULL);
+INSERT INTO orden_trabajo VALUES (18, 23324, 4030, 1, 1002, 1007, 'CÀMARA S-C020 FUERA DE SERVICIO', '2017-05-24 09:02:00', '2017-05-26 09:40:00', NULL, true, NULL, 5, 1, NULL, 'Se  procede a reiniciar  la cámara S-C020  desde el sistema, al momento se encuentra en normal funcionamiento. .  Revisión por personal de EPMSA: Christian Viñachi', NULL);
+INSERT INTO orden_trabajo VALUES (19, 23319, 4028, 1, 1000, 1007, 'Puerta 3D022 ya que al momento de armar la puerta no se puede desactivar la alarma de DELAY EGRESS', '2017-05-24 09:01:00', '2017-05-24 16:00:00', NULL, true, NULL, 1, 1, NULL, 'Se realiza una descarga a la tarjeta ACU desde el sistema y se ajusta el maglock, al momento la pueta 3D022 queda en  normal funcioinamiento..  Revisión por personal de EPMSA: Marco Arboleda', NULL);
+INSERT INTO orden_trabajo VALUES (20, 23318, 4027, 1, 1000, 1007, 'Por favor si nos pueden ayudar con la revision de la puerta 3D021 ya que genera una señal de apertura de tamper activo, por su atencion gracias.', '2017-05-24 09:01:00', '2017-05-24 15:20:00', NULL, true, NULL, 1, 1, NULL, 'Se realiza un inspección física a la puerta 3D021, detectando que la cerradura de la puerta se encontraba bloqueada con un cartón, por lo que generan alarmas. Se procede a retirar el cartón  y al momento la puerta queda en  normal funcionamiento.  Revisión por personal de EPMSA: Marco Arboleda', NULL);
+INSERT INTO orden_trabajo VALUES (21, 23313, 4073, 1, 1002, 1007, 'CAMARAS CON SALTOS DE TIEMPO', '2017-05-21 16:25:00', '2017-05-24 15:20:00', NULL, true, NULL, 1, 3, NULL, 'Se realizó la inspección y se verifica que los saltos de tiempo de las cámaras: C217, C201, C267, C253A, C133, C151, C165, C166, C176, C177, C185.  se debe a la pérdida de energía,  ya que  no tienen o no responde el ups. Al momento están en normal funcionamiento. Se adjunta cuadro con el detalle..  Revisión por personal de EPMSA: Marco Arboleda', NULL);
+INSERT INTO orden_trabajo VALUES (22, 23313, 4073, 1, 1002, 1007, 'CAMARAS CON SALTOS DE TIEMPO', '2017-04-21 16:25:00', '2017-04-24 15:20:00', NULL, true, NULL, 1, 3, NULL, 'Se realizó la inspección y se verifica que los saltos de tiempo de las cámaras: C217, C201, C267, C253A, C133, C151, C165, C166, C176, C177, C185.  se debe a la pérdida de energía,  ya que  no tienen o no responde el ups. Al momento están en normal funcionamiento. Se adjunta cuadro con el detalle..  Revisión por personal de EPMSA: Marco Arboleda', NULL);
+INSERT INTO orden_trabajo VALUES (23, 23314, 4071, 1, 1002, 1007, 'CAMARA C253A SIN PATRON DE MOVIMIENTO', '2017-05-21 16:24:00', '2017-05-24 11:00:00', NULL, true, NULL, 1, 3, NULL, 'La cámara C253A se quedó sin patron de movimiento, debido a un corte de energía eléctrica. Se realiza un reset y se la deja en normal funcionamiento..  Revisión por personal de EPMSA: Marco Arboleda', NULL);
+INSERT INTO orden_trabajo VALUES (24, 23305, 0, 1, 1000, 1005, 'LA PUERTA P1E1002A. NO CIERRA', '2017-04-21 08:35:00', '2017-04-21 14:36:00', NULL, true, NULL, 12, 1, NULL, 'Se  realizó una  inspección  física   a la puerta P1E1002A,  detectando  que los dispositivos de control de accesos se encuentran  operativos, pero  los motores  de la puerta  no  encienden. Reportar  al personal de ADC & HAS mantenimiento.', NULL);
+INSERT INTO orden_trabajo VALUES (25, 23290, 4065, 1, 1000, 1005, 'La puerta 2F095B presenta problemas en la apertura de unas de sus hojas.', '2017-04-20 08:23:00', '2017-04-20 09:30:00', NULL, true, NULL, 1, 3, NULL, 'La puerta 2F095B presenta problemas de apertura, ya que la hoja de la puerta está descuadrada. Reportar al personal de ADC&HAS mantenimiento. .  Revisión por personal de EPMSA: Marco Arboleda', NULL);
+INSERT INTO orden_trabajo VALUES (26, 23291, 4062, 1, 1002, 1007, 'La cámara 246 se encuentra en blanco y negro.', '2017-05-20 08:22:00', '2017-05-20 09:40:00', NULL, true, NULL, 1, 3, NULL, 'Se realiza un reset  a la cámara C246, dejándola en normal funcionamiento..  Revisión por personal de EPMSA: Marco Arboleda', NULL);
+INSERT INTO orden_trabajo VALUES (27, 23292, 4063, 1, 1002, 1007, 'La cámara C243 se encuentra en blanco y negro.', '2017-04-20 08:22:00', '2017-04-20 09:30:00', NULL, true, NULL, 1, 3, NULL, 'Se realiza un reset  a la cámara C243, dejándola en normal funcionamiento..  Revisión por personal de EPMSA: Marco Arboleda', NULL);
+INSERT INTO orden_trabajo VALUES (28, 23293, 4064, 1, 1002, 1007, 'La cámara C245 se encuentra en blanco y negro.', '2017-04-20 08:21:00', '2017-04-20 09:30:00', NULL, true, NULL, 1, 3, NULL, 'Se realiza un reset  a la cámara C245, dejándola en normal funcionamiento..  Revisión por personal de EPMSA: Marco Arboleda', NULL);
+INSERT INTO orden_trabajo VALUES (29, 23295, 4070, 1, 1000, 1007, 'PUERTA 2G106A GENERA MUCHAS ALARMAS', '2017-04-20 08:20:00', '2017-04-21 15:30:00', NULL, true, NULL, 1, 3, NULL, 'Se realizó la inspección a la puerta 2G106A y se observa que no tiene el brazo mecánico para que la hoja de la puerta retorne a su estado normal, lo que genera alarma de puerta apoyada. Reportar a ADC & HAS mantenimiento.', NULL);
+INSERT INTO orden_trabajo VALUES (30, 23278, 4060, 1, 1002, 1007, 'CAMARAS FUERA DE LINEA C002 NIVEL CERO, C201 HALL PUBLICO SEGUNDO NIVEL, C267 ACCESO DELTA', '2017-04-19 08:45:00', '2017-04-19 14:00:00', NULL, true, NULL, 1, 3, NULL, 'Se encontraron fuera de línea las cámaras C002, C201 y C267, debido al corte de energía eléctrica que hubo en el Aeropuerto, una vez que se restableció la energía eléctrica se verificó su normal funcionamiento..  Revisión por personal de EPMSA: Marco Arboleda', NULL);
+INSERT INTO orden_trabajo VALUES (31, 4530, 30303, 1, 1002, 1005, 'Es una prueba del sistema', '2017-06-08 22:54:00', '2017-06-08 23:00:00', NULL, true, NULL, 11, 3, NULL, 'Es una prueba del sistema solucion', 'Es una prueba del sistema solucion tecnica');
 
 
 --
@@ -922,11 +985,11 @@ INSERT INTO orden_trabajo VALUES (3, 1, 2, 1, 1000, 1004, 'en un caso de prueba'
 -- Name: orden_trabajo_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('orden_trabajo_id_seq', 3, true);
+SELECT pg_catalog.setval('orden_trabajo_id_seq', 31, true);
 
 
 --
--- TOC entry 2232 (class 0 OID 65335)
+-- TOC entry 2232 (class 0 OID 65583)
 -- Dependencies: 198
 -- Data for Name: puertas; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -1174,16 +1237,28 @@ INSERT INTO puertas VALUES (240, 'P2E3014C', 'B2', NULL, NULL, true, 'operativa'
 INSERT INTO puertas VALUES (241, 'P2E3015A', 'B2', NULL, NULL, true, 'operativa');
 INSERT INTO puertas VALUES (242, 'P2E3015A', 'B2', NULL, NULL, true, 'operativa');
 INSERT INTO puertas VALUES (243, 'P2E3011', 'E1', NULL, NULL, true, 'inoperativa');
+INSERT INTO puertas VALUES (244, '2E083', NULL, NULL, NULL, true, 'operativa');
 
 
 --
--- TOC entry 2233 (class 0 OID 65341)
+-- TOC entry 2233 (class 0 OID 65589)
 -- Dependencies: 199
 -- Data for Name: puertas_orden_trabajo; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-INSERT INTO puertas_orden_trabajo VALUES (9, 2, 4, true);
-INSERT INTO puertas_orden_trabajo VALUES (10, 3, 95, true);
+INSERT INTO puertas_orden_trabajo VALUES (11, 5, 237, true);
+INSERT INTO puertas_orden_trabajo VALUES (12, 7, 62, true);
+INSERT INTO puertas_orden_trabajo VALUES (13, 10, 139, true);
+INSERT INTO puertas_orden_trabajo VALUES (14, 13, 129, true);
+INSERT INTO puertas_orden_trabajo VALUES (15, 14, 244, true);
+INSERT INTO puertas_orden_trabajo VALUES (16, 17, 55, true);
+INSERT INTO puertas_orden_trabajo VALUES (17, 19, 47, true);
+INSERT INTO puertas_orden_trabajo VALUES (18, 20, 18, true);
+INSERT INTO puertas_orden_trabajo VALUES (19, 24, 203, true);
+INSERT INTO puertas_orden_trabajo VALUES (20, 25, 56, true);
+INSERT INTO puertas_orden_trabajo VALUES (21, 29, 76, true);
+INSERT INTO puertas_orden_trabajo VALUES (22, 31, 39, true);
+INSERT INTO puertas_orden_trabajo VALUES (23, 31, 4, true);
 
 
 --
@@ -1192,21 +1267,22 @@ INSERT INTO puertas_orden_trabajo VALUES (10, 3, 95, true);
 -- Name: puertas_orden_trabajo_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('puertas_orden_trabajo_id_seq', 10, true);
+SELECT pg_catalog.setval('puertas_orden_trabajo_id_seq', 23, true);
 
 
 --
--- TOC entry 2235 (class 0 OID 65346)
+-- TOC entry 2235 (class 0 OID 65594)
 -- Dependencies: 201
 -- Data for Name: tecnico; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-INSERT INTO tecnico VALUES (2, 'Gonzalo', 'Chavarrea', '0998146157', true);
-INSERT INTO tecnico VALUES (1, 'Pablo', 'Camacas', '0991394229', true);
-INSERT INTO tecnico VALUES (3, 'Diego', 'Loachamin', '0958872811', true);
-INSERT INTO tecnico VALUES (4, 'Diego', 'Jami', '0998991830', true);
-INSERT INTO tecnico VALUES (5, 'Jonathan', 'Masias', '0997779326', true);
-INSERT INTO tecnico VALUES (6, 'Oscar', 'Guaytarilla', '0982111276', true);
+INSERT INTO tecnico VALUES (1, 'Pablo Camacas', 'Camacas', '0991394229', true);
+INSERT INTO tecnico VALUES (2, 'Gonzalo Chavarrea', 'Chavarrea', '0998146157', true);
+INSERT INTO tecnico VALUES (3, 'Diego Loachamin', 'Loachamin', '0958872811', true);
+INSERT INTO tecnico VALUES (4, 'Diego Jami', 'Jami', '0998991830', true);
+INSERT INTO tecnico VALUES (5, 'Jonathan Masias', 'Masias', '0997779326', true);
+INSERT INTO tecnico VALUES (6, 'Oscar Guaytarilla', 'Guaytarilla', '0982111276', true);
+INSERT INTO tecnico VALUES (7, 'Daniel Vinueza', 'Vinueza', NULL, true);
 
 
 --
@@ -1215,11 +1291,11 @@ INSERT INTO tecnico VALUES (6, 'Oscar', 'Guaytarilla', '0982111276', true);
 -- Name: tecnico_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('tecnico_id_seq', 6, true);
+SELECT pg_catalog.setval('tecnico_id_seq', 7, true);
 
 
 --
--- TOC entry 2085 (class 2606 OID 65364)
+-- TOC entry 2085 (class 2606 OID 65612)
 -- Name: cliente Cliente_pk; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1228,7 +1304,7 @@ ALTER TABLE ONLY cliente
 
 
 --
--- TOC entry 2097 (class 2606 OID 65366)
+-- TOC entry 2097 (class 2606 OID 65614)
 -- Name: tecnico Tecnico_pk; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1237,7 +1313,7 @@ ALTER TABLE ONLY tecnico
 
 
 --
--- TOC entry 2081 (class 2606 OID 65368)
+-- TOC entry 2081 (class 2606 OID 65616)
 -- Name: camaras_orden_trabajo camaras_orden_trabajo_pk; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1246,7 +1322,7 @@ ALTER TABLE ONLY camaras_orden_trabajo
 
 
 --
--- TOC entry 2079 (class 2606 OID 65370)
+-- TOC entry 2079 (class 2606 OID 65618)
 -- Name: camaras camaras_pk; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1255,7 +1331,7 @@ ALTER TABLE ONLY camaras
 
 
 --
--- TOC entry 2083 (class 2606 OID 65372)
+-- TOC entry 2083 (class 2606 OID 65620)
 -- Name: catalogo catalogo_pk; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1264,7 +1340,7 @@ ALTER TABLE ONLY catalogo
 
 
 --
--- TOC entry 2087 (class 2606 OID 65374)
+-- TOC entry 2087 (class 2606 OID 65622)
 -- Name: detalle_orden_trabajo detalle_orden_trabajo_pk; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1273,7 +1349,7 @@ ALTER TABLE ONLY detalle_orden_trabajo
 
 
 --
--- TOC entry 2089 (class 2606 OID 65376)
+-- TOC entry 2089 (class 2606 OID 65624)
 -- Name: empresa empresa_pk; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1282,7 +1358,7 @@ ALTER TABLE ONLY empresa
 
 
 --
--- TOC entry 2091 (class 2606 OID 65378)
+-- TOC entry 2091 (class 2606 OID 65626)
 -- Name: orden_trabajo orden_trabajo_pk; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1291,7 +1367,7 @@ ALTER TABLE ONLY orden_trabajo
 
 
 --
--- TOC entry 2095 (class 2606 OID 65380)
+-- TOC entry 2095 (class 2606 OID 65628)
 -- Name: puertas_orden_trabajo puertas_orden_trabajo_pk; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1300,7 +1376,7 @@ ALTER TABLE ONLY puertas_orden_trabajo
 
 
 --
--- TOC entry 2093 (class 2606 OID 65382)
+-- TOC entry 2093 (class 2606 OID 65630)
 -- Name: puertas puertas_pk; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1309,7 +1385,7 @@ ALTER TABLE ONLY puertas
 
 
 --
--- TOC entry 2098 (class 2606 OID 65383)
+-- TOC entry 2098 (class 2606 OID 65631)
 -- Name: camaras_orden_trabajo fk_camaras; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1318,7 +1394,7 @@ ALTER TABLE ONLY camaras_orden_trabajo
 
 
 --
--- TOC entry 2099 (class 2606 OID 65388)
+-- TOC entry 2099 (class 2606 OID 65636)
 -- Name: camaras_orden_trabajo fk_orden_trabajo; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1327,7 +1403,7 @@ ALTER TABLE ONLY camaras_orden_trabajo
 
 
 --
--- TOC entry 2100 (class 2606 OID 65393)
+-- TOC entry 2100 (class 2606 OID 65641)
 -- Name: puertas_orden_trabajo fk_orden_trabajo; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1336,7 +1412,7 @@ ALTER TABLE ONLY puertas_orden_trabajo
 
 
 --
--- TOC entry 2101 (class 2606 OID 65398)
+-- TOC entry 2101 (class 2606 OID 65646)
 -- Name: puertas_orden_trabajo fk_puertas; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1344,7 +1420,7 @@ ALTER TABLE ONLY puertas_orden_trabajo
     ADD CONSTRAINT fk_puertas FOREIGN KEY (puertas_id) REFERENCES puertas(id) MATCH FULL;
 
 
--- Completed on 2017-05-21 21:13:59 -05
+-- Completed on 2017-06-08 23:10:32 -05
 
 --
 -- PostgreSQL database dump complete
