@@ -17,8 +17,7 @@ class PuertasOrdenTrabajo
      *
      * @ORM\Column(name="id", type="bigint", nullable=false)
      * @ORM\Id
-     * @ORM\GeneratedValue(strategy="SEQUENCE")
-     * @ORM\SequenceGenerator(sequenceName="puertas_orden_trabajo_id_seq", allocationSize=1, initialValue=1)
+     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $id;
 
@@ -50,83 +49,4 @@ class PuertasOrdenTrabajo
     private $puertas;
 
 
-
-    /**
-     * Get id
-     *
-     * @return integer 
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
-
-    /**
-     * Set activo
-     *
-     * @param boolean $activo
-     * @return PuertasOrdenTrabajo
-     */
-    public function setActivo($activo)
-    {
-        $this->activo = $activo;
-
-        return $this;
-    }
-
-    /**
-     * Get activo
-     *
-     * @return boolean 
-     */
-    public function getActivo()
-    {
-        return $this->activo;
-    }
-
-    /**
-     * Set ordenTrabajo
-     *
-     * @param \BD\DaoBundle\Entity\OrdenTrabajo $ordenTrabajo
-     * @return PuertasOrdenTrabajo
-     */
-    public function setOrdenTrabajo(\BD\DaoBundle\Entity\OrdenTrabajo $ordenTrabajo = null)
-    {
-        $this->ordenTrabajo = $ordenTrabajo;
-
-        return $this;
-    }
-
-    /**
-     * Get ordenTrabajo
-     *
-     * @return \BD\DaoBundle\Entity\OrdenTrabajo 
-     */
-    public function getOrdenTrabajo()
-    {
-        return $this->ordenTrabajo;
-    }
-
-    /**
-     * Set puertas
-     *
-     * @param \BD\DaoBundle\Entity\Puertas $puertas
-     * @return PuertasOrdenTrabajo
-     */
-    public function setPuertas(\BD\DaoBundle\Entity\Puertas $puertas = null)
-    {
-        $this->puertas = $puertas;
-
-        return $this;
-    }
-
-    /**
-     * Get puertas
-     *
-     * @return \BD\DaoBundle\Entity\Puertas 
-     */
-    public function getPuertas()
-    {
-        return $this->puertas;
-    }
 }

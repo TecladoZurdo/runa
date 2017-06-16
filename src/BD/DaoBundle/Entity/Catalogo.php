@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Catalogo
  *
- * @ORM\Table(name="catalogo", indexes={@ORM\Index(name="IDX_E7AC6B454979D753", columns={"catalogo_id"})})
+ * @ORM\Table(name="catalogo")
  * @ORM\Entity(repositoryClass="BD\DaoBundle\Entity\Repository\CatalogoRepository")
  */
 class Catalogo
@@ -17,17 +17,23 @@ class Catalogo
      *
      * @ORM\Column(name="id", type="bigint", nullable=false)
      * @ORM\Id
-     * @ORM\GeneratedValue(strategy="SEQUENCE")
-     * @ORM\SequenceGenerator(sequenceName="catalogo_id_seq", allocationSize=1, initialValue=1)
+     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $id;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="nombre", type="string", nullable=true)
+     * @ORM\Column(name="nombre", type="text", length=8, nullable=true)
      */
     private $nombre;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="catalogo_id", type="bigint", nullable=true)
+     */
+    private $catalogo_id;
 
     /**
      * @var integer
@@ -50,22 +56,7 @@ class Catalogo
      */
     private $activo;
 
-    /**
-     * @var \Catalogo
-     *
-     * @ORM\ManyToOne(targetEntity="Catalogo")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="catalogo_id", referencedColumnName="id")
-     * })
-     */
-    private $catalogo;
 
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="catalogo_id", type="integer", nullable=true)
-     */
-    private $catalogo_id;
 
     /**
      * Get id
@@ -98,6 +89,29 @@ class Catalogo
     public function getNombre()
     {
         return $this->nombre;
+    }
+
+    /**
+     * Set catalogoId
+     *
+     * @param integer $catalogoId
+     * @return Catalogo
+     */
+    public function setCatalogoId($catalogo_id)
+    {
+        $this->catalogo_id = $catalogo_id;
+
+        return $this;
+    }
+
+    /**
+     * Get catalogoId
+     *
+     * @return integer
+     */
+    public function getCatalogo_id()
+    {
+        return $this->catalogo_id;
     }
 
     /**
@@ -167,51 +181,5 @@ class Catalogo
     public function getActivo()
     {
         return $this->activo;
-    }
-
-    /**
-     * Set catalogo
-     *
-     * @param \BD\DaoBundle\Entity\Catalogo $catalogo
-     * @return Catalogo
-     */
-    public function setCatalogo(\BD\DaoBundle\Entity\Catalogo $catalogo = null)
-    {
-        $this->catalogo = $catalogo;
-
-        return $this;
-    }
-
-    /**
-     * Get catalogo
-     *
-     * @return \BD\DaoBundle\Entity\Catalogo
-     */
-    public function getCatalogo()
-    {
-        return $this->catalogo;
-    }
-
-    /**
-     * Set catalogo_id
-     *
-     * @param integer $catalogoId
-     * @return Catalogo
-     */
-    public function setCatalogoId($catalogoId)
-    {
-        $this->catalogo_id = $catalogoId;
-
-        return $this;
-    }
-
-    /**
-     * Get catalogo_id
-     *
-     * @return integer 
-     */
-    public function getCatalogoId()
-    {
-        return $this->catalogo_id;
     }
 }

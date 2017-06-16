@@ -5,12 +5,12 @@ namespace BD\DaoBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Cliente
+ * DetalleOrdenTrabajo
  *
- * @ORM\Table(name="cliente")
+ * @ORM\Table(name="detalle_orden_trabajo")
  * @ORM\Entity
  */
-class Cliente
+class DetalleOrdenTrabajo
 {
     /**
      * @var integer
@@ -22,25 +22,18 @@ class Cliente
     private $id;
 
     /**
-     * @var string
+     * @var integer
      *
-     * @ORM\Column(name="nombre", type="text", length=8, nullable=true)
+     * @ORM\Column(name="cantidad", type="smallint", nullable=true)
      */
-    private $nombre;
+    private $cantidad;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="cargo", type="text", length=8, nullable=true)
+     * @ORM\Column(name="descripcion", type="string", length=50, nullable=true)
      */
-    private $cargo;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="revisado_por", type="text", length=8, nullable=true)
-     */
-    private $revisadoPor;
+    private $descripcion;
 
     /**
      * @var boolean

@@ -17,15 +17,14 @@ class Empresa
      *
      * @ORM\Column(name="id", type="bigint", nullable=false)
      * @ORM\Id
-     * @ORM\GeneratedValue(strategy="SEQUENCE")
-     * @ORM\SequenceGenerator(sequenceName="empresa_id_seq", allocationSize=1, initialValue=1)
+     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $id;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="nombre", type="string", nullable=true)
+     * @ORM\Column(name="nombre", type="text", length=8, nullable=true)
      */
     private $nombre;
 
@@ -46,7 +45,7 @@ class Empresa
     /**
      * @var string
      *
-     * @ORM\Column(name="ubicacion", type="string", nullable=true)
+     * @ORM\Column(name="ubicacion", type="text", length=8, nullable=true)
      */
     private $ubicacion;
 

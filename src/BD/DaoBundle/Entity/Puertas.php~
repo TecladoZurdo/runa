@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Puertas
  *
  * @ORM\Table(name="puertas")
- * @ORM\Entity(repositoryClass="BD\DaoBundle\Entity\Repository\PuertasRepository")
+ * @ORM\Entity
  */
 class Puertas
 {
@@ -17,22 +17,21 @@ class Puertas
      *
      * @ORM\Column(name="id", type="bigint", nullable=false)
      * @ORM\Id
-     * @ORM\GeneratedValue(strategy="SEQUENCE")
-     * @ORM\SequenceGenerator(sequenceName="puertas_id_seq", allocationSize=1, initialValue=1)
+     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $id;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="codigo", type="text", nullable=true)
+     * @ORM\Column(name="codigo", type="text", length=16, nullable=true)
      */
     private $codigo;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="modelo", type="text", nullable=true)
+     * @ORM\Column(name="modelo", type="text", length=16, nullable=true)
      */
     private $modelo;
 
@@ -46,7 +45,7 @@ class Puertas
     /**
      * @var string
      *
-     * @ORM\Column(name="marca", type="string", nullable=true)
+     * @ORM\Column(name="marca", type="text", length=8, nullable=true)
      */
     private $marca;
 
@@ -60,7 +59,7 @@ class Puertas
     /**
      * @var string
      *
-     * @ORM\Column(name="estado", type="string", nullable=true)
+     * @ORM\Column(name="estado", type="text", length=8, nullable=true)
      */
     private $estado;
 

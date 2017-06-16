@@ -17,29 +17,28 @@ class Cliente
      *
      * @ORM\Column(name="id", type="bigint", nullable=false)
      * @ORM\Id
-     * @ORM\GeneratedValue(strategy="SEQUENCE")
-     * @ORM\SequenceGenerator(sequenceName="cliente_id_seq", allocationSize=1, initialValue=1)
+     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $id;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="Nombre", type="string", nullable=true)
+     * @ORM\Column(name="nombre", type="text", length=8, nullable=true)
      */
     private $nombre;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="Cargo", type="string", nullable=true)
+     * @ORM\Column(name="cargo", type="text", length=8, nullable=true)
      */
     private $cargo;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="revisado_por", type="string", nullable=true)
+     * @ORM\Column(name="revisado_por", type="text", length=8, nullable=true)
      */
     private $revisadoPor;
 
@@ -55,7 +54,7 @@ class Cliente
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -78,7 +77,7 @@ class Cliente
     /**
      * Get nombre
      *
-     * @return string 
+     * @return string
      */
     public function getNombre()
     {
@@ -101,7 +100,7 @@ class Cliente
     /**
      * Get cargo
      *
-     * @return string 
+     * @return string
      */
     public function getCargo()
     {
@@ -124,7 +123,7 @@ class Cliente
     /**
      * Get revisadoPor
      *
-     * @return string 
+     * @return string
      */
     public function getRevisadoPor()
     {
@@ -147,7 +146,7 @@ class Cliente
     /**
      * Get activo
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getActivo()
     {

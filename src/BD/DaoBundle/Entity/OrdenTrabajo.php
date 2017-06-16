@@ -3,12 +3,11 @@
 namespace BD\DaoBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * OrdenTrabajo
  *
- * @ORM\Table(name="orden_trabajo", indexes={@ORM\Index(name="IDX_4158A024DE734E51", columns={"cliente_id"}), @ORM\Index(name="IDX_4158A024521E1991", columns={"empresa_id"}), @ORM\Index(name="IDX_4158A024F4BDD0A9", columns={"ct_sistema"}), @ORM\Index(name="IDX_4158A0245E5CC7D3", columns={"ct_servicio"}), @ORM\Index(name="IDX_4158A024841DB1E7", columns={"tecnico_id"})})
+ * @ORM\Table(name="orden_trabajo")
  * @ORM\Entity
  */
 class OrdenTrabajo
@@ -18,8 +17,7 @@ class OrdenTrabajo
      *
      * @ORM\Column(name="id", type="bigint", nullable=false)
      * @ORM\Id
-     * @ORM\GeneratedValue(strategy="SEQUENCE")
-     * @ORM\SequenceGenerator(sequenceName="orden_trabajo_id_seq", allocationSize=1, initialValue=1)
+     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $id;
 
@@ -38,18 +36,25 @@ class OrdenTrabajo
     private $numOrdTrab;
 
     /**
-     * @var string
+     * @var integer
      *
-     * @ORM\Column(name="solucion", type="string", length=1500, nullable=true)
+     * @ORM\Column(name="empresa_id", type="bigint", nullable=true)
      */
-    private $solucion;
+    private $empresaId;
 
     /**
-     * @var string
+     * @var integer
      *
-     * @ORM\Column(name="solucion_tecnica", type="string", length=1500, nullable=true)
+     * @ORM\Column(name="ct_sistema", type="bigint", nullable=true)
      */
-    private $solucionTecnica;
+    private $ctSistema;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="ct_servicio", type="bigint", nullable=true)
+     */
+    private $ctServicio;
 
     /**
      * @var string
@@ -94,67 +99,70 @@ class OrdenTrabajo
     private $fechaCreacion;
 
     /**
-     * @var \Cliente
+     * @var integer
      *
-     * @ORM\ManyToOne(targetEntity="Cliente")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="cliente_id", referencedColumnName="id")
-     * })
+     * @ORM\Column(name="cliente_id", type="bigint", nullable=true)
      */
+    private $clienteId;
+
+    /**
+    *@var \Cliente
+    *
+    *@ORM\ManyToOne(targetEntity="Cliente")
+    *@ORM\JoinColumns ({
+    *    @ORM\JoinColumn(name="cliente_id", referencedColumnName="id")
+    * })
+    */
     private $cliente;
 
     /**
-     * @var \Empresa
-     *
-     * @ORM\ManyToOne(targetEntity="Empresa")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="empresa_id", referencedColumnName="id")
-     * })
-     */
+    *@var \Empresa
+    *
+    *@ORM\ManyToOne(targetEntity="Empresa")
+    *@ORM\JoinColumns ({
+    *    @ORM\JoinColumn(name="empresa_id", referencedColumnName="id")
+    * })
+    */
     private $empresa;
 
     /**
-     * @var \Catalogo
+     * @var integer
      *
-     * @ORM\ManyToOne(targetEntity="Catalogo")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="ct_sistema", referencedColumnName="id")
-     * })
+     * @ORM\Column(name="tecnico_id", type="bigint", nullable=true)
      */
-    private $ctSistema;
+    private $tecnicoId;
 
     /**
-     * @var \Catalogo
-     *
-     * @ORM\ManyToOne(targetEntity="Catalogo")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="ct_servicio", referencedColumnName="id")
-     * })
-     */
-    private $ctServicio;
-
-    /**
-     * @var \Tecnico
-     *
-     * @ORM\ManyToOne(targetEntity="Tecnico")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="tecnico_id", referencedColumnName="id")
-     * })
-     */
+    *@var \Tecnico
+    *
+    *@ORM\ManyToOne(targetEntity="Tecnico")
+    *@ORM\JoinColumns ({
+    *    @ORM\JoinColumn(name="tecnico_id", referencedColumnName="id")
+    * })
+    */
     private $tecnico;
 
-    // /**
-    // *@Assert\Type(type="Camaras")
-    // */
-    // private $camaras;
-    //
-    // public function getCamaras(){
-    //   return $this->camaras;
-    // }
-    //
-    // public function setCamaras(Camaras $camaras = null){
-    //   $this->camaras = $camaras;
-    // }
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="detalle_orden_trabajo_id", type="bigint", nullable=true)
+     */
+    private $detalleOrdenTrabajoId;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="solucion", type="string", length=1500, nullable=true)
+     */
+    private $solucion;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="solucion_tecnica", type="string", length=1500, nullable=true)
+     */
+    private $solucionTecnica;
+
 
     /**
      * Get id
@@ -210,6 +218,75 @@ class OrdenTrabajo
     public function getNumOrdTrab()
     {
         return $this->numOrdTrab;
+    }
+
+    /**
+     * Set empresaId
+     *
+     * @param integer $empresaId
+     * @return OrdenTrabajo
+     */
+    public function setEmpresaId($empresaId)
+    {
+        $this->empresaId = $empresaId;
+
+        return $this;
+    }
+
+    /**
+     * Get empresaId
+     *
+     * @return integer
+     */
+    public function getEmpresaId()
+    {
+        return $this->empresaId;
+    }
+
+    /**
+     * Set ctSistema
+     *
+     * @param integer $ctSistema
+     * @return OrdenTrabajo
+     */
+    public function setCtSistema($ctSistema)
+    {
+        $this->ctSistema = $ctSistema;
+
+        return $this;
+    }
+
+    /**
+     * Get ctSistema
+     *
+     * @return integer
+     */
+    public function getCtSistema()
+    {
+        return $this->ctSistema;
+    }
+
+    /**
+     * Set ctServicio
+     *
+     * @param integer $ctServicio
+     * @return OrdenTrabajo
+     */
+    public function setCtServicio($ctServicio)
+    {
+        $this->ctServicio = $ctServicio;
+
+        return $this;
+    }
+
+    /**
+     * Get ctServicio
+     *
+     * @return integer
+     */
+    public function getCtServicio()
+    {
+        return $this->ctServicio;
     }
 
     /**
@@ -351,6 +428,121 @@ class OrdenTrabajo
     }
 
     /**
+     * Set clienteId
+     *
+     * @param integer $clienteId
+     * @return OrdenTrabajo
+     */
+    public function setClienteId($clienteId)
+    {
+        $this->clienteId = $clienteId;
+
+        return $this;
+    }
+
+    /**
+     * Get clienteId
+     *
+     * @return integer
+     */
+    public function getClienteId()
+    {
+        return $this->clienteId;
+    }
+
+    /**
+     * Set tecnicoId
+     *
+     * @param integer $tecnicoId
+     * @return OrdenTrabajo
+     */
+    public function setTecnicoId($tecnicoId)
+    {
+        $this->tecnicoId = $tecnicoId;
+
+        return $this;
+    }
+
+    /**
+     * Get tecnicoId
+     *
+     * @return integer
+     */
+    public function getTecnicoId()
+    {
+        return $this->tecnicoId;
+    }
+
+    /**
+     * Set detalleOrdenTrabajoId
+     *
+     * @param integer $detalleOrdenTrabajoId
+     * @return OrdenTrabajo
+     */
+    public function setDetalleOrdenTrabajoId($detalleOrdenTrabajoId)
+    {
+        $this->detalleOrdenTrabajoId = $detalleOrdenTrabajoId;
+
+        return $this;
+    }
+
+    /**
+     * Get detalleOrdenTrabajoId
+     *
+     * @return integer
+     */
+    public function getDetalleOrdenTrabajoId()
+    {
+        return $this->detalleOrdenTrabajoId;
+    }
+
+    /**
+     * Set solucion
+     *
+     * @param string $solucion
+     * @return OrdenTrabajo
+     */
+    public function setSolucion($solucion)
+    {
+        $this->solucion = $solucion;
+
+        return $this;
+    }
+
+    /**
+     * Get solucion
+     *
+     * @return string
+     */
+    public function getSolucion()
+    {
+        return $this->solucion;
+    }
+
+    /**
+     * Set solucionTecnica
+     *
+     * @param string $solucionTecnica
+     * @return OrdenTrabajo
+     */
+    public function setSolucionTecnica($solucionTecnica)
+    {
+        $this->solucionTecnica = $solucionTecnica;
+
+        return $this;
+    }
+
+    /**
+     * Get solucionTecnica
+     *
+     * @return string
+     */
+    public function getSolucionTecnica()
+    {
+        return $this->solucionTecnica;
+    }
+
+    /**
      * Set cliente
      *
      * @param \BD\DaoBundle\Entity\Cliente $cliente
@@ -397,52 +589,6 @@ class OrdenTrabajo
     }
 
     /**
-     * Set ctSistema
-     *
-     * @param \BD\DaoBundle\Entity\Catalogo $ctSistema
-     * @return OrdenTrabajo
-     */
-    public function setCtSistema(\BD\DaoBundle\Entity\Catalogo $ctSistema = null)
-    {
-        $this->ctSistema = $ctSistema;
-
-        return $this;
-    }
-
-    /**
-     * Get ctSistema
-     *
-     * @return \BD\DaoBundle\Entity\Catalogo
-     */
-    public function getCtSistema()
-    {
-        return $this->ctSistema;
-    }
-
-    /**
-     * Set ctServicio
-     *
-     * @param \BD\DaoBundle\Entity\Catalogo $ctServicio
-     * @return OrdenTrabajo
-     */
-    public function setCtServicio(\BD\DaoBundle\Entity\Catalogo $ctServicio = null)
-    {
-        $this->ctServicio = $ctServicio;
-
-        return $this;
-    }
-
-    /**
-     * Get ctServicio
-     *
-     * @return \BD\DaoBundle\Entity\Catalogo
-     */
-    public function getCtServicio()
-    {
-        return $this->ctServicio;
-    }
-
-    /**
      * Set tecnico
      *
      * @param \BD\DaoBundle\Entity\Tecnico $tecnico
@@ -458,56 +604,10 @@ class OrdenTrabajo
     /**
      * Get tecnico
      *
-     * @return \BD\DaoBundle\Entity\Tecnico
+     * @return \BD\DaoBundle\Entity\Tecnico 
      */
     public function getTecnico()
     {
         return $this->tecnico;
-    }
-
-    /**
-     * Set solucion
-     *
-     * @param string $solucion
-     * @return OrdenTrabajo
-     */
-    public function setSolucion($solucion)
-    {
-        $this->solucion = $solucion;
-
-        return $this;
-    }
-
-    /**
-     * Get solucion
-     *
-     * @return string
-     */
-    public function getSolucion()
-    {
-        return $this->solucion;
-    }
-
-    /**
-     * Set solucionTecnica
-     *
-     * @param string $solucionTecnica
-     * @return OrdenTrabajo
-     */
-    public function setSolucionTecnica($solucionTecnica)
-    {
-        $this->solucionTecnica = $solucionTecnica;
-
-        return $this;
-    }
-
-    /**
-     * Get solucionTecnica
-     *
-     * @return string 
-     */
-    public function getSolucionTecnica()
-    {
-        return $this->solucionTecnica;
     }
 }

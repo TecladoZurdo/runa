@@ -17,22 +17,21 @@ class Puertas
      *
      * @ORM\Column(name="id", type="bigint", nullable=false)
      * @ORM\Id
-     * @ORM\GeneratedValue(strategy="SEQUENCE")
-     * @ORM\SequenceGenerator(sequenceName="puertas_id_seq", allocationSize=1, initialValue=1)
+     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $id;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="codigo", type="text", nullable=true)
+     * @ORM\Column(name="codigo", type="text", length=16, nullable=true)
      */
     private $codigo;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="modelo", type="text", nullable=true)
+     * @ORM\Column(name="modelo", type="text", length=16, nullable=true)
      */
     private $modelo;
 
@@ -46,7 +45,7 @@ class Puertas
     /**
      * @var string
      *
-     * @ORM\Column(name="marca", type="string", nullable=true)
+     * @ORM\Column(name="marca", type="text", length=8, nullable=true)
      */
     private $marca;
 
@@ -60,7 +59,7 @@ class Puertas
     /**
      * @var string
      *
-     * @ORM\Column(name="estado", type="string", nullable=true)
+     * @ORM\Column(name="estado", type="text", length=8, nullable=true)
      */
     private $estado;
 
@@ -69,7 +68,7 @@ class Puertas
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -92,7 +91,7 @@ class Puertas
     /**
      * Get codigo
      *
-     * @return string 
+     * @return string
      */
     public function getCodigo()
     {
@@ -115,7 +114,7 @@ class Puertas
     /**
      * Get modelo
      *
-     * @return string 
+     * @return string
      */
     public function getModelo()
     {
@@ -138,7 +137,7 @@ class Puertas
     /**
      * Get ctTipo
      *
-     * @return integer 
+     * @return integer
      */
     public function getCtTipo()
     {
@@ -161,7 +160,7 @@ class Puertas
     /**
      * Get marca
      *
-     * @return string 
+     * @return string
      */
     public function getMarca()
     {
@@ -184,7 +183,7 @@ class Puertas
     /**
      * Get activo
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getActivo()
     {
@@ -207,7 +206,7 @@ class Puertas
     /**
      * Get estado
      *
-     * @return string 
+     * @return string
      */
     public function getEstado()
     {

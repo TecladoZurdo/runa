@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Camaras
  *
  * @ORM\Table(name="camaras")
- * @ORM\Entity(repositoryClass="BD\DaoBundle\Entity\Repository\CamarasRepository")
+ * @ORM\Entity
  */
 class Camaras
 {
@@ -17,8 +17,7 @@ class Camaras
      *
      * @ORM\Column(name="id", type="bigint", nullable=false)
      * @ORM\Id
-     * @ORM\GeneratedValue(strategy="SEQUENCE")
-     * @ORM\SequenceGenerator(sequenceName="camaras_id_seq", allocationSize=1, initialValue=1)
+     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $id;
 
@@ -32,21 +31,21 @@ class Camaras
     /**
      * @var string
      *
-     * @ORM\Column(name="codigo", type="string", nullable=true)
+     * @ORM\Column(name="codigo", type="text", length=8, nullable=true)
      */
     private $codigo;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="modelo", type="string", nullable=true)
+     * @ORM\Column(name="modelo", type="text", length=8, nullable=true)
      */
     private $modelo;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="marca", type="string", nullable=true)
+     * @ORM\Column(name="marca", type="text", length=8, nullable=true)
      */
     private $marca;
 
@@ -60,14 +59,14 @@ class Camaras
     /**
      * @var string
      *
-     * @ORM\Column(name="estado", type="string", nullable=true)
+     * @ORM\Column(name="estado", type="text", length=8, nullable=true)
      */
     private $estado;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="ubicacion", type="string", nullable=true)
+     * @ORM\Column(name="ubicacion", type="text", length=8, nullable=true)
      */
     private $ubicacion;
 

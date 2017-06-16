@@ -17,29 +17,28 @@ class Tecnico
      *
      * @ORM\Column(name="id", type="bigint", nullable=false)
      * @ORM\Id
-     * @ORM\GeneratedValue(strategy="SEQUENCE")
-     * @ORM\SequenceGenerator(sequenceName="tecnico_id_seq", allocationSize=1, initialValue=1)
+     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $id;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="nombres", type="string", nullable=true)
+     * @ORM\Column(name="nombres", type="text", length=8, nullable=true)
      */
     private $nombres;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="apellidos", type="string", nullable=true)
+     * @ORM\Column(name="apellidos", type="text", length=8, nullable=true)
      */
     private $apellidos;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="celular", type="string", nullable=true)
+     * @ORM\Column(name="celular", type="text", length=8, nullable=true)
      */
     private $celular;
 
@@ -49,6 +48,8 @@ class Tecnico
      * @ORM\Column(name="activo", type="boolean", nullable=true)
      */
     private $activo;
+
+
 
     /**
      * Get id
@@ -145,7 +146,7 @@ class Tecnico
     /**
      * Get activo
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getActivo()
     {

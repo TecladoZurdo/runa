@@ -31,7 +31,7 @@ framework:
     fragments: ~
     http_method_override: true
 
-    
+
 # Assetic Configuration
 assetic:
     debug:          "%kernel.debug%"
@@ -98,7 +98,7 @@ twig:
 # Doctrine Configuration
 doctrine:
     dbal:
-        driver: pdo_pgsql
+        driver: pdo_sqlsrv
         host: '%database_host%'
         port: '%database_port%'
         dbname: '%database_name%'

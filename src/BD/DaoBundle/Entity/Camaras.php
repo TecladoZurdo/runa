@@ -17,8 +17,7 @@ class Camaras
      *
      * @ORM\Column(name="id", type="bigint", nullable=false)
      * @ORM\Id
-     * @ORM\GeneratedValue(strategy="SEQUENCE")
-     * @ORM\SequenceGenerator(sequenceName="camaras_id_seq", allocationSize=1, initialValue=1)
+     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $id;
 
@@ -32,21 +31,21 @@ class Camaras
     /**
      * @var string
      *
-     * @ORM\Column(name="codigo", type="string", nullable=true)
+     * @ORM\Column(name="codigo", type="text", length=8, nullable=true)
      */
     private $codigo;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="modelo", type="string", nullable=true)
+     * @ORM\Column(name="modelo", type="text", length=8, nullable=true)
      */
     private $modelo;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="marca", type="string", nullable=true)
+     * @ORM\Column(name="marca", type="text", length=8, nullable=true)
      */
     private $marca;
 
@@ -60,14 +59,14 @@ class Camaras
     /**
      * @var string
      *
-     * @ORM\Column(name="estado", type="string", nullable=true)
+     * @ORM\Column(name="estado", type="text", length=8, nullable=true)
      */
     private $estado;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="ubicacion", type="string", nullable=true)
+     * @ORM\Column(name="ubicacion", type="text", length=8, nullable=true)
      */
     private $ubicacion;
 
@@ -76,7 +75,7 @@ class Camaras
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -99,7 +98,7 @@ class Camaras
     /**
      * Get ctTipo
      *
-     * @return integer 
+     * @return integer
      */
     public function getCtTipo()
     {
@@ -122,7 +121,7 @@ class Camaras
     /**
      * Get codigo
      *
-     * @return string 
+     * @return string
      */
     public function getCodigo()
     {
@@ -145,7 +144,7 @@ class Camaras
     /**
      * Get modelo
      *
-     * @return string 
+     * @return string
      */
     public function getModelo()
     {
@@ -168,7 +167,7 @@ class Camaras
     /**
      * Get marca
      *
-     * @return string 
+     * @return string
      */
     public function getMarca()
     {
@@ -191,7 +190,7 @@ class Camaras
     /**
      * Get activo
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getActivo()
     {
@@ -214,7 +213,7 @@ class Camaras
     /**
      * Get estado
      *
-     * @return string 
+     * @return string
      */
     public function getEstado()
     {
@@ -237,7 +236,7 @@ class Camaras
     /**
      * Get ubicacion
      *
-     * @return string 
+     * @return string
      */
     public function getUbicacion()
     {
