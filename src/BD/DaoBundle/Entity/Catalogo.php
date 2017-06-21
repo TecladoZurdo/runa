@@ -36,6 +36,16 @@ class Catalogo
     private $catalogo_id;
 
     /**
+     * @var \Catalogo
+     *
+     * @ORM\ManyToOne(targetEntity="Catalogo")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="catalogo_id", referencedColumnName="id")
+     * })
+     */
+    private $catalogo;
+
+    /**
      * @var integer
      *
      * @ORM\Column(name="orden", type="smallint", nullable=true)
@@ -181,5 +191,38 @@ class Catalogo
     public function getActivo()
     {
         return $this->activo;
+    }
+
+    /**
+     * Get catalogo_id
+     *
+     * @return integer 
+     */
+    public function getCatalogoId()
+    {
+        return $this->catalogo_id;
+    }
+
+    /**
+     * Set catalogo
+     *
+     * @param \BD\DaoBundle\Entity\Catalogo $catalogo
+     * @return Catalogo
+     */
+    public function setCatalogo(\BD\DaoBundle\Entity\Catalogo $catalogo = null)
+    {
+        $this->catalogo = $catalogo;
+
+        return $this;
+    }
+
+    /**
+     * Get catalogo
+     *
+     * @return \BD\DaoBundle\Entity\Catalogo 
+     */
+    public function getCatalogo()
+    {
+        return $this->catalogo;
     }
 }

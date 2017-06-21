@@ -17,23 +17,29 @@ use Utilitarios\UtilBundle\Controller\Repositorios;
 class OrdenTrabajoController extends Controller
 {
     /**
+     * Metodo inicial del aplicativo
      * @Route("/", name="_inicio")
      */
     public function indexAction(Request $request)
     {
+      //-- inicializacion de la clase orden de trabajo
     	$ordenTrabajo = new OrdenTrabajo();
-
+      //-- creacion del formulario
     	$form = $this->createForm(OrdenTrabajoType::class,$ordenTrabajo);
-
+      //-- recibe los datos en caso de respuesta del frontend
       $form->handleRequest($request);
+      //-- control si el formulario fue enviado con datos correctos
       if ($form->isSubmitted() && $form->isValid()){
+        //-- obtencion de datos de los campos del formulario
         $dataForm = $this->getRequest()->get($form->getName());
+        //-- inicio del orm
         $em = $this->getDoctrine()->getManager();
-        $ordenTrabajo->setFechaInicio(\Datetime::createFromFormat('Y-m-d H:i',$dataForm['fechaIni']));
-        $ordenTrabajo->setFechaTermino(\Datetime::createFromFormat('Y-m-d H:i',$dataForm['fechaFin']));
+        //-- formateo de fechas a un formato legible
+        $ordenTrabajo->setFechaInicio(\Datetime::createFromFormat('Y-m-d H:i:0',$dataForm['fechaIni']));
+        $ordenTrabajo->setFechaTermino(\Datetime::createFromFormat('Y-m-d H:i:0',$dataForm['fechaFin']));
         $ordenTrabajo->setActivo(true);
+        //-- se envia a guardar en la base
         $em->persist($ordenTrabajo);
-
 
         if (@$dataForm['camaras']){
           $listCamaras = $dataForm['camaras'];

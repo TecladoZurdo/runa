@@ -43,16 +43,22 @@ class OrdenTrabajo
     private $empresaId;
 
     /**
-     * @var integer
+     * @var \Catalogo
      *
-     * @ORM\Column(name="ct_sistema", type="bigint", nullable=true)
+     * @ORM\ManyToOne(targetEntity="Catalogo")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="ct_sistema", referencedColumnName="id")
+     * })
      */
     private $ctSistema;
 
     /**
-     * @var integer
+     * @var \Catalogo
      *
-     * @ORM\Column(name="ct_servicio", type="bigint", nullable=true)
+     * @ORM\ManyToOne(targetEntity="Catalogo")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="ct_servicio", referencedColumnName="id")
+     * })
      */
     private $ctServicio;
 
@@ -586,5 +592,28 @@ class OrdenTrabajo
     public function getEmpresa()
     {
         return $this->empresa;
+    }
+
+    /**
+     * Set tecnico
+     *
+     * @param \BD\DaoBundle\Entity\Tecnico $tecnico
+     * @return OrdenTrabajo
+     */
+    public function setTecnico(\BD\DaoBundle\Entity\Tecnico $tecnico = null)
+    {
+        $this->tecnico = $tecnico;
+
+        return $this;
+    }
+
+    /**
+     * Get tecnico
+     *
+     * @return \BD\DaoBundle\Entity\Tecnico
+     */
+    public function getTecnico()
+    {
+        return $this->tecnico;
     }
 }
