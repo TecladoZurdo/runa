@@ -35,8 +35,15 @@ class OrdenTrabajoController extends Controller
         //-- inicio del orm
         $em = $this->getDoctrine()->getManager();
         //-- formateo de fechas a un formato legible
-        $ordenTrabajo->setFechaInicio(\Datetime::createFromFormat('Y-m-d H:i:0',$dataForm['fechaIni']));
-        $ordenTrabajo->setFechaTermino(\Datetime::createFromFormat('Y-m-d H:i:0',$dataForm['fechaFin']));
+        //printf(\Datetime::createFromFormat('Y-m-d H:i',$dataForm['fechaIni']));
+        //die();
+        $ordenTrabajo->setFechaInicio(\Datetime::createFromFormat('Y-m-d H:i:s.u',$dataForm['fechaIni']));
+        $ordenTrabajo->setFechaTermino(\Datetime::createFromFormat('Y-m-d H:i:s.u',$dataForm['fechaFin']));
+        $ordenTrabajo->setFechaCreacion(\Datetime::createFromFormat('Y-m-d H:i:s.u',$dataForm['fechaFin']));
+
+        //$ordenTrabajo->setFechaInicio(new \DateTime("now"));
+        // $ordenTrabajo->setFechaTermino(new \DateTime("now"));
+        // $ordenTrabajo->setFechaCreacion(new \DateTime("now"));
         $ordenTrabajo->setActivo(true);
         //-- se envia a guardar en la base
         $em->persist($ordenTrabajo);

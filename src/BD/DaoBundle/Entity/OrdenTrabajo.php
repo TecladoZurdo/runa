@@ -100,7 +100,7 @@ class OrdenTrabajo
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="fecha_creacion", type="datetime", nullable=true)
+     * @ORM\Column(name="fecha_creacion", type="datetime", nullable=false)
      */
     private $fechaCreacion;
 
@@ -169,6 +169,9 @@ class OrdenTrabajo
      */
     private $solucionTecnica;
 
+    public function __construct(){
+      $this->fechaCreacion = new \DateTime();
+    }
 
     /**
      * Get id
