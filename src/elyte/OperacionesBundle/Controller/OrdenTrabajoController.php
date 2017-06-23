@@ -35,26 +35,22 @@ class OrdenTrabajoController extends Controller
         //-- inicio del orm
         $em = $this->getDoctrine()->getManager();
         //-- formateo de fechas a un formato legible
-        //printf(\Datetime::createFromFormat('Y-m-d H:i',$dataForm['fechaIni']));
-        //die();
-        $ordenTrabajo->setFechaInicio(\Datetime::createFromFormat('Y-m-d H:i:s.u',$dataForm['fechaIni']));
-        $ordenTrabajo->setFechaTermino(\Datetime::createFromFormat('Y-m-d H:i:s.u',$dataForm['fechaFin']));
-        $ordenTrabajo->setFechaCreacion(\Datetime::createFromFormat('Y-m-d H:i:s.u',$dataForm['fechaFin']));
+        $ordenTrabajo->setFechaInicio(\Datetime::createFromFormat('Y-m-d H:i',$dataForm['fechaIni']));
+        $ordenTrabajo->setFechaTermino(\Datetime::createFromFormat('Y-m-d H:i',$dataForm['fechaFin']));
 
-        //$ordenTrabajo->setFechaInicio(new \DateTime("now"));
-        // $ordenTrabajo->setFechaTermino(new \DateTime("now"));
-        // $ordenTrabajo->setFechaCreacion(new \DateTime("now"));
+        //-- se defin si esta activo en el sistema
         $ordenTrabajo->setActivo(true);
         //-- se envia a guardar en la base
         $em->persist($ordenTrabajo);
-
+        //-- construye una lsita de camaras
         if (@$dataForm['camaras']){
           $listCamaras = $dataForm['camaras'];
         }else {
           $listCamaras=null;
         }
 
-
+        //-- si existe camaras definidas se procede a recorrer e
+        //-- insertar en la tabla
         if ($listCamaras){
           $camaraRepo = $em->getRepository(Repositorios::$camaras);
           foreach ($listCamaras as $key => $value) {
@@ -68,12 +64,14 @@ class OrdenTrabajoController extends Controller
               $em->persist($camarasOrdenTrabajo);
           }
         }
+        //-- se construye una lista de puertas
           if (@$dataForm['puertas']){
             $listPuertas = $dataForm['puertas'];
           }else {
             $listPuertas = null;
           }
-
+          //-- si existe puertas definidas se procede a recorre e
+          //-- insertar en la tabla
           if ($listPuertas){
             $puertasRepo = $em->getRepository(Repositorios::$puertas);
             foreach ($listPuertas as $key => $value) {
@@ -88,17 +86,21 @@ class OrdenTrabajoController extends Controller
             }
 
         }
-
+        //-- se hace el commit y procede a liberar la memoria
         $em->flush();
+        //-- se redirige a la pantalla de resultado correcto
         return $this->redirectToRoute("_registroOk");
       }else {
-
+        //-- aqui datos adicionales antes de ingresar al formulario
       }
+      //-- si recien inicia o tiene errores el formulario se muestra la
+      //-- pantalla inicial
         return $this->render('OperacionesBundle:OT:index.html.twig',
         	array('form'=>$form->createView()));
     }
 
     /**
+    * proceso ok
     * @Route("/registro",name="_registroOk")
     */
     public function registrOkAction(){

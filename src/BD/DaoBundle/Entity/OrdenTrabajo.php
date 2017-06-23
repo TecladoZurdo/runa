@@ -169,9 +169,7 @@ class OrdenTrabajo
      */
     private $solucionTecnica;
 
-    public function __construct(){
-      $this->fechaCreacion = new \DateTime();
-    }
+  
 
     /**
      * Get id
