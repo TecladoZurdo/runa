@@ -86,7 +86,7 @@ class OrdenTrabajoType extends AbstractType
           ,'empty_value' =>'--seleccione--'
         ))
         ->add('camaras',EntityType::class,array(
-          'label'=>'Camaras'
+          'label'=>'Cámaras'
           ,'class'=>Repositorios::$camaras
           ,'query_builder' => function ($er){
             return $er->getCamarasQueryBuilder();
