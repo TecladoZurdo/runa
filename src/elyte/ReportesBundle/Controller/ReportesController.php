@@ -21,9 +21,9 @@ class ReportesController extends Controller
        $ordenesTrabajo = $repoOrdenTrabajo->findAll();
        if ($ordenesTrabajo){
          //-- cabecera de la tabla
-         $dtOrdenPago['header']=array("Numero Ticket","Numero Orden","Descripcion","Camaras","Puertas","Solucion","Fecha Final","Tecnico","Cliente","Accion");
+         $dtOrdenPago['header']=array("Número Ticket","Número Orden","Descripción","Cámaras","Puertas","Solución","Fecha Final","Técnico","Cliente","Acción");
          //-- pide de la tabla
-         $dtOrdenPago['footer']=array("Numero Ticket","Numero Orden","Descripcion","Camaras","Puertas","Solucion","Fecha Final","Tecnico","Cliente","Acccion");
+         $dtOrdenPago['footer']=array("Número Ticket","Número Orden","Descripción","Cámaras","Puertas","Solución","Fecha Final","Técnico","Cliente","Accción");
          //-- campos que se mostraran en la orden de trabajo
          $dtOrdenPago['campos']=array("num_ticket","num_ord_trab","descripcion","listCamaras","listPuertas","solucion","fechaFin","tecnico","cliente","accion");
 
