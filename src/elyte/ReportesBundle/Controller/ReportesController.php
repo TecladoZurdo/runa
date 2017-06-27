@@ -14,16 +14,23 @@ class ReportesController extends Controller
      */
     public function indexAction()
     {
+      //-- inicializo el entity
        $em = $this->getDoctrine()->getManager();
        $repoOrdenTrabajo = $em->getRepository(Repositorios::$ordenTrabajo);
+       //-- busco todas las ordenes de trabajo
        $ordenesTrabajo = $repoOrdenTrabajo->findAll();
        if ($ordenesTrabajo){
-         $dtOrdenPago['header']=array("Numero Ticket","Numero Orden","Descripcion","Camaras","Puertas","Solucion","Fecha Final","Tecnico","Accion");
-         $dtOrdenPago['footer']=array("Numero Ticket","Numero Orden","Descripcion","Camaras","Puertas","Solucion","Fecha Final","Tecnico","Acccion");
-         $dtOrdenPago['campos']=array("num_ticket","num_ord_trab","descripcion","listCamaras","listPuertas","solucion","fechaFin","tecnico","accion");
+         //-- cabecera de la tabla
+         $dtOrdenPago['header']=array("Numero Ticket","Numero Orden","Descripcion","Camaras","Puertas","Solucion","Fecha Final","Tecnico","Cliente","Accion");
+         //-- pide de la tabla
+         $dtOrdenPago['footer']=array("Numero Ticket","Numero Orden","Descripcion","Camaras","Puertas","Solucion","Fecha Final","Tecnico","Cliente","Acccion");
+         //-- campos que se mostraran en la orden de trabajo
+         $dtOrdenPago['campos']=array("num_ticket","num_ord_trab","descripcion","listCamaras","listPuertas","solucion","fechaFin","tecnico","cliente","accion");
+
 
          $repoPuertas=$em->getRepository(Repositorios::$puertasOrdenTrabajo);
          $repoCamaras=$em->getRepository(Repositorios::$camarasOrdenTrabajo);
+         //-- recorremos
          foreach ($ordenesTrabajo as $key => $value) {
            # code...
             $camaras = $repoCamaras->findBy(array('ordenTrabajo'=>$value));
@@ -44,14 +51,14 @@ class ReportesController extends Controller
                 $listPuertas.=$valueP->getPuertas()->getCodigo().' ';
               }
             }
-
+            //-- se arma los datos de la tabla
             $tableDatos[]=array('num_ticket'=>$value->getNumTicket(),'num_ord_trab'=>$value->getNumOrdTrab(),'descripcion'=>$value->getDescripcion()
           ,'listCamaras'=>$listCamaras,'listPuertas'=>$listPuertas,'solucion'=>$value->getSolucion(),
-          'fechaFin'=>$value->getFechaTermino()->format('Y-m-d H:i:s'),'tecnico'=>$value->getTecnico()->getNombres(),"accion"=>"");
+          'fechaFin'=>$value->getFechaTermino()->format('Y-m-d H:i:s'),'tecnico'=>$value->getTecnico()->getNombres(),'cliente'=>$value->getcliente()->getNombre(),"accion"=>"");
          }
 
          $dtOrdenPago['body'] =$tableDatos;
-       }else {
+       }else { //-- en caso de no tener ningun dato se envia en blanco
           $dtOrdenPago['header']=array();
           $dtOrdenPago['campos']=array();
           $dtOrdenPago['body'] =null;
