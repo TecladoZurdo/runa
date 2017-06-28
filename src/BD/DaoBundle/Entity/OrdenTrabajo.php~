@@ -100,7 +100,7 @@ class OrdenTrabajo
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="fecha_creacion", type="datetime", nullable=true)
+     * @ORM\Column(name="fecha_creacion", type="datetime", nullable=false)
      */
     private $fechaCreacion;
 
@@ -168,6 +168,13 @@ class OrdenTrabajo
      * @ORM\Column(name="solucion_tecnica", type="string", length=1500, nullable=true)
      */
     private $solucionTecnica;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="estado", type="integer", nullable=false)
+     */
+    private $estado;
 
 
     /**

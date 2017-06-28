@@ -10,6 +10,7 @@ use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 
 
 use Utilitarios\UtilBundle\Controller\Repositorios;
@@ -38,6 +39,7 @@ class OrdenTrabajoType extends AbstractType
         ->add('fechaFin',TextType::class,array('mapped'=>false))
         //->add('horaTermino')
         //->add('activo')
+
         //->add('fechaCreacion')
         ->add('cliente',EntityType::class,array(
           'label'=>'Cliente',
@@ -110,6 +112,7 @@ class OrdenTrabajoType extends AbstractType
           ,'attr'=>array('class'=>'ui fluid normal dropdown')
         ))
         //->add('detalleOrdenTrabajo')
+        //->add('estado',ChoiceType::class,array('choices'=>array('1'=>'Cerrado','0'=>'Abierto')))
         ;
     }
 

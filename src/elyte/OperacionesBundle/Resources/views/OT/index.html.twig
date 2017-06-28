@@ -62,14 +62,29 @@
 </div>
 <div class="fields">
 	<div class="field">
-		{#{{form_label(form.fechaInicio)}}#}
-		{#{{form_datewidget(form.fechaIncio)}}#}
 		<label for="">Fecha Inicio Año-mes-día Hora:minutos</label>
 		{{form_widget(form.fechaIni,{attr:{'placeholder':'aaaa-mm-dd hh:mm'}})}}
 	</div>
 	<div class="field">
 		<label for="">Fecha Termino Año-mes-día Hora:minutos</label>
 		{{form_widget(form.fechaFin,{attr:{'placeholder':'aaaa-mm-dd hh:mm'}})}}
+	</div>
+	<div class="field">
+		<label for="">Estado de la Orden de Trabajo</label>
+		<div id="radioData" class="inline fields">
+        <div class="field">
+          <div class="ui radio checkbox">
+            <input  type="radio" name="estado" id="abierto" value=1>
+            <label>Abierto</label>
+          </div>
+        </div>
+        <div class="field">
+          <div class="ui radio checkbox">
+            <input type="radio" name="estado" id="cerrado" value=0>
+            <label>Cerrado</label>
+          </div>
+        </div>
+      </div>
 	</div>
 </div>
 <div class="fields">
@@ -217,6 +232,15 @@ $('.ui.form').form({
 				{
 					type : 'empty',
 					prompt : 'Seleccione un técnico'
+				}
+			]
+		},
+		estado : {
+			identifier: 'estado',
+			rules : [
+				{
+					type : 'checked',
+					prompt : 'Seleccione un estado'
 				}
 			]
 		}

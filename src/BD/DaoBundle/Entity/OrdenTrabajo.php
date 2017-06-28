@@ -169,7 +169,13 @@ class OrdenTrabajo
      */
     private $solucionTecnica;
 
-  
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="estado", type="integer", nullable=false)
+     */
+    private $estado;
+
 
     /**
      * Get id
@@ -616,5 +622,28 @@ class OrdenTrabajo
     public function getTecnico()
     {
         return $this->tecnico;
+    }
+
+    /**
+     * Set estado
+     *
+     * @param integer $estado
+     * @return OrdenTrabajo
+     */
+    public function setEstado($estado)
+    {
+        $this->estado = $estado;
+
+        return $this;
+    }
+
+    /**
+     * Get estado
+     *
+     * @return integer 
+     */
+    public function getEstado()
+    {
+        return $this->estado;
     }
 }

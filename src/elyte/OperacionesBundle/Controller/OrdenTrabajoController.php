@@ -32,6 +32,8 @@ class OrdenTrabajoController extends Controller
       if ($form->isSubmitted() && $form->isValid()){
         //-- obtencion de datos de los campos del formulario
         $dataForm = $this->getRequest()->get($form->getName());
+        $estadoForm = $this->getRequest()->get('estado');
+
         //-- inicio del orm
         $em = $this->getDoctrine()->getManager();
         //-- formateo de fechas a un formato legible
@@ -40,8 +42,12 @@ class OrdenTrabajoController extends Controller
 
         //-- se defin si esta activo en el sistema
         $ordenTrabajo->setActivo(true);
+        //-- estado de la orden de trabajo abierto 1 cerrado 0
+        $ordenTrabajo->setEstado($estadoForm);
         //-- se envia a guardar en la base
         $em->persist($ordenTrabajo);
+
+
         //-- construye una lsita de camaras
         if (@$dataForm['camaras']){
           $listCamaras = $dataForm['camaras'];
