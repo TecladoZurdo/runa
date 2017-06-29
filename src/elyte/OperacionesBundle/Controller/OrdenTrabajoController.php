@@ -115,7 +115,7 @@ class OrdenTrabajoController extends Controller
 
     /**
     *Proceso para edicion
-    *@Route("/editar/{id}",name="_editar")
+    *@Route("/editar/{id}",name="_editar",defaults={"id"=0})
     */
     public function editarAction($id){
       //-- proceso de recuperacion de datos de la orden de trabajo
