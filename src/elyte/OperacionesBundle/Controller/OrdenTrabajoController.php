@@ -112,4 +112,14 @@ class OrdenTrabajoController extends Controller
     public function registrOkAction(){
       return $this->render("OperacionesBundle:OT:registroOk.html.twig");
     }
+
+    /**
+    *Proceso para edicion
+    *@Route("/editar/{id}",name="_editar")
+    */
+    public function editarAction($id){
+      //-- proceso de recuperacion de datos de la orden de trabajo
+      //--- y presentacion para la edicion de datos
+      return $this->render("OperacionesBundle:OT:editar.html.twig");
+    }
 }

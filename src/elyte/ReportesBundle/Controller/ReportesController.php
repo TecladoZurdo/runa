@@ -21,11 +21,11 @@ class ReportesController extends Controller
        $ordenesTrabajo = $repoOrdenTrabajo->findAll();
        if ($ordenesTrabajo){
          //-- cabecera de la tabla
-         $dtOrdenPago['header']=array("Número Ticket","Número Orden","Descripción","Cámaras","Puertas","Solución","Fecha Final","Técnico","Cliente","Acción");
+         $dtOrdenPago['header']=array("Número Ticket","Número Orden","Descripción","Cámaras","Puertas","Solución","Fecha Final","Técnico","Cliente","Estado","Acción");
          //-- pide de la tabla
-         $dtOrdenPago['footer']=array("Número Ticket","Número Orden","Descripción","Cámaras","Puertas","Solución","Fecha Final","Técnico","Cliente","Accción");
+         $dtOrdenPago['footer']=array("Número Ticket","Número Orden","Descripción","Cámaras","Puertas","Solución","Fecha Final","Técnico","Cliente","Estado","Accción");
          //-- campos que se mostraran en la orden de trabajo
-         $dtOrdenPago['campos']=array("num_ticket","num_ord_trab","descripcion","listCamaras","listPuertas","solucion","fechaFin","tecnico","cliente","accion");
+         $dtOrdenPago['campos']=array("num_ticket","num_ord_trab","descripcion","listCamaras","listPuertas","solucion","fechaFin","tecnico","cliente","estado","accion");
 
 
          $repoPuertas=$em->getRepository(Repositorios::$puertasOrdenTrabajo);
@@ -54,7 +54,8 @@ class ReportesController extends Controller
             //-- se arma los datos de la tabla
             $tableDatos[]=array('num_ticket'=>$value->getNumTicket(),'num_ord_trab'=>$value->getNumOrdTrab(),'descripcion'=>$value->getDescripcion()
           ,'listCamaras'=>$listCamaras,'listPuertas'=>$listPuertas,'solucion'=>$value->getSolucion(),
-          'fechaFin'=>$value->getFechaTermino()->format('Y-m-d H:i:s'),'tecnico'=>$value->getTecnico()->getNombres(),'cliente'=>$value->getcliente()->getNombre(),"accion"=>"");
+          'fechaFin'=>$value->getFechaTermino()->format('Y-m-d H:i:s'),'tecnico'=>$value->getTecnico()->getNombres(),
+          'cliente'=>$value->getcliente()->getNombre(),"estado"=>($value->getEstado()==0)? 'Abierto':'Cerrado',"accion"=>"");
          }
 
          $dtOrdenPago['body'] =$tableDatos;
