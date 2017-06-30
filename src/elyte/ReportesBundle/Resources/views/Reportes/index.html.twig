@@ -39,7 +39,12 @@ var table =$('#TdataOrdenTrabajo').DataTable({
             "targets": -1,
             "data": null,
             "defaultContent": "<button class='ui primary button'>Editar</button>"
-        } ],
+        },
+        {
+                "targets": [ 0 ],
+                "visible": false
+        }
+       ],
   responsive: {
             details: {
                 display: $.fn.dataTable.Responsive.display.modal( {
