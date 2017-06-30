@@ -5,11 +5,40 @@
 		<i class="sticky note icon"></i>
 		<div class="content">
 			Orden de Trabajo
-			<div class="sub header">Elyte</div>
+			<div class="sub header">Elyte ------------ <a class="ui red tag label">Editar</a></div>
 		</div>
 	</h2>
 </div>
 <div class="ui container">
+	{{form_start(form,{'attr':{'class':'ui form'}})}}
+	<div class="fields">
+		<div class="five wide field">
+			<label for="">Número de Ticket</label>
+			{{form_widget(form.numTicket)}}
+		</div>
+		<div class="five wide field">
+			<label for="">Número Orden de Trabajo</label>
+			{{form_widget(form.numOrdTrab)}}
+		</div>
+	</div>
+	<div class="field">
+		<div class="ui blue ribbon label">Descripción (requerimiento del cliente)</div>
+		<br><br>
+		{{form_widget(form.descripcion)}}
+	</div>
+	<div class="field">
+		<div class="ui red ribbon label">Solución Elyte</div>
+		<br><br>
+		{{form_widget(form.solucion)}}
+	</div>
+	<div class="field">
+		<div class="ui teal ribbon label">Solución Técnica</div>
+		<br><br>
+		{{form_widget(form.solucionTecnica)}}
+	</div>
+	<button type="submmit" name="button" class="ui primary button">Guardar</button>
+	<div class="ui error message"></div>
+	{{form_end(form)}}
 </div>
 
 {% endblock %}

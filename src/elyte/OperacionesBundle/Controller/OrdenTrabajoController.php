@@ -12,6 +12,7 @@ use BD\DaoBundle\Entity\CamarasOrdenTrabajo;
 use BD\DaoBundle\Entity\PuertasOrdenTrabajo;
 
 use BD\DaoBundle\Form\OrdenTrabajoType;
+use BD\DaoBundle\Form\OrdenTrabajoEditType;
 use Utilitarios\UtilBundle\Controller\Repositorios;
 
 class OrdenTrabajoController extends Controller
@@ -117,9 +118,39 @@ class OrdenTrabajoController extends Controller
     *Proceso para edicion
     *@Route("/editar/{id}",name="_editar",defaults={"id"=0})
     */
-    public function editarAction($id){
+    public function editarAction(Request $request,$id){
       //-- proceso de recuperacion de datos de la orden de trabajo
       //--- y presentacion para la edicion de datos
-      return $this->render("OperacionesBundle:OT:editar.html.twig");
+
+      $em = $this->getDoctrine()->getManager();
+
+      $OTrepositorio = $em->getRepository(Repositorios::$ordenTrabajo);
+
+      $ordenTrabajoItem = $OTrepositorio->findOneBy(array("id"=>$id));
+
+      //-- inicializacion de la clase orden de trabajo
+      $ordenTrabajo = new OrdenTrabajo();
+      $ordenTrabajo = $ordenTrabajoItem;
+      //$ordenTrabajo->setNumTicket($ordenTrabajoItem->getNumTicket());
+      //-- creacion del formulario
+      $form = $this->createForm(OrdenTrabajoEditType::class,$ordenTrabajo);
+      //-- recibe los datos en caso de respuesta del frontend
+      $form->handleRequest($request);
+      if ($form->isSubmitted() && $form->isValid()){
+
+        //-- obtencion de datos de los campos del formulario
+        $dataForm = $this->getRequest()->get($form->getName());
+
+        //-- se envia a guardar en la base
+        $em->persist($ordenTrabajo);
+
+        $em->flush();
+        //-- se redirige a la pantalla de resultado correcto
+        return $this->redirectToRoute("_registroOk");
+
+      }else {
+
+      }
+      return $this->render("OperacionesBundle:OT:editar.html.twig",array('form'=>$form->createView()));
     }
 }
