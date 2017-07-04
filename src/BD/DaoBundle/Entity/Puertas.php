@@ -24,7 +24,7 @@ class Puertas
     /**
      * @var string
      *
-     * @ORM\Column(name="codigo", type="text", length=16, nullable=true)
+     * @ORM\Column(name="codigo", type="text", length=250, nullable=true)
      */
     private $codigo;
 

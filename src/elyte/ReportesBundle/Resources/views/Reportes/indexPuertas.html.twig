@@ -1,0 +1,70 @@
+{% extends 'base.html.twig' %}
+{% block title %}Reportes{% endblock %}
+{% block stylesheets %}
+  <link rel="stylesheet" href="{{asset("css/buttons.dataTables.min.css")}}">
+  <link rel="stylesheet" href="{{asset("css/responsive.semanticui.min.css")}}">
+{% endblock %}
+
+{% block contenido %}
+<h2 class="ui header">
+   <i class="settings icon"></i>
+    <div class="content">
+     Puertas
+    <div class="sub header">Datos</div>
+   </div>
+  </h2>
+  {{include ('baseDataTable.html.twig',{'id':'TdataOrdenTrabajo','dtTable':dtTable})}}
+{% endblock %}
+
+
+{% block javascripts %}
+<script type="text/javascript" src="{{asset("assetic/jquery_dataTable_js.js")}}"></script>
+<script type="text/javascript" src="{{asset("assetic/dataTable_semantic_js.js")}}"></script>
+<script type="text/javascript" src="{{asset("js/datatables/dataTables.buttons.min.js")}}"></script>
+<script type="text/javascript" src="{{asset("js/datatables/buttons.flash.min.js")}}"></script>
+<script type="text/javascript" src="{{asset("js/datatables/jszip.min.js")}}"></script>
+<script type="text/javascript" src="{{asset("js/datatables/pdfmake.min.js")}}"></script>
+<script type="text/javascript" src="{{asset("js/datatables/vfs_fonts.js")}}"></script>
+<script type="text/javascript" src="{{asset("js/datatables/buttons.html5.min.js")}}"></script>
+<script type="text/javascript" src="{{asset("js/datatables/buttons.print.min.js")}}"></script>
+<script type="text/javascript" src="{{asset("js/datatables/dataTables.responsive.min.js")}}"></script>
+<script type="text/javascript" src="{{asset("js/datatables/responsive.semanticui.min.js")}}"></script>
+<script type="text/javascript">
+var table =$('#TdataOrdenTrabajo').DataTable({
+   dom: 'Blfrtip',
+        buttons: [
+            'copy', 'csv', 'excel', 'pdf', 'print'
+        ],
+        "columnDefs": [
+        //  {
+        //     "targets": -1,
+        //     "data": null,
+        //     "defaultContent": "<button class='ui primary button'>Editar</button>"
+        // },
+        {
+                "targets": [ 0 ],
+                "visible": false
+        }
+       ],
+  responsive: {
+            details: {
+                display: $.fn.dataTable.Responsive.display.modal( {
+                    header: function ( row ) {
+                         var data = row.data();
+                         return 'Detalles para  '+data[0]+' '+data[3];
+                    }
+                } ),
+                renderer: $.fn.dataTable.Responsive.renderer.tableAll( {
+                    tableClass: 'ui table'
+                } )
+            }
+        }
+
+});
+$('#TdataOrdenTrabajo tbody').on( 'click', 'button', function () {
+        var data = table.row( $(this).parents('tr')).data();
+
+        window.location.href="{{path('_editar')}}/"+data[0];
+    } );
+</script>
+{% endblock %}
