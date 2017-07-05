@@ -13,6 +13,23 @@
 {{form_start(form ,{'attr':{'class':'ui form'}})}}
 <div class="fields">
 	<div class="five wide field">
+		<label for="">Estado de la Orden de Trabajo</label>
+		<div id="radioData" class="grouped fields">
+        <div class="field">
+          <div class="ui radio checkbox">
+            <input  type="radio" name="estado" id="abierto" value=1>
+            <label>Abierto</label>
+          </div>
+        </div>
+        <div class="field">
+          <div class="ui radio checkbox">
+            <input type="radio" name="estado" id="cerrado" value=0>
+            <label>Cerrado</label>
+          </div>
+        </div>
+      </div>
+	</div>
+	<div class="five wide field">
 		<label for="">Número de Ticket</label>
 		{{form_widget(form.numTicket)}}
 	</div>
@@ -20,10 +37,11 @@
 		<label for="">Número Orden de Trabajo</label>
 		{{form_widget(form.numOrdTrab)}}
 	</div>
-	<div class="five wide field">
-		{{form_label(form.empresa)}}
-		{{form_widget(form.empresa)}}
-	</div>
+
+</div>
+<div class="five wide field">
+	{{form_label(form.empresa)}}
+	{{form_widget(form.empresa)}}
 </div>
 <div class="fields">
 	<div class="six wide field">
@@ -69,23 +87,7 @@
 		<label for="">Fecha Termino Año-mes-día Hora:minutos</label>
 		{{form_widget(form.fechaFin,{attr:{'placeholder':'aaaa-mm-dd hh:mm'}})}}
 	</div>
-	<div class="field">
-		<label for="">Estado de la Orden de Trabajo</label>
-		<div id="radioData" class="inline fields">
-        <div class="field">
-          <div class="ui radio checkbox">
-            <input  type="radio" name="estado" id="abierto" value=1>
-            <label>Abierto</label>
-          </div>
-        </div>
-        <div class="field">
-          <div class="ui radio checkbox">
-            <input type="radio" name="estado" id="cerrado" value=0>
-            <label>Cerrado</label>
-          </div>
-        </div>
-      </div>
-	</div>
+
 </div>
 <div class="fields">
 	<div class="eight wide field">
@@ -111,143 +113,364 @@ $('.ui.normal.dropdown')
 	maxSelections: 10
 })
 ;
-
+var validationRules = {
+	numTicket: {
+		identifier : 'bd_daobundle_ordentrabajo[numTicket]',
+		rules : [
+			{
+				type : 'empty',
+				prompt : 'Ingrese el número de ticket'
+			}
+		]
+	},
+	numOrdTrabajo: {
+		identifier : 'bd_daobundle_ordentrabajo[numOrdTrab]',
+		rules : [
+			{
+				type : 'empty',
+				prompt : 'Ingrese el número de Orden de trabajo'
+			}
+		]
+	},
+	empresa : {
+		identifier : 'bd_daobundle_ordentrabajo[empresa]',
+		rules : [
+			{
+				type : 'empty',
+				prompt : 'Seleccione una empresa'
+			}
+		]
+	},
+	sistema : {
+		identifier : 'bd_daobundle_ordentrabajo[ctSistema]',
+		rules : [
+			{
+				type : 'empty',
+				prompt: 'Seleccione un sistema'
+			}
+		]
+	},
+	servicio : {
+		identifier : 'bd_daobundle_ordentrabajo[ctServicio]',
+		rules : [
+			{
+				type : 'empty',
+				prompt : 'Seleccione el servicio'
+			}
+		]
+	},
+	descripcion : {
+		identifier : 'bd_daobundle_ordentrabajo[descripcion]',
+		rules : [
+			{
+				type : 'empty',
+				prompt : 'Ingrese una descripción'
+			},
+			{
+				type : 'minLength[10]',
+				prompt : 'Ingrese un mínimo de 10 caracteres'
+			}
+		]
+	},
+	solucion : {
+		identifier : 'bd_daobundle_ordentrabajo[solucion]',
+		rules : [
+			{
+				type : 'empty',
+				prompt : 'Ingrese una solución'
+			},
+			{
+				type : 'minLength[10]',
+				prompt : 'Ingrese un mínimo de 10 caracteres'
+			}
+		]
+	},
+	solucionTecnica : {
+		identifier : 'bd_daobundle_ordentrabajo[solucionTecnica]',
+		rules : [
+			{
+				type : 'empty',
+				prompt : 'Ingrese una solución técnica'
+			},
+			{
+				type : 'minLength[10]',
+				prompt : 'Ingrese un mínimo de 10 caracteres'
+			}
+		]
+	},
+	fechainicio : {
+		identifier : 'bd_daobundle_ordentrabajo[fechaIni]',
+		rules : [
+			{
+				type : 'empty',
+				prompt : 'Ingrese la fecha de inicio'
+			}
+		]
+	},
+	fechafin : {
+		identifier : 'bd_daobundle_ordentrabajo[fechaFin]',
+		rules : [
+			{
+				type : 'empty',
+				prompt : 'Ingrese la fecha de término'
+			}
+		]
+	},
+	cliente : {
+		identifier : 'bd_daobundle_ordentrabajo[cliente]',
+		rules : [
+			{
+				type : 'empty',
+				prompt : 'Seleccione un cliente'
+			}
+		]
+	},
+	tecnico : {
+		identifier: 'bd_daobundle_ordentrabajo[tecnico]',
+		rules : [
+			{
+				type : 'empty',
+				prompt : 'Seleccione un técnico'
+			}
+		]
+	},
+	estado : {
+		identifier: 'estado',
+		rules : [
+			{
+				type : 'checked',
+				prompt : 'Seleccione un estado'
+			}
+		]
+	}
+};
 
 $('.ui.form').form({
-	fields : {
-		numTicket: {
-			identifier : 'bd_daobundle_ordentrabajo[numTicket]',
-			rules : [
-				{
-					type : 'empty',
-					prompt : 'Ingrese el número de ticket'
-				}
-			]
-		},
-		numOrdTrabajo: {
-			identifier : 'bd_daobundle_ordentrabajo[numOrdTrab]',
-			rules : [
-				{
-					type : 'empty',
-					prompt : 'Ingrese el número de Orden de trabajo'
-				}
-			]
-		},
-		empresa : {
-			identifier : 'bd_daobundle_ordentrabajo[empresa]',
-			rules : [
-				{
-					type : 'empty',
-					prompt : 'Seleccione una empresa'
-				}
-			]
-		},
-		sistema : {
-			identifier : 'bd_daobundle_ordentrabajo[ctSistema]',
-			rules : [
-				{
-					type : 'empty',
-					prompt: 'Seleccione un sistema'
-				}
-			]
-		},
-		servicio : {
-			identifier : 'bd_daobundle_ordentrabajo[ctServicio]',
-			rules : [
-				{
-					type : 'empty',
-					prompt : 'Seleccione el servicio'
-				}
-			]
-		},
-		descripcion : {
-			identifier : 'bd_daobundle_ordentrabajo[descripcion]',
-			rules : [
-				{
-					type : 'empty',
-					prompt : 'Ingrese una descripción'
-				},
-				{
-					type : 'minLength[10]',
-					prompt : 'Ingrese un mínimo de 10 caracteres'
-				}
-			]
-		},
-		solucion : {
-			identifier : 'bd_daobundle_ordentrabajo[solucion]',
-			rules : [
-				{
-					type : 'empty',
-					prompt : 'Ingrese una solución'
-				},
-				{
-					type : 'minLength[10]',
-					prompt : 'Ingrese un mínimo de 10 caracteres'
-				}
-			]
-		},
-		solucionTecnica : {
-			identifier : 'bd_daobundle_ordentrabajo[solucionTecnica]',
-			rules : [
-				{
-					type : 'empty',
-					prompt : 'Ingrese una solución técnica'
-				},
-				{
-					type : 'minLength[10]',
-					prompt : 'Ingrese un mínimo de 10 caracteres'
-				}
-			]
-		},
-		fechainicio : {
-			identifier : 'bd_daobundle_ordentrabajo[fechaIni]',
-			rules : [
-				{
-					type : 'empty',
-					prompt : 'Ingrese la fecha de inicio'
-				}
-			]
-		},
-		fechafin : {
-			identifier : 'bd_daobundle_ordentrabajo[fechaFin]',
-			rules : [
-				{
-					type : 'empty',
-					prompt : 'Ingrese la fecha de término'
-				}
-			]
-		},
-		cliente : {
-			identifier : 'bd_daobundle_ordentrabajo[cliente]',
-			rules : [
-				{
-					type : 'empty',
-					prompt : 'Seleccione un cliente'
-				}
-			]
-		},
-		tecnico : {
-			identifier: 'bd_daobundle_ordentrabajo[tecnico]',
-			rules : [
-				{
-					type : 'empty',
-					prompt : 'Seleccione un técnico'
-				}
-			]
-		},
-		estado : {
-			identifier: 'estado',
-			rules : [
-				{
-					type : 'checked',
-					prompt : 'Seleccione un estado'
-				}
-			]
-		}
-	}
+	fields : validationRules
 }
 )
 ;
+
+$('input:radio').change(function(){
+	var abierto=1;
+	var cerrado=0;
+        if(this.value==abierto){
+						var reglasAbierto={
+							numTicket: {
+								identifier : 'bd_daobundle_ordentrabajo[numTicket]',
+								rules : [
+									{
+										type : 'empty',
+										prompt : 'Ingrese el número de ticket'
+									}
+								]
+							},
+
+							empresa : {
+								identifier : 'bd_daobundle_ordentrabajo[empresa]',
+								rules : [
+									{
+										type : 'empty',
+										prompt : 'Seleccione una empresa'
+									}
+								]
+							},
+							sistema : {
+								identifier : 'bd_daobundle_ordentrabajo[ctSistema]',
+								rules : [
+									{
+										type : 'empty',
+										prompt: 'Seleccione un sistema'
+									}
+								]
+							},
+							servicio : {
+								identifier : 'bd_daobundle_ordentrabajo[ctServicio]',
+								rules : [
+									{
+										type : 'empty',
+										prompt : 'Seleccione el servicio'
+									}
+								]
+							},
+							descripcion : {
+								identifier : 'bd_daobundle_ordentrabajo[descripcion]',
+								rules : [
+									{
+										type : 'empty',
+										prompt : 'Ingrese una descripción'
+									},
+									{
+										type : 'minLength[10]',
+										prompt : 'Ingrese un mínimo de 10 caracteres'
+									}
+								]
+							},
+
+							fechainicio : {
+								identifier : 'bd_daobundle_ordentrabajo[fechaIni]',
+								rules : [
+									{
+										type : 'empty',
+										prompt : 'Ingrese la fecha de inicio'
+									}
+								]
+							},
+
+							estado : {
+								identifier: 'estado',
+								rules : [
+									{
+										type : 'checked',
+										prompt : 'Seleccione un estado'
+									}
+								]
+							}
+						};
+						//$('.ui.form').form({fields:validationRules});
+						//var newValidationRules = $.extend(validationRules,reglasRadio);
+						$('.ui.form').form({fields: reglasAbierto});
+				}else{
+					  var reglasCerrado ={
+							numTicket: {
+								identifier : 'bd_daobundle_ordentrabajo[numTicket]',
+								rules : [
+									{
+										type : 'empty',
+										prompt : 'Ingrese el número de ticket'
+									}
+								]
+							},
+							numOrdTrabajo: {
+								identifier : 'bd_daobundle_ordentrabajo[numOrdTrab]',
+								rules : [
+									{
+										type : 'empty',
+										prompt : 'Ingrese el número de Orden de trabajo'
+									}
+								]
+							},
+							empresa : {
+								identifier : 'bd_daobundle_ordentrabajo[empresa]',
+								rules : [
+									{
+										type : 'empty',
+										prompt : 'Seleccione una empresa'
+									}
+								]
+							},
+							sistema : {
+								identifier : 'bd_daobundle_ordentrabajo[ctSistema]',
+								rules : [
+									{
+										type : 'empty',
+										prompt: 'Seleccione un sistema'
+									}
+								]
+							},
+							servicio : {
+								identifier : 'bd_daobundle_ordentrabajo[ctServicio]',
+								rules : [
+									{
+										type : 'empty',
+										prompt : 'Seleccione el servicio'
+									}
+								]
+							},
+							descripcion : {
+								identifier : 'bd_daobundle_ordentrabajo[descripcion]',
+								rules : [
+									{
+										type : 'empty',
+										prompt : 'Ingrese una descripción'
+									},
+									{
+										type : 'minLength[10]',
+										prompt : 'Ingrese un mínimo de 10 caracteres'
+									}
+								]
+							},
+							solucion : {
+								identifier : 'bd_daobundle_ordentrabajo[solucion]',
+								rules : [
+									{
+										type : 'empty',
+										prompt : 'Ingrese una solución'
+									},
+									{
+										type : 'minLength[10]',
+										prompt : 'Ingrese un mínimo de 10 caracteres'
+									}
+								]
+							},
+							solucionTecnica : {
+								identifier : 'bd_daobundle_ordentrabajo[solucionTecnica]',
+								rules : [
+									{
+										type : 'empty',
+										prompt : 'Ingrese una solución técnica'
+									},
+									{
+										type : 'minLength[10]',
+										prompt : 'Ingrese un mínimo de 10 caracteres'
+									}
+								]
+							},
+							fechainicio : {
+								identifier : 'bd_daobundle_ordentrabajo[fechaIni]',
+								rules : [
+									{
+										type : 'empty',
+										prompt : 'Ingrese la fecha de inicio'
+									}
+								]
+							},
+							fechafin : {
+								identifier : 'bd_daobundle_ordentrabajo[fechaFin]',
+								rules : [
+									{
+										type : 'empty',
+										prompt : 'Ingrese la fecha de término'
+									}
+								]
+							},
+							cliente : {
+								identifier : 'bd_daobundle_ordentrabajo[cliente]',
+								rules : [
+									{
+										type : 'empty',
+										prompt : 'Seleccione un cliente'
+									}
+								]
+							},
+							tecnico : {
+								identifier: 'bd_daobundle_ordentrabajo[tecnico]',
+								rules : [
+									{
+										type : 'empty',
+										prompt : 'Seleccione un técnico'
+									}
+								]
+							},
+							estado : {
+								identifier: 'estado',
+								rules : [
+									{
+										type : 'checked',
+										prompt : 'Seleccione un estado'
+									}
+								]
+							}
+						};
+						$('.ui.form').form({fields:validationRules});
+						var newValidationRules = $.extend(validationRules,reglasCerrado);
+						$('.ui.form').form({fields: newValidationRules});
+				}
+    });
+
+
+
+
 
 </script>
 {% endblock %}

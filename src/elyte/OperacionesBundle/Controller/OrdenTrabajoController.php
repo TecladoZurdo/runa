@@ -37,14 +37,20 @@ class OrdenTrabajoController extends Controller
 
         //-- inicio del orm
         $em = $this->getDoctrine()->getManager();
+        //-- estado de la orden de trabajo abierto 1 cerrado 0
+        $ordenTrabajo->setEstado($estadoForm);
         //-- formateo de fechas a un formato legible
+        if ($estadoForm == 1){
+        $ordenTrabajo->setFechaInicio(\Datetime::createFromFormat('Y-m-d H:i',$dataForm['fechaIni']));
+      }else {
         $ordenTrabajo->setFechaInicio(\Datetime::createFromFormat('Y-m-d H:i',$dataForm['fechaIni']));
         $ordenTrabajo->setFechaTermino(\Datetime::createFromFormat('Y-m-d H:i',$dataForm['fechaFin']));
+      }
+
 
         //-- se defin si esta activo en el sistema
         $ordenTrabajo->setActivo(true);
-        //-- estado de la orden de trabajo abierto 1 cerrado 0
-        $ordenTrabajo->setEstado($estadoForm);
+
         //-- se envia a guardar en la base
         $em->persist($ordenTrabajo);
 

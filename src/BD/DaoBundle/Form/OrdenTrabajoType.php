@@ -97,7 +97,7 @@ class OrdenTrabajoType extends AbstractType
           ,'empty_value' =>'--seleccione--'
           ,'mapped'=>false
           ,'multiple'=>true
-          ,'attr'=>array('class'=>'ui fluid normal dropdown')
+          ,'attr'=>array('class'=>'ui fluid search normal selection dropdown')
         ))
         ->add('puertas',EntityType::class,array(
           'label'=>'Puertas'
@@ -109,7 +109,7 @@ class OrdenTrabajoType extends AbstractType
           ,'empty_value' =>'--seleccione--'
           ,'mapped'=>false
           ,'multiple'=>true
-          ,'attr'=>array('class'=>'ui fluid normal dropdown')
+          ,'attr'=>array('class'=>'ui fluid search normal selection dropdown')
         ))
         //->add('detalleOrdenTrabajo')
         //->add('estado',ChoiceType::class,array('choices'=>array('1'=>'Cerrado','0'=>'Abierto')))
