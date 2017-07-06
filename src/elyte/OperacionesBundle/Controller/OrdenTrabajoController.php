@@ -137,7 +137,7 @@ class OrdenTrabajoController extends Controller
       //-- inicializacion de la clase orden de trabajo
       $ordenTrabajo = new OrdenTrabajo();
       $ordenTrabajo = $ordenTrabajoItem;
-      //$ordenTrabajo->setNumTicket($ordenTrabajoItem->getNumTicket());
+      $numeroTicket =$ordenTrabajoItem->getNumTicket();
       //-- creacion del formulario
       $form = $this->createForm(OrdenTrabajoEditType::class,$ordenTrabajo);
       //-- recibe los datos en caso de respuesta del frontend
@@ -146,7 +146,11 @@ class OrdenTrabajoController extends Controller
 
         //-- obtencion de datos de los campos del formulario
         $dataForm = $this->getRequest()->get($form->getName());
-
+        $estadoForm = $this->getRequest()->get('cerrado');
+        $ordenTrabajo->setNumTicket($numeroTicket);
+        if ($estadoForm == 0){
+          $ordenTrabajo->setEstado(0);
+        }
         //-- se envia a guardar en la base
         $em->persist($ordenTrabajo);
 

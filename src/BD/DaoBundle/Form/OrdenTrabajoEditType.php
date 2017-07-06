@@ -24,13 +24,13 @@ class OrdenTrabajoEditType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-        ->add('numTicket')->add('numOrdTrab')
-        ->add('descripcion',TextareaType::class)
+        ->add('numTicket','integer',array('read_only'=>true))->add('numOrdTrab')
+        ->add('descripcion',TextareaType::class,array('read_only'=>true))
         ->add('solucion',TextareaType::class)
         ->add('solucionTecnica',TextareaType::class)
         //->add('fechaIni',TextType::class,array('mapped'=>false,'data'=>date('Y-m-d H:i')))
-        //->add('fechaFin',TextType::class,array('mapped'=>false))
-        /*->add('cliente',EntityType::class,array(
+        ->add('fechaFin',TextType::class,array('mapped'=>false,'data'=>date('Y-m-d H:i')))
+        ->add('cliente',EntityType::class,array(
           'label'=>'Cliente',
           'class'=>Repositorios::$cliente
           ,'query_builder' => function ($er){
@@ -39,7 +39,7 @@ class OrdenTrabajoEditType extends AbstractType
           ,'property' =>'nombre'
           ,'empty_value'=>'--seleccione--'
         ))
-        */
+
         /*->add('empresa',EntityType::class,array('label'=>'Empresa'
             ,'class'=>Repositorios::$empresa
             ,'query_builder'=>function($er){
@@ -69,6 +69,7 @@ class OrdenTrabajoEditType extends AbstractType
           ,'property'=>'nombre'
           ,'empty_value'=>'--seleccione--'
         ))
+        */
         ->add('tecnico',EntityType::class,array(
           'label'=>'Técnico'
           ,'class'=>Repositorios::$tecnico
@@ -78,6 +79,7 @@ class OrdenTrabajoEditType extends AbstractType
           ,'property' => 'nombres'
           ,'empty_value' =>'--seleccione--'
         ))
+        /*
         ->add('camaras',EntityType::class,array(
           'label'=>'Cámaras'
           ,'class'=>Repositorios::$camaras

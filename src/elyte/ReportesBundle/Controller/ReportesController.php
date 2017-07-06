@@ -55,16 +55,20 @@ class ReportesController extends Controller
 
               }
             }
-            //printf($value->getId());
-            //-- se arma los datos de la tabla
+            $numeroOrdenTrabajo = $value->getNumOrdTrab() == null ? 'Sin Número':$value->getNumOrdTrab();
+            $fechaFin = $value->getFechaTermino() == null ? 'Sin Fecha': $value->getFechaTermino()->format('Y-m-d H:i:s');
+            $tecnico = $value->getTecnico() == null ? '': $value->getTecnico()->getNombres();
+            $cliente = $value->getcliente() == null ? '' : $value->getcliente()->getNombre();
             $tableDatos[]=array(
               'id'=>$value->getId()
-              ,'num_ticket'=>$value->getNumTicket(),'num_ord_trab'=>$value->getNumOrdTrab()
+              ,'num_ticket'=>$value->getNumTicket(),'num_ord_trab'=>$numeroOrdenTrabajo
               ,'descripcion'=>$value->getDescripcion()
               ,'listCamaras'=>$listCamaras,'listPuertas'=>$listPuertas
               ,'solucion'=>$value->getSolucion(),
-              'fechaFin'=>$value->getFechaTermino()->format('Y-m-d H:i:s'),'tecnico'=>$value->getTecnico()->getNombres(),
-              'cliente'=>$value->getcliente()->getNombre(),"estado"=>($value->getEstado()==1)? 'Abierto':'Cerrado',"accion"=>""
+              'fechaFin'=>$fechaFin,
+              'tecnico'=>$tecnico,
+              'cliente'=>$cliente,
+              "estado"=>($value->getEstado()==1)? 'Abierto':'Cerrado',"accion"=>""
         );
          }
 

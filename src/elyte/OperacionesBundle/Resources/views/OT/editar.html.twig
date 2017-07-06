@@ -36,6 +36,27 @@
 		<br><br>
 		{{form_widget(form.solucionTecnica)}}
 	</div>
+	<div class="field">
+		<label for="">Fecha Termino Año-mes-día Hora:minutos</label>
+		{{form_widget(form.fechaFin,{attr:{'placeholder':'aaaa-mm-dd hh:mm'}})}}
+	</div>
+	<div class="fields">
+		<div class="eight wide field">
+			{{form_label(form.cliente)}}
+			{{form_widget(form.cliente)}}
+		</div>
+		<div class="eight wide field">
+			{{form_label(form.tecnico)}}
+			{{form_widget(form.tecnico)}}
+		</div>
+	</div>
+	<div class="field">
+		<div class="ui checkbox">
+    	<input type="checkbox" name="cerrado" value=0>
+    	<label>Está seguro de cerrar el ticket</label>
+  	</div>
+	</div>
+
 	<button type="submmit" name="button" class="ui primary button">Guardar</button>
 	<div class="ui error message"></div>
 	{{form_end(form)}}
