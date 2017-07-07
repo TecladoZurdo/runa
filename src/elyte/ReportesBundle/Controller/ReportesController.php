@@ -90,67 +90,38 @@ class ReportesController extends Controller
     {
       //-- inicializo el entity
        $em = $this->getDoctrine()->getManager();
-       $repoOrdenTrabajo = $em->getRepository(Repositorios::$ordenTrabajo);
+       $repoObjeto = $em->getRepository(Repositorios::$puertas);
        //-- busco todas las ordenes de trabajo
-       $ordenesTrabajo = $repoOrdenTrabajo->findAll();
+       $puertas = $repoObjeto->findAll();
 
-       if ($ordenesTrabajo){
+       if ($puertas){
          //-- cabecera de la tabla
-         $dtOrdenPago['header']=array("id","Número Ticket","Número Orden","Descripción","Cámaras","Puertas","Solución","Fecha Final","Técnico","Cliente","Estado");
+         $dtObjeto['header']=array("Codigo","Modelo");
          //-- pide de la tabla
-         $dtOrdenPago['footer']=array("id","Número Ticket","Número Orden","Descripción","Cámaras","Puertas","Solución","Fecha Final","Técnico","Cliente","Estado");
+         $dtObjeto['footer']=array("Codigo","Modelo");
          //-- campos que se mostraran en la orden de trabajo
-         $dtOrdenPago['campos']=array("id","num_ticket","num_ord_trab","descripcion","listCamaras","listPuertas","solucion","fechaFin","tecnico","cliente","estado");
+         $dtObjeto['campos']=array("codigo","modelo");
 
-
-         $repoPuertas=$em->getRepository(Repositorios::$puertasOrdenTrabajo);
-         $repoCamaras=$em->getRepository(Repositorios::$camarasOrdenTrabajo);
 
          //-- recorremos
-         foreach ($ordenesTrabajo as $key => $value) {
+         foreach ($puertas as $key => $value) {
            # code...
-            $camaras = $repoCamaras->findBy(array('ordenTrabajo'=>$value));
-            $listCamaras=null;
-            if($camaras){
-              foreach ($camaras as $key => $valueC) {
-                # code...
-                $listCamaras.=$valueC->getCamaras()->getCodigo().' ';
-              }
-
-            }
-
-            $puertas = $repoPuertas->findBy(array('ordenTrabajo'=>$value));
-            $listPuertas=null;
-            if($puertas){
-              foreach ($puertas as $key => $valueP) {
-                # code...
-                $listPuertas.=$valueP->getPuertas()->getCodigo().' ';
-
-
-              }
-            }
-            //printf($value->getId());
             //-- se arma los datos de la tabla
             $tableDatos[]=array(
-              'id'=>$value->getId()
-              ,'num_ticket'=>$value->getNumTicket(),'num_ord_trab'=>$value->getNumOrdTrab()
-              ,'descripcion'=>$value->getDescripcion()
-              ,'listCamaras'=>$listCamaras,'listPuertas'=>$listPuertas
-              ,'solucion'=>$value->getSolucion(),
-              'fechaFin'=>$value->getFechaTermino()->format('Y-m-d H:i:s'),'tecnico'=>$value->getTecnico()->getNombres(),
-              'cliente'=>$value->getcliente()->getNombre(),"estado"=>($value->getEstado()==1)? 'Abierto':'Cerrado'
+              'codigo'=>$value->getCodigo()
+              ,'modelo'=>$value->getModelo()
         );
          }
 
-         $dtOrdenPago['body'] =$tableDatos;
+         $dtObjeto['body'] =$tableDatos;
        }else { //-- en caso de no tener ningun dato se envia en blanco
-          $dtOrdenPago['header']=array();
-          $dtOrdenPago['campos']=array();
-          $dtOrdenPago['body'] =null;
-          $dtOrdenPago['footer']=array();
+          $dtObjeto['header']=array();
+          $dtObjeto['campos']=array();
+          $dtObjeto['body'] =null;
+          $dtObjeto['footer']=array();
        }
 
-        return $this->render('ReportesBundle:Reportes:indexPuertas.html.twig',array('dtTable'=>$dtOrdenPago));
+        return $this->render('ReportesBundle:Reportes:indexPuertas.html.twig',array('dtTable'=>$dtObjeto));
     }
 
     /**
@@ -160,67 +131,39 @@ class ReportesController extends Controller
     {
       //-- inicializo el entity
        $em = $this->getDoctrine()->getManager();
-       $repoOrdenTrabajo = $em->getRepository(Repositorios::$ordenTrabajo);
-       //-- busco todas las ordenes de trabajo
-       $ordenesTrabajo = $repoOrdenTrabajo->findAll();
+       $repoEntity = $em->getRepository(Repositorios::$camaras);
+       //-- busco todas las camaras
+       $camaras = $repoEntity->findAll();
 
-       if ($ordenesTrabajo){
+       if ($camaras){
          //-- cabecera de la tabla
-         $dtOrdenPago['header']=array("id","Número Ticket","Número Orden","Descripción","Cámaras","Puertas","Solución","Fecha Final","Técnico","Cliente","Estado");
+         $dtObjeto['header']=array("Codigo","Modelo","Ubicacion","nivel");
          //-- pide de la tabla
-         $dtOrdenPago['footer']=array("id","Número Ticket","Número Orden","Descripción","Cámaras","Puertas","Solución","Fecha Final","Técnico","Cliente","Estado");
+         $dtObjeto['footer']=array("Codigo","Modelo","Ubicacion","nivel");
          //-- campos que se mostraran en la orden de trabajo
-         $dtOrdenPago['campos']=array("id","num_ticket","num_ord_trab","descripcion","listCamaras","listPuertas","solucion","fechaFin","tecnico","cliente","estado");
-
-
-         $repoPuertas=$em->getRepository(Repositorios::$puertasOrdenTrabajo);
-         $repoCamaras=$em->getRepository(Repositorios::$camarasOrdenTrabajo);
+         $dtObjeto['campos']=array("codigo","modelo","ubicacion","nivel");
 
          //-- recorremos
-         foreach ($ordenesTrabajo as $key => $value) {
+         foreach ($camaras as $key => $value) {
            # code...
-            $camaras = $repoCamaras->findBy(array('ordenTrabajo'=>$value));
-            $listCamaras=null;
-            if($camaras){
-              foreach ($camaras as $key => $valueC) {
-                # code...
-                $listCamaras.=$valueC->getCamaras()->getCodigo().' ';
-              }
+           //-- se arma los datos de la tabla
+           $tableDatos[]=array(
+             'codigo'=>$value->getCodigo()
+             ,'modelo'=>$value->getModelo()
+             ,'ubicacion'=>$value->getUbicacion()
+             ,'nivel'=>$value->getNivel()
+           );
+          }
 
-            }
-
-            $puertas = $repoPuertas->findBy(array('ordenTrabajo'=>$value));
-            $listPuertas=null;
-            if($puertas){
-              foreach ($puertas as $key => $valueP) {
-                # code...
-                $listPuertas.=$valueP->getPuertas()->getCodigo().' ';
-
-
-              }
-            }
-            //printf($value->getId());
-            //-- se arma los datos de la tabla
-            $tableDatos[]=array(
-              'id'=>$value->getId()
-              ,'num_ticket'=>$value->getNumTicket(),'num_ord_trab'=>$value->getNumOrdTrab()
-              ,'descripcion'=>$value->getDescripcion()
-              ,'listCamaras'=>$listCamaras,'listPuertas'=>$listPuertas
-              ,'solucion'=>$value->getSolucion(),
-              'fechaFin'=>$value->getFechaTermino()->format('Y-m-d H:i:s'),'tecnico'=>$value->getTecnico()->getNombres(),
-              'cliente'=>$value->getcliente()->getNombre(),"estado"=>($value->getEstado()==1)? 'Abierto':'Cerrado'
-        );
-         }
-
-         $dtOrdenPago['body'] =$tableDatos;
+         $dtObjeto['body'] =$tableDatos;
        }else { //-- en caso de no tener ningun dato se envia en blanco
-          $dtOrdenPago['header']=array();
-          $dtOrdenPago['campos']=array();
-          $dtOrdenPago['body'] =null;
-          $dtOrdenPago['footer']=array();
+          $dtObjeto['header']=array();
+          $dtObjeto['campos']=array();
+          $dtObjeto['body'] =null;
+          $dtObjeto['footer']=array();
        }
 
-        return $this->render('ReportesBundle:Reportes:indexPuertas.html.twig',array('dtTable'=>$dtOrdenPago));
+        return $this->render('ReportesBundle:Reportes:indexCamaras.html.twig',array('dtTable'=>$dtObjeto));
     }
 
 }
