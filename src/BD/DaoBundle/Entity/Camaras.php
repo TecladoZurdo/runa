@@ -70,6 +70,12 @@ class Camaras
      */
     private $ubicacion;
 
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="nivel", type="text", length=8, nullable=true)
+     */
+    private $nivel;
 
 
     /**
@@ -241,5 +247,28 @@ class Camaras
     public function getUbicacion()
     {
         return $this->ubicacion;
+    }
+
+    /**
+     * Set nivel
+     *
+     * @param string $nivel
+     * @return Camaras
+     */
+    public function setNivel($nivel)
+    {
+        $this->nivel = $nivel;
+
+        return $this;
+    }
+
+    /**
+     * Get nivel
+     *
+     * @return string 
+     */
+    public function getNivel()
+    {
+        return $this->nivel;
     }
 }
