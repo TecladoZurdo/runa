@@ -73,10 +73,58 @@ class Camaras
     /**
      * @var string
      *
-     * @ORM\Column(name="nivel", type="text", length=8, nullable=true)
+     * @ORM\Column(name="nivel", type="text", length=50, nullable=true)
      */
     private $nivel;
 
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="observacion", type="text", length=250, nullable=true)
+     */
+    private $observacion;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="cambio_domo", type="boolean", nullable=true)
+     */
+    private $cambioDomo;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="funcionan_media_converter", type="boolean", nullable=true)
+     */
+    private $funcionanMediaConverter;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="funciona_poe", type="boolean", nullable=true)
+     */
+    private $funcionaPoe;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="funciona_transformador", type="boolean", nullable=true)
+     */
+    private $funcionaTransformador;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="funciona_ups", type="boolean", nullable=true)
+     */
+    private $funcionaUps;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="funciona_directo", type="boolean", nullable=true)
+     */
+    private $funcionaDirecto;
 
     /**
      * Get id
@@ -247,5 +295,166 @@ class Camaras
     public function getUbicacion()
     {
         return $this->ubicacion;
+    }
+
+    /**
+     * Set nivel
+     *
+     * @param string $nivel
+     * @return Camaras
+     */
+    public function setNivel($nivel)
+    {
+        $this->nivel = $nivel;
+
+        return $this;
+    }
+
+    /**
+     * Get nivel
+     *
+     * @return string
+     */
+    public function getNivel()
+    {
+        return $this->nivel;
+    }
+
+    /**
+     * Set cambioDomo
+     *
+     * @param boolean $cambioDomo
+     * @return Camaras
+     */
+    public function setCambioDomo($cambioDomo)
+    {
+        $this->cambioDomo = $cambioDomo;
+
+        return $this;
+    }
+
+    /**
+     * Get cambioDomo
+     *
+     * @return boolean
+     */
+    public function getCambioDomo()
+    {
+        return $this->cambioDomo;
+    }
+
+    /**
+     * Set funcionanMediaConverter
+     *
+     * @param boolean $funcionanMediaConverter
+     * @return Camaras
+     */
+    public function setFuncionanMediaConverter($funcionanMediaConverter)
+    {
+        $this->funcionanMediaConverter = $funcionanMediaConverter;
+
+        return $this;
+    }
+
+    /**
+     * Get funcionanMediaConverter
+     *
+     * @return boolean
+     */
+    public function getFuncionanMediaConverter()
+    {
+        return $this->funcionanMediaConverter;
+    }
+
+    /**
+     * Set funcionaPoe
+     *
+     * @param boolean $funcionaPoe
+     * @return Camaras
+     */
+    public function setFuncionaPoe($funcionaPoe)
+    {
+        $this->funcionaPoe = $funcionaPoe;
+
+        return $this;
+    }
+
+    /**
+     * Get funcionaPoe
+     *
+     * @return boolean
+     */
+    public function getFuncionaPoe()
+    {
+        return $this->funcionaPoe;
+    }
+
+    /**
+     * Set funcionaTransformador
+     *
+     * @param boolean $funcionaTransformador
+     * @return Camaras
+     */
+    public function setFuncionaTransformador($funcionaTransformador)
+    {
+        $this->funcionaTransformador = $funcionaTransformador;
+
+        return $this;
+    }
+
+    /**
+     * Get funcionaTransformador
+     *
+     * @return boolean
+     */
+    public function getFuncionaTransformador()
+    {
+        return $this->funcionaTransformador;
+    }
+
+    /**
+     * Set funcionaUps
+     *
+     * @param boolean $funcionaUps
+     * @return Camaras
+     */
+    public function setFuncionaUps($funcionaUps)
+    {
+        $this->funcionaUps = $funcionaUps;
+
+        return $this;
+    }
+
+    /**
+     * Get funcionaUps
+     *
+     * @return boolean
+     */
+    public function getFuncionaUps()
+    {
+        return $this->funcionaUps;
+    }
+
+    /**
+     * Set funcionaDirecto
+     *
+     * @param boolean $funcionaDirecto
+     * @return Camaras
+     */
+    public function setFuncionaDirecto($funcionaDirecto)
+    {
+        $this->funcionaDirecto = $funcionaDirecto;
+
+        return $this;
+    }
+
+    /**
+     * Get funcionaDirecto
+     *
+     * @return boolean
+     */
+    public function getFuncionaDirecto()
+    {
+        return $this->funcionaDirecto;
     }
 }

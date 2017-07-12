@@ -49,4 +49,83 @@ class CamarasOrdenTrabajo
     private $ordenTrabajo;
 
 
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set activo
+     *
+     * @param boolean $activo
+     * @return CamarasOrdenTrabajo
+     */
+    public function setActivo($activo)
+    {
+        $this->activo = $activo;
+
+        return $this;
+    }
+
+    /**
+     * Get activo
+     *
+     * @return boolean 
+     */
+    public function getActivo()
+    {
+        return $this->activo;
+    }
+
+    /**
+     * Set camaras
+     *
+     * @param \BD\DaoBundle\Entity\Camaras $camaras
+     * @return CamarasOrdenTrabajo
+     */
+    public function setCamaras(\BD\DaoBundle\Entity\Camaras $camaras = null)
+    {
+        $this->camaras = $camaras;
+
+        return $this;
+    }
+
+    /**
+     * Get camaras
+     *
+     * @return \BD\DaoBundle\Entity\Camaras 
+     */
+    public function getCamaras()
+    {
+        return $this->camaras;
+    }
+
+    /**
+     * Set ordenTrabajo
+     *
+     * @param \BD\DaoBundle\Entity\OrdenTrabajo $ordenTrabajo
+     * @return CamarasOrdenTrabajo
+     */
+    public function setOrdenTrabajo(\BD\DaoBundle\Entity\OrdenTrabajo $ordenTrabajo = null)
+    {
+        $this->ordenTrabajo = $ordenTrabajo;
+
+        return $this;
+    }
+
+    /**
+     * Get ordenTrabajo
+     *
+     * @return \BD\DaoBundle\Entity\OrdenTrabajo 
+     */
+    public function getOrdenTrabajo()
+    {
+        return $this->ordenTrabajo;
+    }
 }
