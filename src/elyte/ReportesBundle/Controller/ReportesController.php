@@ -84,6 +84,82 @@ class ReportesController extends Controller
     }
 
     /**
+     * @Route("/fechas",name="_reporteFecha")
+     */
+    public function fechaAction()
+    {
+      //-- inicializo el entity
+       $em = $this->getDoctrine()->getManager();
+       $repoOrdenTrabajo = $em->getRepository(Repositorios::$ordenTrabajo);
+       //-- busco todas las ordenes de trabajo
+       $ordenesTrabajo = $repoOrdenTrabajo->findAll();
+
+       if ($ordenesTrabajo){
+         //-- cabecera de la tabla
+         $dtOrdenPago['header']=array("Número Ticket","Número Orden","Descripción","Cámaras","Puertas","Solución","Fecha Inicial","Fecha Final","Técnico","Cliente","Estado");
+         //-- pide de la tabla
+         $dtOrdenPago['footer']=array("Número Ticket","Número Orden","Descripción","Cámaras","Puertas","Solución","Fecha Inicial","Fecha Final","Técnico","Cliente","Estado");
+         //-- campos que se mostraran en la orden de trabajo
+         $dtOrdenPago['campos']=array("num_ticket","num_ord_trab","descripcion","listCamaras","listPuertas","solucion","fechaInicio","fechaFin","tecnico","cliente","estado");
+
+
+         $repoPuertas=$em->getRepository(Repositorios::$puertasOrdenTrabajo);
+         $repoCamaras=$em->getRepository(Repositorios::$camarasOrdenTrabajo);
+
+         //-- recorremos
+         foreach ($ordenesTrabajo as $key => $value) {
+           # code...
+            $camaras = $repoCamaras->findBy(array('ordenTrabajo'=>$value));
+            $listCamaras=null;
+            if($camaras){
+              foreach ($camaras as $key => $valueC) {
+                # code...
+                $listCamaras.=$valueC->getCamaras()->getCodigo().' ';
+              }
+
+            }
+
+            $puertas = $repoPuertas->findBy(array('ordenTrabajo'=>$value));
+            $listPuertas=null;
+            if($puertas){
+              foreach ($puertas as $key => $valueP) {
+                # code...
+                $listPuertas.=$valueP->getPuertas()->getCodigo().' ';
+
+
+              }
+            }
+            $numeroOrdenTrabajo = $value->getNumOrdTrab() == null ? 'Sin Número':$value->getNumOrdTrab();
+            $fechaInicio = $value->getFechaInicio() == null ? 'Sin Fecha': $value->getFechaInicio()->format('Y-m-d H:i:s');
+            $fechaFin = $value->getFechaTermino() == null ? 'Sin Fecha': $value->getFechaTermino()->format('Y-m-d H:i:s');
+            $tecnico = $value->getTecnico() == null ? '': $value->getTecnico()->getNombres();
+            $cliente = $value->getcliente() == null ? '' : $value->getcliente()->getNombre();
+            $tableDatos[]=array(
+          //    'id'=>$value->getId()
+              'num_ticket'=>$value->getNumTicket(),'num_ord_trab'=>$numeroOrdenTrabajo
+              ,'descripcion'=>$value->getDescripcion()
+              ,'listCamaras'=>$listCamaras,'listPuertas'=>$listPuertas
+              ,'solucion'=>$value->getSolucion(),
+              'fechaInicio'=>$fechaInicio,
+              'fechaFin'=>$fechaFin,
+              'tecnico'=>$tecnico,
+              'cliente'=>$cliente,
+              "estado"=>($value->getEstado()==1)? 'Abierto':'Cerrado'
+        );
+         }
+
+         $dtOrdenPago['body'] =$tableDatos;
+       }else { //-- en caso de no tener ningun dato se envia en blanco
+          $dtOrdenPago['header']=array();
+          $dtOrdenPago['campos']=array();
+          $dtOrdenPago['body'] =null;
+          $dtOrdenPago['footer']=array();
+       }
+
+        return $this->render('ReportesBundle:Reportes:indexFechas.html.twig',array('dtTable'=>$dtOrdenPago));
+    }
+
+    /**
      * @Route("/puertas",name="_reportePuertas")
      */
     public function puertasAction()

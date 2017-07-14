@@ -35,15 +35,8 @@ var table =$('#TdataOrdenTrabajo').DataTable({
         buttons: [
             'copy', 'csv', 'excel', 'pdf', 'print'
         ],
-        "columnDefs": [ {
-            "targets": -1,
-            "data": null,
-            "defaultContent": "<button class='ui primary button'>Editar</button>"
-        },
-        {
-                "targets": [ 0 ],
-                "visible": false
-        }
+        "columnDefs": [
+
        ],
   responsive: {
             details: {
@@ -64,6 +57,23 @@ $('#TdataOrdenTrabajo tbody').on( 'click', 'button', function () {
         var data = table.row( $(this).parents('tr')).data();
         window.location.href="{{path('_editar')}}/"+data[0];
     } );
-  
+    // Setup - add a text input to each footer cell
+    $('#TdataOrdenTrabajo thead th').each( function () {
+        var title = $(this).text();
+        $(this).html( '<input type="text" placeholder="'+title+'" />' );
+    } );
+
+    // Apply the search
+        table.columns().every( function () {
+            var that = this;
+
+            $( 'input', this.head() ).on( 'keyup change', function () {
+                if ( that.search() !== this.value ) {
+                    that
+                        .search( this.value )
+                        .draw();
+                }
+            } );
+        } );
 </script>
 {% endblock %}
