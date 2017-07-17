@@ -187,6 +187,7 @@ class ReportesController extends Controller
               'codigo'=>$value->getCodigo()
               ,'modelo'=>$value->getModelo()
               ,'estado'=>$value->getEstado()
+
         );
          }
 
@@ -214,11 +215,11 @@ class ReportesController extends Controller
 
        if ($camaras){
          //-- cabecera de la tabla
-         $dtObjeto['header']=array("Código","Modelo","Ubicación","Nivel","Estado","Marca");
+         $dtObjeto['header']=array("Código","Modelo","Observación","Ubicación","Nivel","Estado","Marca");
          //-- pide de la tabla
-         $dtObjeto['footer']=array("Código","Modelo","Ubicación","Nivel","Estado","Marca");
+         $dtObjeto['footer']=array("Código","Modelo","Observación","Ubicación","Nivel","Estado","Marca");
          //-- campos que se mostraran en la orden de trabajo
-         $dtObjeto['campos']=array("codigo","modelo","ubicacion","nivel","estado","marca");
+         $dtObjeto['campos']=array("codigo","modelo","observacion","ubicacion","nivel","estado","marca");
 
          //-- recorremos
          foreach ($camaras as $key => $value) {
@@ -231,6 +232,7 @@ class ReportesController extends Controller
              ,'nivel'=>$value->getNivel()
              ,'estado'=>$value->getEstado()
              ,'marca'=>$value->getmarca()
+             ,'observacion'=>$value->getObservacion()
            );
           }
 
