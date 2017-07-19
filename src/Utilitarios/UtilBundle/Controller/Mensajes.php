@@ -3,7 +3,7 @@
 namespace Utilitarios\UtilBundle\Controller;
 
 /**
- * clase que consentras las constatnes de la base y el sistema
+ * clase que consentras las constantes de la base y el sistema
  */
 class Mensajes
 {
