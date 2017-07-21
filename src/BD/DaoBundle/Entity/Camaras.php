@@ -474,7 +474,7 @@ class Camaras
     /**
      * Get observacion
      *
-     * @return string 
+     * @return string
      */
     public function getObservacion()
     {

@@ -214,11 +214,11 @@ class ReportesController extends Controller
 
        if ($camaras){
          //-- cabecera de la tabla
-         $dtObjeto['header']=array("Código","Modelo","Ubicación","Nivel","Estado","Marca","Cambiar Domo");
+         $dtObjeto['header']=array("Código","Modelo","Ubicación","Nivel","Estado","Marca","Cambiar Domo","Media Convert","POE","Transformador");
          //-- pide de la tabla
-         $dtObjeto['footer']=array("Código","Modelo","Ubicación","Nivel","Estado","Marca","Cambiar Domo");
+         $dtObjeto['footer']=array("Código","Modelo","Ubicación","Nivel","Estado","Marca","Cambiar Domo","Media Convert","POE","Transformador");
          //-- campos que se mostraran en la orden de trabajo
-         $dtObjeto['campos']=array("codigo","modelo","ubicacion","nivel","estado","marca","cambioDomo");
+         $dtObjeto['campos']=array("codigo","modelo","ubicacion","nivel","estado","marca","cambioDomo","funcionanMediaConverter","funcionaPoe","funcionaTransformador");
 
          //-- recorremos
          foreach ($camaras as $key => $value) {
@@ -232,6 +232,9 @@ class ReportesController extends Controller
              ,'estado'=>$value->getEstado()
              ,'marca'=>$value->getmarca()
              ,'cambioDomo'=>$value->getCambioDomo()
+             ,'funcionanMediaConverter'=>$value->getFuncionanMediaConverter()
+             ,'funcionaPoe'=>$value->getFuncionaPoe()
+             ,'funcionaTransformador'=>$value->getFuncionaTransformador()
            );
           }
 
