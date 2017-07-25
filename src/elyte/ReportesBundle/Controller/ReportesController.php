@@ -172,11 +172,11 @@ class ReportesController extends Controller
 
        if ($puertas){
          //-- cabecera de la tabla
-         $dtObjeto['header']=array("Código","Modelo","Estado");
+         $dtObjeto['header']=array("Código","Modelo","Estado","Observaciòn");
          //-- pide de la tabla
-         $dtObjeto['footer']=array("Código","Modelo","Estado");
+         $dtObjeto['footer']=array("Código","Modelo","Estado","Observaciòn");
          //-- campos que se mostraran en la orden de trabajo
-         $dtObjeto['campos']=array("codigo","modelo","estado");
+         $dtObjeto['campos']=array("codigo","modelo","estado","observacion");
 
 
          //-- recorremos
@@ -187,6 +187,7 @@ class ReportesController extends Controller
               'codigo'=>$value->getCodigo()
               ,'modelo'=>$value->getModelo()
               ,'estado'=>$value->getEstado()
+              ,'observacion'=>$value->getObservacion()
 
         );
          }
