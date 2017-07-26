@@ -63,6 +63,13 @@ class Puertas
      */
     private $estado;
 
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="observacion", type="text", length=250, nullable=true)
+     */
+    private $observacion;
+
 
 
     /**
@@ -211,5 +218,28 @@ class Puertas
     public function getEstado()
     {
         return $this->estado;
+    }
+
+    /**
+     * Set observacion
+     *
+     * @param string $observacion
+     * @return Puertas
+     */
+    public function setObservacion($observacion)
+    {
+        $this->observacion = $observacion;
+
+        return $this;
+    }
+
+    /**
+     * Get observacion
+     *
+     * @return string
+     */
+    public function getObservacion()
+    {
+        return $this->observacion;
     }
 }
