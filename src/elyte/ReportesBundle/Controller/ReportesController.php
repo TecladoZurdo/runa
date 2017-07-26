@@ -172,9 +172,9 @@ class ReportesController extends Controller
 
        if ($puertas){
          //-- cabecera de la tabla
-         $dtObjeto['header']=array("Código","Modelo","Estado","Observaciòn");
+         $dtObjeto['header']=array("Código","Modelo","Estado","Observación");
          //-- pide de la tabla
-         $dtObjeto['footer']=array("Código","Modelo","Estado","Observaciòn");
+         $dtObjeto['footer']=array("Código","Modelo","Estado","Observación");
          //-- campos que se mostraran en la orden de trabajo
          $dtObjeto['campos']=array("codigo","modelo","estado","observacion");
 
@@ -216,11 +216,11 @@ class ReportesController extends Controller
 
        if ($camaras){
           //-- cabecera de la tabla
-          $dtObjeto['header']=array("Código","Modelo","Observación","Ubicación","Nivel","Estado","Marca");
+          $dtObjeto['header']=array("Código","Modelo","Observación","Ubicación","Nivel","Estado","Marca","Funciona con media converter","Cambio de domo","Funciona con POE","Funciona con transformador","Funciona con UPS","Funciona directo");
           //-- pide de la tabla
-          $dtObjeto['footer']=array("Código","Modelo","Observación","Ubicación","Nivel","Estado","Marca");
+          $dtObjeto['footer']=array("Código","Modelo","Observación","Ubicación","Nivel","Estado","Marca","Funciona con media converter","Cambio de domo","Funciona con POE","Funciona con transformador","Funciona con UPS","Funciona directo");
           //-- campos que se mostraran en la orden de trabajo
-          $dtObjeto['campos']=array("codigo","modelo","observacion","ubicacion","nivel","estado","marca");
+          $dtObjeto['campos']=array("codigo","modelo","observacion","ubicacion","nivel","estado","marca","funcionan_media_converter","cambio_domo","funciona_poe","funciona_transformador","funciona_ups","funciona_directo");
          //-- recorremos
 
          foreach ($camaras as $key => $value) {
@@ -232,8 +232,15 @@ class ReportesController extends Controller
              ,'ubicacion'=>$value->getUbicacion()
              ,'nivel'=>$value->getNivel()
              ,'estado'=>$value->getEstado()
-             ,'marca'=>$value->getmarca()
-             ,'observacion'=>value->getObservacion()
+             ,'marca'=>$value->getMarca()
+             ,'observacion'=>$value->getObservacion()
+             ,'funcionan_media_converter'=>$value->getFuncionanMediaConverter()
+             ,'cambio_domo'=>$value->getcambioDomo()
+             ,'funciona_poe'=>$value->getFuncionaPoe()
+             ,'funciona_transformador'=>$value->getFuncionaTransformador()
+             ,'funciona_ups'=>$value->getFuncionaUps()
+             ,'funciona_directo'=>$value->getFuncionaDirecto()
+
            );
           }
 

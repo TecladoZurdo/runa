@@ -73,7 +73,7 @@ class Camaras
     /**
      * @var string
      *
-     * @ORM\Column(name="nivel", type="text", length=50, nullable=true)
+     * @ORM\Column(name="nivel", type="text", length=250, nullable=true)
      */
     private $nivel;
 
