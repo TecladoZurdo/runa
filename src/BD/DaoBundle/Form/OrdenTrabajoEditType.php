@@ -28,7 +28,15 @@ class OrdenTrabajoEditType extends AbstractType
         ->add('descripcion',TextareaType::class,array('read_only'=>true))
         ->add('solucion',TextareaType::class)
         ->add('solucionTecnica',TextareaType::class)
-        //->add('fechaIni',TextType::class,array('mapped'=>false,'data'=>date('Y-m-d H:i')))
+        ->add('ctServicio',EntityType::class,array(
+          'label'=>'Servicio'
+          ,'class' => Repositorios::$catalogo
+          ,'query_builder' => function ($er){
+            return $er->getCatalogoByIdQueryBuilder(VarCatalogo::$servicio);
+          }
+          ,'property'=>'nombre'
+          ,'empty_value'=>'--seleccione--'
+        ))
         ->add('fechaFin',TextType::class,array('mapped'=>false,'data'=>date('Y-m-d H:i')))
         ->add('cliente',EntityType::class,array(
           'label'=>'Cliente',
