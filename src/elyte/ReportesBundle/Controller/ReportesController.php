@@ -175,7 +175,7 @@ class ReportesController extends Controller
          $dtObjeto['header']=array("Código","Modelo","Estado","Observación");
          //-- pide de la tabla
          $dtObjeto['footer']=array("Código","Modelo","Estado","Observación");
-         //-- campos que se mostraran en la orden de trabajo
+         //-- campos que se mostraran en el reporte de puertas
          $dtObjeto['campos']=array("codigo","modelo","estado","observacion");
 
 
@@ -219,7 +219,7 @@ class ReportesController extends Controller
           $dtObjeto['header']=array("Código","Modelo","Observación","Ubicación","Nivel","Estado","Marca","Funciona con media converter","Cambio de domo","Funciona con POE","Funciona con transformador","Funciona con UPS","Funciona directo");
           //-- pide de la tabla
           $dtObjeto['footer']=array("Código","Modelo","Observación","Ubicación","Nivel","Estado","Marca","Funciona con media converter","Cambio de domo","Funciona con POE","Funciona con transformador","Funciona con UPS","Funciona directo");
-          //-- campos que se mostraran en la orden de trabajo
+          //-- campos que se mostraran en el reporte de cámaras
           $dtObjeto['campos']=array("codigo","modelo","observacion","ubicacion","nivel","estado","marca","funcionan_media_converter","cambio_domo","funciona_poe","funciona_transformador","funciona_ups","funciona_directo");
          //-- recorremos
 
