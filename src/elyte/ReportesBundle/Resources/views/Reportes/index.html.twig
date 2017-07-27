@@ -37,8 +37,15 @@ var table =$('#TdataOrdenTrabajo').DataTable({
         ],
         "columnDefs": [ {
             "targets": -1,
-            "data": null,
-            "defaultContent": "<button class='ui primary button'>Editar</button>"
+            render: function(data,type,row){
+               if(row[10]=='Abierto'){
+                 return "<button class='ui primary button'>Editar</button>";
+               }else {
+                 return "";
+               }
+              console.log(row[10]);
+            },
+            "defaultContent": ""
         },
         {
                 "targets": [ 0 ],
@@ -64,6 +71,6 @@ $('#TdataOrdenTrabajo tbody').on( 'click', 'button', function () {
         var data = table.row( $(this).parents('tr')).data();
         window.location.href="{{path('_editar')}}/"+data[0];
     } );
-  
+
 </script>
 {% endblock %}
