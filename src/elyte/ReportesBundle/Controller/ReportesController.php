@@ -234,12 +234,12 @@ class ReportesController extends Controller
              ,'estado'=>$value->getEstado()
              ,'marca'=>$value->getMarca()
              ,'observacion'=>$value->getObservacion()
-             ,'funcionan_media_converter'=>$value->getFuncionanMediaConverter()
-             ,'cambio_domo'=>$value->getcambioDomo()
-             ,'funciona_poe'=>$value->getFuncionaPoe()
-             ,'funciona_transformador'=>$value->getFuncionaTransformador()
-             ,'funciona_ups'=>$value->getFuncionaUps()
-             ,'funciona_directo'=>$value->getFuncionaDirecto()
+             ,'funcionan_media_converter'=>($value->getFuncionanMediaConverter()==1)? 'SI':'NO'
+             ,'cambio_domo'=>($value->getcambioDomo()==1)? 'SI':'NO'
+             ,'funciona_poe'=>($value->getFuncionaPoe()==1)? 'SI':'NO'
+             ,'funciona_transformador'=>($value->getFuncionaTransformador()==1)? 'SI':'NO'
+             ,'funciona_ups'=>($value->getFuncionaUps()==1)? 'SI':'NO'
+             ,'funciona_directo'=>($value->getFuncionaDirecto()==1)? 'SI':'NO'
 
            );
           }
