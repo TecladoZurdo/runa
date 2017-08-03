@@ -1,0 +1,1631 @@
+<?xml version='1.0' encoding='UTF-8' standalone='yes'?>
+<!DOCTYPE html>
+<html lang='en' xmlns='http://www.w3.org/1999/xhtml' >
+<head>
+<title>dbo</title>
+<meta http-equiv='Content-Type' content='text/html; charset=UTF-8'/>
+<style type='text/css'>
+body {
+    font-family: 'Segoe UI', 'Lucida sans', Dialog;
+    font-size: 13px;
+    color: #444;
+    margin: 10px;
+    padding: 0;
+}
+
+table {
+    border-collapse: collapse;
+    caption-side: top;
+    width: auto;
+    margin: 10px 15px 5px 0;
+}
+table tr:nth-child(odd) td{
+           background:#ffffff;
+}
+table tr:nth-child(even) td{
+            background:#fafafa;
+}
+
+.bordered td, .bordered th {
+   background-color: #fafafa;
+   border: 1px solid #D5D5D5;
+   padding: 3px 3px 3px 3px;
+   white-space:pre-wrap!important;
+}
+
+.bordered th {
+    background-color: #f0f0f0;
+    border: 1px solid #D5D5D5;
+    border-bottom: 1px solid #cccccc;
+    padding: 3px 3px 3px 3px;
+    font-size: 13px;
+    font-weight: normal;
+    text-align: left;
+    color: #333333;
+}
+
+.section-header h2 {
+    background-color: #1d96b2;
+    font-size: 16px;
+    font-weight: normal;
+    border-top: solid 1px #D5D5D5;
+    border-bottom: solid 1px #D5D5D5;
+    width: 95%;
+    margin: 5px 0 5px 0;
+    padding: 5px 5px 5px 5px;
+    color: #ffffff;
+}
+.section-header div {
+    font-size: 70%;
+    padding-left: 5px;
+}
+
+
+a, a:visited, a:hover, a:active {
+  color: #044282;
+  text-decoration: none;
+}
+
+th > a {
+    color:#858585;
+}
+
+.lg {
+    font-size: 110%;
+}
+
+h1 {
+    font-family: Verdana,Arial,Helvetica;
+    font-weight: normal;
+    color: #4d82b8;
+    margin: 20px 0 10px 0;
+}
+
+</style>
+</head>
+
+<body>
+<div class='svg-container'>
+<svg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' text-rendering='optimizeLegibility'   width='1440' height='890' viewbox='0 0 1440 890' >
+  <script type='text/ecmascript'>
+  <![CDATA[
+  function hghl(el) { for ( var i in el ){ var elem = document.getElementById(el[i]); if ( elem != null ) elem.setAttribute('class','highlight');  }  }
+  function uhghl(el) { for ( var i in el ){ var elem = document.getElementById(el[i]); if ( elem != null ) elem.setAttribute('class','scene'); }  } 
+  ]]>
+  </script> 
+
+<style type='text/css'>
+  text                { fill:#000000; font-family: Tahoma, 'Trebuchet MS', Dialog; font-size:11px; }
+  a text:hover        { fill:#94025f; text-shadow: 0px 0px 6px #d0ce00; }
+  text.highlight      { fill:#94025f; text-shadow: 0px 0px 4px #eac533; }
+  text.colType        { fill:#b3b3b3; }
+  text.relName        { fill:#b09c7c; }
+  path                { stroke:#5c554f; stroke-width:1.15; fill:none; }
+  path.virtual        { stroke:#b7642d; }
+  path.dotted         { stroke-dasharray:4,2; }
+  path.scene          { stroke-width:10; opacity:0;}
+  path.highlight      { stroke-width:5; stroke:#eac533; opacity:0.6;}
+  rect.table          { fill:#ffffff; stroke:#aaa; stroke-width:1;shape-rendering:crispEdges;filter:url(#shadow); }
+  line.delim          { stroke-width:1; shape-rendering:crispEdges; }
+  text.callout        { fill:#000000; font-family: Tahoma, 'Trebuchet MS', Dialog; font-size:11px; }
+  rect.callout        { fill:url(#calloutGradient); stroke:#bebdbd; stroke-width:0.5; filter: url(#shadow);}
+  rect.grp            { stroke:#b1b1b1; stroke-width:1.7; opacity:0.8; }
+</style>
+<defs>
+  <pattern id='layoutBgA' patternUnits='userSpaceOnUse'  width='10' height='20' x='0' y='0' viewBox='0 0 5 10'>  
+     <line x1='-2' y1='1' x2='7' y2='10' stroke='#f3f3f3' stroke-width='.5'/>  
+     <line x1='-2' y1='6' x2='7' y2='15' stroke='#f3f3f3' stroke-width='.5'/>  
+     <line x1='-2' y1='-4' x2='7' y2='5' stroke='#f3f3f3' stroke-width='.5'/>  
+  </pattern>  
+  <radialGradient id='layoutBgB' gradientUnits='userSpaceOnUse' cx='50%' cy='50%' r='75%' fx='46%' fy='22%'>
+     <stop offset='0%' stop-opacity='.2' stop-color='#f5f5f5' />  
+     <stop offset='100%' stop-color='#efefef' />  
+  </radialGradient>
+  <pattern id='layoutBgTr' patternUnits='userSpaceOnUse'  width='300' height='300' x='0' y='0' viewBox='0 0 300 300'>  
+    <text x='-55' y='200' transform='rotate(-45)' style='font-family:Arial;font-size:48px;font-weight:bold;fill:#e7e7e7;'>&#84;&#82;&#73;&#65;&#76;</text> 
+    <text x='-130' y='230' transform='rotate(-45)' style='font-family:Arial;font-size:24px;font-weight:bold;fill:#e7e7e7;'>&#77;ove &#116;he m&#111;use &#111;ver &#116;ables</text> 
+    <text x='-85' y='250' transform='rotate(-45)' style='font-family:Arial;font-size:24px;font-weight:bold;fill:#e7e7e7;'>&#116;o re&#97;d &#116;he c&#111;mmen&#116;s</text> 
+  </pattern>  
+  <linearGradient id='groupUnderTitleLine' x1='0%' y1='0%' x2='100%' y2='0%' >
+          <stop offset='0%' stop-color='#999999' stop-opacity='0.7'/> 
+          <stop offset='100%' stop-color='#999999' stop-opacity='0' /> 
+   </linearGradient>
+  <radialGradient id='calloutGradient' cx='25%' cy='20%' r='80%' fx='10%' fy='10%'>
+	   <stop offset='0%' stop-color='#ffffff' />
+    <stop offset='100%' stop-color='#f8f6d1' />
+  </radialGradient>
+  <filter id='shadow' width='120%' height='120%'> 
+      <feOffset result='offOut' in='SourceGraphic' dx='1' dy='1' /> 
+      <feColorMatrix result='matrixOut' in='offOut' type='matrix' 
+      values='0.1 0 0 0 0 0 0.1 0 0 0 0 0 0.1 0 0 0 0 0 0.3 0' /> 
+      <feGaussianBlur result='blurOut' in='matrixOut' stdDeviation='3' /> 
+      <feBlend in='SourceGraphic' in2='blurOut' mode='normal' /> 
+    </filter> 
+  <filter id='fkShadow' height='130%'> 
+    <feGaussianBlur in='SourceAlpha' stdDeviation='1.5'/> <!-- stdDeviation is how much to blur -->
+    <feOffset dx='1.2' dy='1.2' result='offsetblur'/> <!-- how much to offset -->
+    <feMerge>
+    <feMergeNode/> <!-- this contains the offset blurred image -->
+    <feMergeNode in='SourceGraphic'/> <!-- this contains the element that the filter is applied to -->
+    </feMerge>
+  </filter>
+  <radialGradient id='legendGradient' fx='5%' fy='5%' r='75%' spreadMethod='pad'>
+          <stop offset='0%' stop-color='#eefbf2' stop-opacity='1'/> 
+          <stop offset='100%' stop-color='#cff9cb' stop-opacity='1' /> 
+   </radialGradient>
+  <symbol id='calloutArrowDown' overflow='visible' >
+      <path d='M 0,0 L 7,11 L 15,0 z' style='fill:#f8f6d1;stroke:none; filter: url(#shadow);' />
+      <path d='M 0,0 L 7,11 L 15,0' style='stroke:#bebdbd; stroke-width:0.5;' />
+  </symbol>
+  <symbol id='calloutArrowUp' overflow='visible' >
+      <path d='M 0,15 L 7,3 L 15,15 z' style='fill:#ffffff; stroke:none; filter: url(#shadow);' />
+      <path d='M 0,15 L 7,3 L 15,15' style='stroke:#bebdbd; stroke-width:0.5;' />
+  </symbol>
+  <symbol id='pk' overflow='visible' >
+    <g transform='scale(0.99)'>
+     <path style='fill:#fffa7d;stroke:#765f03;stroke-width:0.6;stroke-linecap:round;stroke-linejoin:round;'
+        d='M 9.3678877,3.5695485 C 9.1030218,3.2729386 9.0796382,2.7628519 9.3396185,2.4517097 9.5449651,2.1956495 9.9040386,2.0980533 10.199638,2.2169415 10.533525,2.3415459 10.775153,2.706942 10.750675,3.0842709 10.737029,3.3980003 10.541153,3.699122 10.258248,3.8066067 9.966649,3.9250429 9.6169668,3.8418805 9.4008073,3.6062324 9.3894892,3.5943518 9.3785264,3.582104 9.3678886,3.5695487 z M 11.226617,6.9916004 C 11.888137,6.3548946 12.293488,5.4172188 12.311087,4.442353 12.378144,2.7379364 11.248678,1.0541269 9.7322318,0.44767357 8.3887112,-0.1280313 6.7865012,0.26822889 5.8918395,1.4007929 5.080823,2.3839145 4.9336815,3.8452096 5.3635544,5.101615 L 4.3670905,5.315913 C 4.0664984,5.3682645 4.0967703,5.6316724 4.2574957,5.8208829 L 4.9124,6.5655244 4.1543436,7.2512357 3.2136002,7.2163506 3.1674775,8.5586827 2.0406832,8.5086512 1.5965306,8.9299953 1.5471661,10.179833 0.75616674,10.195223 0.2112857,10.758575 0.15354288,11.735988 0.07199052,12.765553 c 0.36440953,0.238225 0.79006967,0.195492 1.44938278,-0.02675 L 6.3033562,8.1282037 6.8217102,8.6765688 C 6.9985465,8.8799427 7.3003699,8.7497574 7.358381,8.5016252 L 7.4938877,7.5084164 c 0.8537488,0.3985387 1.8303125,0.4711541 2.6851793,0.1427713 0.393927,-0.1407258 0.746858,-0.3701772 1.04755,-0.6595873 z'/>
+     <path d='M 6.8014948,6.3102123 0.15369063,13.024481 0.21560535,12.141962 6.0062342,6.2683782 z'
+        style='fill:#ffe5a5;fill-opacity:1;stroke:#854e31;stroke-width:0.06912433;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:3.00300009'/>
+    </g>
+  </symbol>
+  <symbol id='unq' overflow='visible' >
+    <g transform='scale(0.99)'>
+      <rect style='fill:#fbea8e;stroke:#7e4d31;stroke-width:0.71934468;stroke-linecap:round;stroke-linejoin:round;'
+         width='2.29' height='8.43' x='7.48' y='-0.76' ry='1.14' transform='matrix(0.701,0.713,-0.727,0.685,0,0)' />
+      <path style='fill:white;stroke:#858585;stroke-width:1.2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;'
+         d='m 26.04,8.64 a 4.13,4.13 0 1 1 -8.26,0 4.13,4.13 0 1 1 8.26,0 z'
+         transform='matrix(1.025,0,0,0.987,-14.690,-3.862)' />
+      <text x='5.8' y='7.4' style='font-size:7px;fill:#8a8a8a;'>1</text>
+    </g>
+  </symbol>
+  <symbol id='idx' overflow='visible' >
+    <g transform='scale(0.99)'>
+      <rect style='fill:#fbea8e;stroke:#7e4d31;stroke-width:0.71934468;stroke-linecap:round;stroke-linejoin:round;'
+         width='2.29' height='8.43' x='7.48' y='-0.76' ry='1.14' transform='matrix(0.701,0.713,-0.727,0.685,0,0)' />
+      <path style='fill:white;stroke:#858585;stroke-width:1.2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;'
+         d='m 26.04,8.64 a 4.13,4.13 0 1 1 -8.26,0 4.13,4.13 0 1 1 8.26,0 z'
+         transform='matrix(1.025,0,0,0.987,-14.690,-3.862)' />
+    </g>
+  </symbol>
+  <symbol id='fk' overflow='visible' >
+    <g transform='scale(0.87)'>
+      <path style='fill:#f3e1b7;stroke:#7e471f;stroke-width:0.5;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;'
+      d='M 12.48,0.33 7.07,0.89 9.067,2.974 0.329,11.731 1.073,12.597 9.811,3.841 11.77,5.78 z' />
+    </g>
+  </symbol>
+  <symbol id='ref' overflow='visible' >
+    <g transform='scale(0.87)'>
+      <path style='fill:#f3e1b7;stroke:#7e471f;stroke-width:0.5;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;'
+          d='M 0.10,12.70 5.31,12.15 3.40,10.06 11.82,1.32 11.11,0.45 2.68,9.19 0.80,7.24 z'/>
+    </g>
+  </symbol>
+  <symbol id='flag0' overflow='visible' >
+    <g transform='scale(0.92)'>
+      <path style='fill:#b7d0f6;stroke:#000000;stroke-width:0.5;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;'
+          d='M 0.12,12.67 0.16,7.22 C 2.59,7.22 4.13,8.78 9.22,4.22 5.68,4.98 2.53,4.50 0.09,1.80 z'/>
+    </g>
+  </symbol>
+  <symbol id='flag1' overflow='visible' >
+    <g transform='scale(0.92)'>
+      <path style='fill:#f4a393;stroke:#000000;stroke-width:0.5;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;'
+          d='M 0.12,12.67 0.16,7.22 C 2.59,7.22 4.13,8.78 9.22,4.22 5.68,4.98 2.53,4.50 0.09,1.80 z'/>
+    </g>
+  </symbol>
+  <symbol id='flag2' overflow='visible' >
+    <g transform='scale(0.92)'>
+      <path style='fill:#77ec8b;stroke:#000000;stroke-width:0.5;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;'
+          d='M 0.12,12.67 0.16,7.22 C 2.59,7.22 4.13,8.78 9.22,4.22 5.68,4.98 2.53,4.50 0.09,1.80 z'/>
+    </g>
+  </symbol>
+  <symbol id='nn' overflow='visible' >
+  <path style='stroke:#9b3e50;stroke-width:0.5;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;'
+          d='M 0,0 3,3 M 0,3 3,0 z'/>
+  </symbol>
+  <symbol id='view' overflow='visible' >
+    <g transform='scale(0.99)'>
+     <line x1='12' y1='6' x2='19' y2='0' stroke='black' stroke-width='0.5' />
+     <line x1='0' y1='6' x2='7' y2='0' stroke='black' stroke-width='0.5' />
+     <circle cx='3' cy='6' r='3' fill='#f9ebbc' stroke='black' stroke-width='0.5'/>
+     <circle cx='10' cy='6' r='3' fill='#f9ebbc' stroke='black' stroke-width='0.5'/>
+    </g>
+  </symbol>
+  <marker id='arrow01' viewBox='0 0 15.00 7.50' refX='7.50' refY='3.75' markerUnits='strokeWidth' markerWidth='15.00' markerHeight='7.50' orient='auto'>
+    <path d='M 7.500,3.750 L 15.000,3.750 L 7.500,0.000 L 15.000,3.750 L 7.500,7.500' />
+  </marker>
+  <marker id='arrow1' viewBox='0 0 15.00 7.50' refX='7.50' refY='3.75' markerUnits='strokeWidth' markerWidth='15.00' markerHeight='7.50' orient='auto'>
+    <path d='M 7.500,3.750 L 15.000,3.750 L 7.500,0.000 L 15.000,3.750 L 7.500,7.500' />
+  </marker>
+  <marker id='foot01' viewBox='0 0 15.00 7.50' refX='7.50' refY='3.75' markerUnits='strokeWidth' markerWidth='15.00' markerHeight='7.50' orient='auto'>
+    <path d='M 0.00,3.75 L 15.00,3.75 z' />
+    <circle cx='11.25' cy='3.75' r='2.50' style='fill:white;stroke:#5e554d;' />
+    <path d='M 3.75,0.00 L 3.75, 7.50 z' />
+  </marker>
+  <marker id='foot0p' viewBox='0 0 15.00 7.50' refX='7.50' refY='3.75' markerUnits='strokeWidth' markerWidth='15.00' markerHeight='7.50' orient='auto'>
+    <path d='M 0.00,3.75 L 15.00,3.75 z' />
+    <circle cx='11.25' cy='3.75' r='2.50' style='fill:white;stroke:#5e554d;' />
+    <path d='M 0.00,0.00 L 7.50,3.75 L 0.00,7.50' />
+  </marker>
+  <marker id='foot1' viewBox='0 0 15.00 7.50' refX='7.50' refY='3.75' markerUnits='strokeWidth' markerWidth='15.00' markerHeight='7.50' orient='auto'>
+    <path d='M 0.00,3.75 L 15.00,3.75 z' />
+    <path d='M 7.50,0.00 L 7.50, 7.50 z' />
+    <path d='M 3.75,0.00 L 3.75, 7.50 z' />
+  </marker>
+  <marker id='foot1p' viewBox='0 0 15.00 7.50' refX='7.50' refY='3.75' markerUnits='strokeWidth' markerWidth='15.00' markerHeight='7.50' orient='auto'>
+    <path d='M 0.00,3.75 L 15.00,3.75 z' />
+    <path d='M 7.50,0.00 L 7.50, 7.50 z' />
+    <path d='M 0.00,0.00 L 7.50,3.75 L 0.00,7.50' />
+  </marker>
+  <linearGradient id='tbg_bfbff5' x1='0%' y1='0%' x2='0%' y2='100%' >
+     <stop offset='0%' stop-color='#e0e0f8' /> 
+     <stop offset='100%' stop-color='#c1c1ee' /> 
+  </linearGradient>
+  <linearGradient id='tbg_c8f5bf' x1='0%' y1='0%' x2='0%' y2='100%' >
+     <stop offset='0%' stop-color='#e4f8e0' /> 
+     <stop offset='100%' stop-color='#c9eec1' /> 
+  </linearGradient>
+  <linearGradient id='tbg_bfd4f5' x1='0%' y1='0%' x2='0%' y2='100%' >
+     <stop offset='0%' stop-color='#e0e9f8' /> 
+     <stop offset='100%' stop-color='#c1d3ee' /> 
+  </linearGradient>
+  <linearGradient id='tbg_f5ddbf' x1='0%' y1='0%' x2='0%' y2='100%' >
+     <stop offset='0%' stop-color='#f8ede0' /> 
+     <stop offset='100%' stop-color='#eedac1' /> 
+  </linearGradient>
+  <linearGradient id='tbg_c1d8ee' x1='0%' y1='0%' x2='0%' y2='100%' >
+     <stop offset='0%' stop-color='#e0ecf8' /> 
+     <stop offset='100%' stop-color='#c1d8ee' /> 
+  </linearGradient>
+</defs>
+
+<!-- ============= Desktop ============= -->
+<rect x='1' y='1' width='1438' height='888' rx='7' ry='7' style='fill:url(#layoutBgB); stroke:#777777; stroke-width:0.5;' />
+<rect x='1' y='1' width='1438' height='888' rx='7' ry='7' style='fill:url(#layoutBgTr);' />
+<rect x='1' y='1' width='1438' height='888' rx='7' ry='7' style='fill:url(#layoutBgA); stroke:#777777; stroke-width:0.5;' />
+
+<!-- ============= Legend ============= -->
+<g transform='translate(10,10)'>
+  <rect x='10' y='10' width='330' height='52' rx='6' ry='6' style='fill:url(#legendGradient);filter:url(#shadow);'/> 
+  <text x='65' y='33'>dbo</text> 
+  <text x='65' y='49' style='fill:#aaaaaa; font-size:11px;'><tspan>Read table &amp; column comments as mouse-over tooltips.</tspan></text> 
+<g transform="scale(0.75,0.75) translate(10,7)" > <a xlink:href='http://www.dbschema.com'> <rect style="fill:#eb7f2c;stroke:none;shape-rendering:geometricPrecision;" width="13.27" height="11.26" x="40.04" y="59.44" ry="3.14" transform="matrix(0.90187511,-0.43199686,0,1,0,0)" /> <rect style="fill:#2c49eb;stroke:none;shape-rendering:geometricPrecision;" width="13.27" height="11.26" x="54.83" y="59.57" ry="3.14" transform="matrix(0.90187511,-0.43199686,0,1,0,0)" /> <rect style="fill:#2c49eb;stroke:none;shape-rendering:geometricPrecision;" width="13.27" height="11.26" x="40.35" y="71.62" ry="3.14" transform="matrix(0.90187511,-0.43199686,0,1,0,0)" /> <rect style="fill:#2c49eb;stroke:none;shape-rendering:geometricPrecision;" width="13.27" height="11.26" x="54.68" y="71.75" ry="3.14" transform="matrix(0.90187511,-0.43199686,0,1,0,0)" /> <rect style="fill:#2c49eb;stroke:none;shape-rendering:geometricPrecision;" width="13.35" height="11.20" x="13.48" y="19.67" ry="3.12" transform="matrix(0.84723158,0.53122372,0,1,0,0)" /> <rect style="fill:#eb7f2c;stroke:none;shape-rendering:geometricPrecision;" width="13.35" height="11.20" x="28.36" y="19.80" ry="3.12" transform="matrix(0.84723158,0.53122372,0,1,0,0)" /> <rect style="fill:#2c49eb;stroke:none;shape-rendering:geometricPrecision;" width="13.35" height="11.20" x="13.79" y="31.78" ry="3.12" transform="matrix(0.84723158,0.53122372,0,1,0,0)" /> <rect style="fill:#2c49eb;stroke:none;shape-rendering:geometricPrecision;" width="13.35" height="11.20" x="28.21" y="31.92" ry="3.12" transform="matrix(0.84723158,0.53122372,0,1,0,0)" /> <rect style="fill:#2c49eb;stroke:none;shape-rendering:geometricPrecision;" width="13.49" height="14.24" x="34.59" y="-9.62" ry="3.97" transform="matrix(0.85815392,0.51339249,-0.91732703,0.39813455,0,0)" /> <rect style="fill:#2c49eb;stroke:none;shape-rendering:geometricPrecision;" width="13.49" height="14.24" x="49.63" y="-9.46" ry="3.97" transform="matrix(0.85815392,0.51339249,-0.91732703,0.39813455,0,0)" /> <rect style="fill:#2c49eb;stroke:none;shape-rendering:geometricPrecision;" width="13.49" height="14.24" x="34.90" y="5.77"  ry="3.97" transform="matrix(0.85815392,0.51339249,-0.91732703,0.39813455,0,0)" /> <rect style="fill:#eb7f2c;stroke:none;shape-rendering:geometricPrecision;" width="13.49" height="14.24" x="49.47" y="5.93"  ry="3.97" transform="matrix(0.85815392,0.51339249,-0.91732703,0.39813455,0,0)" /> <title>Generated using DbSchema - www.dbschema.com</title> </a></g>
+</g>
+
+<g transform='translate(0,110)'>
+<!-- ============= Group 'Orden de Trabajo' ============= -->
+<rect class='grp' style='fill:#c4e0f9;stroke:#ced8e0' x='494' y='160' width='482' height='560' />
+<text x='505' y='175'>Orden de Trabajo</text>
+<rect style='fill:url(#groupUnderTitleLine); stroke-width:2;' x='505' y='178' width='460' height='2' />
+
+<!-- ============= Group 'Camaras' ============= -->
+<rect class='grp' style='fill:#c4e0f9;stroke:#ced8e0' x='1019' y='130' width='392' height='335' />
+<text x='1030' y='145'>Camaras</text>
+<rect style='fill:url(#groupUnderTitleLine); stroke-width:2;' x='1030' y='148' width='370' height='2' />
+
+<!-- ============= Group 'Puertas' ============= -->
+<rect class='grp' style='fill:#c4e0f9;stroke:#ced8e0' x='1109' y='505' width='122' height='215' />
+<text x='1120' y='520'>Puertas</text>
+<rect style='fill:url(#groupUnderTitleLine); stroke-width:2;' x='1120' y='523' width='100' height='2' />
+
+<!-- ============= Fk 'orden_trabajo_FK_orden_trabajo_cliente' ============= -->
+<path id='orden_trabajo_FK_orden_trabajo_cliente'  onmouseover="hghl(['orden_trabajo_FK_orden_trabajo_cliente','dbo.orden_trabajo.cliente_id','dbo.cliente.id'])" onmouseout="uhghl(['orden_trabajo_FK_orden_trabajo_cliente','dbo.orden_trabajo.cliente_id','dbo.cliente.id'])" transform='translate(7,0)' class='scene' d='M 495 450 L 150,450' >
+	<title>Fk FK_orden_trabajo_cliente
+orden_trabajo ref cliente ( cliente_id -&gt; id )</title>
+</path>
+<path transform='translate(7,0)' marker-start='url(#foot0p)' marker-end='url(#arrow1)'    d='M 495 450 L 150,450' ></path>
+<text x='457' y='445' transform='rotate(0 457,445)' title='Fk FK_orden_trabajo_cliente
+orden_trabajo ref cliente ( cliente_id -&gt; id )' class='relName' style='fill:#7488a7'>cliente_id</text>
+<!-- ============= Fk 'orden_trabajo_FK_orden_trabajo_detalle_orden_trabajo' ============= -->
+<path id='orden_trabajo_FK_orden_trabajo_detalle_orden_trabajo'  onmouseover="hghl(['orden_trabajo_FK_orden_trabajo_detalle_orden_trabajo','dbo.orden_trabajo.detalle_orden_trabajo_id','dbo.detalle_orden_trabajo.id'])" onmouseout="uhghl(['orden_trabajo_FK_orden_trabajo_detalle_orden_trabajo','dbo.orden_trabajo.detalle_orden_trabajo_id','dbo.detalle_orden_trabajo.id'])" transform='translate(7,0)' class='scene' d='M 615 510 L 615,585' >
+	<title>Fk FK_orden_trabajo_detalle_orden_trabajo
+orden_trabajo ref detalle_orden_trabajo ( detalle_orden_trabajo_id -&gt; id )</title>
+</path>
+<path transform='translate(7,0)' marker-start='url(#foot0p)' marker-end='url(#arrow1)'    d='M 615 510 L 615,585' ></path>
+<text x='628' y='510' transform='rotate(90 628,510)' title='Fk FK_orden_trabajo_detalle_orden_trabajo
+orden_trabajo ref detalle_orden_trabajo ( detalle_orden_trabajo_id -&gt; id )' class='relName' style='fill:#7488a7'>detalle_orden_trabajo_id</text>
+<!-- ============= Fk 'orden_trabajo_FK_orden_trabajo_empresa' ============= -->
+<path id='orden_trabajo_FK_orden_trabajo_empresa'  onmouseover="hghl(['orden_trabajo_FK_orden_trabajo_empresa','dbo.orden_trabajo.empresa_id','dbo.empresa.id'])" onmouseout="uhghl(['orden_trabajo_FK_orden_trabajo_empresa','dbo.orden_trabajo.empresa_id','dbo.empresa.id'])" transform='translate(7,0)' class='scene' d='M 495 480 L 262,480 Q 255,480 255,487 L 255,540' >
+	<title>Fk FK_orden_trabajo_empresa
+orden_trabajo ref empresa ( empresa_id -&gt; id )</title>
+</path>
+<path transform='translate(7,0)' marker-start='url(#foot1p)' marker-end='url(#arrow1)'    d='M 495 480 L 262,480 Q 255,480 255,487 L 255,540' ></path>
+<text x='447' y='475' transform='rotate(0 447,475)' title='Fk FK_orden_trabajo_empresa
+orden_trabajo ref empresa ( empresa_id -&gt; id )' class='relName' style='fill:#7488a7'>empresa_id</text>
+<!-- ============= Fk 'orden_trabajo_FK_orden_trabajo_tecnico' ============= -->
+<path id='orden_trabajo_FK_orden_trabajo_tecnico'  onmouseover="hghl(['orden_trabajo_FK_orden_trabajo_tecnico','dbo.orden_trabajo.tecnico_id','dbo.tecnico.id'])" onmouseout="uhghl(['orden_trabajo_FK_orden_trabajo_tecnico','dbo.orden_trabajo.tecnico_id','dbo.tecnico.id'])" transform='translate(7,0)' class='scene' d='M 495 330 L 345,330' >
+	<title>Fk FK_orden_trabajo_tecnico
+orden_trabajo ref tecnico ( tecnico_id -&gt; id )</title>
+</path>
+<path transform='translate(7,0)' marker-start='url(#foot0p)' marker-end='url(#arrow1)'    d='M 495 330 L 345,330' ></path>
+<text x='454' y='325' transform='rotate(0 454,325)' title='Fk FK_orden_trabajo_tecnico
+orden_trabajo ref tecnico ( tecnico_id -&gt; id )' class='relName' style='fill:#7488a7'>tecnico_id</text>
+<!-- ============= Fk 'camaras_orden_trabajo_fk_camaras' ============= -->
+<path id='camaras_orden_trabajo_fk_camaras'  onmouseover="hghl(['camaras_orden_trabajo_fk_camaras','dbo.camaras_orden_trabajo.camaras_id','dbo.camaras.id'])" onmouseout="uhghl(['camaras_orden_trabajo_fk_camaras','dbo.camaras_orden_trabajo.camaras_id','dbo.camaras.id'])" transform='translate(7,0)' class='scene' d='M 960 270 L 1020,270' >
+	<title>Fk fk_camaras
+camaras_orden_trabajo ref camaras ( camaras_id -&gt; id )</title>
+</path>
+<path transform='translate(7,0)' marker-start='url(#foot1p)' marker-end='url(#arrow1)'    d='M 960 270 L 1020,270' ></path>
+<text x='967' y='265' transform='rotate(0 967,265)' title='Fk fk_camaras
+camaras_orden_trabajo ref camaras ( camaras_id -&gt; id )' class='relName' style='fill:#7488a7'>camaras_id</text>
+<!-- ============= Fk 'camaras_orden_trabajo_FK_camaras_orden_trabajo_orden_trabajo' ============= -->
+<path id='camaras_orden_trabajo_FK_camaras_orden_trabajo_orden_trabajo'  onmouseover="hghl(['camaras_orden_trabajo_FK_camaras_orden_trabajo_orden_trabajo','dbo.camaras_orden_trabajo.orden_trabajo_id','dbo.orden_trabajo.id'])" onmouseout="uhghl(['camaras_orden_trabajo_FK_camaras_orden_trabajo_orden_trabajo','dbo.camaras_orden_trabajo.orden_trabajo_id','dbo.orden_trabajo.id'])" transform='translate(7,0)' class='scene' d='M 810 255 L 675,255' >
+	<title>Fk FK_camaras_orden_trabajo_orden_trabajo
+camaras_orden_trabajo ref orden_trabajo ( orden_trabajo_id -&gt; id )</title>
+</path>
+<path transform='translate(7,0)' marker-start='url(#foot1p)' marker-end='url(#arrow1)'    d='M 810 255 L 675,255' ></path>
+<text x='734' y='250' transform='rotate(0 734,250)' title='Fk FK_camaras_orden_trabajo_orden_trabajo
+camaras_orden_trabajo ref orden_trabajo ( orden_trabajo_id -&gt; id )' class='relName' style='fill:#7488a7'>orden_trabajo_id</text>
+<!-- ============= Fk 'puertas_orden_trabajo_FK_puertas_orden_trabajo_orden_trabajo1' ============= -->
+<path id='puertas_orden_trabajo_FK_puertas_orden_trabajo_orden_trabajo1'  onmouseover="hghl(['puertas_orden_trabajo_FK_puertas_orden_trabajo_orden_trabajo1','dbo.puertas_orden_trabajo.orden_trabajo_id','dbo.orden_trabajo.id'])" onmouseout="uhghl(['puertas_orden_trabajo_FK_puertas_orden_trabajo_orden_trabajo1','dbo.puertas_orden_trabajo.orden_trabajo_id','dbo.orden_trabajo.id'])" transform='translate(7,0)' class='scene' d='M 780 435 L 675,435' >
+	<title>Fk FK_puertas_orden_trabajo_orden_trabajo1
+puertas_orden_trabajo ref orden_trabajo ( orden_trabajo_id -&gt; id )</title>
+</path>
+<path transform='translate(7,0)' marker-start='url(#foot1p)' marker-end='url(#arrow1)'    d='M 780 435 L 675,435' ></path>
+<text x='704' y='430' transform='rotate(0 704,430)' title='Fk FK_puertas_orden_trabajo_orden_trabajo1
+puertas_orden_trabajo ref orden_trabajo ( orden_trabajo_id -&gt; id )' class='relName' style='fill:#7474a7'>orden_trabajo_id</text>
+<!-- ============= Fk 'puertas_orden_trabajo_FK_puertas_orden_trabajo_puertas' ============= -->
+<path id='puertas_orden_trabajo_FK_puertas_orden_trabajo_puertas'  onmouseover="hghl(['puertas_orden_trabajo_FK_puertas_orden_trabajo_puertas','dbo.puertas_orden_trabajo.puertas_id','dbo.puertas.id'])" onmouseout="uhghl(['puertas_orden_trabajo_FK_puertas_orden_trabajo_puertas','dbo.puertas_orden_trabajo.puertas_id','dbo.puertas.id'])" transform='translate(7,0)' class='scene' d='M 930 510 L 1132,510 Q 1140,510 1140,517 L 1140,525' >
+	<title>Fk FK_puertas_orden_trabajo_puertas
+puertas_orden_trabajo ref puertas ( puertas_id -&gt; id )</title>
+</path>
+<path transform='translate(7,0)' marker-start='url(#foot1p)' marker-end='url(#arrow1)'    d='M 930 510 L 1132,510 Q 1140,510 1140,517 L 1140,525' ></path>
+<text x='937' y='505' transform='rotate(0 937,505)' title='Fk FK_puertas_orden_trabajo_puertas
+puertas_orden_trabajo ref puertas ( puertas_id -&gt; id )' class='relName' style='fill:#7474a7'>puertas_id</text>
+<!-- ============= Fk 'historial_camara_fk_historial_camara_camaras' ============= -->
+<path id='historial_camara_fk_historial_camara_camaras'  onmouseover="hghl(['historial_camara_fk_historial_camara_camaras','dbo.historial_camara.camaras_id','dbo.camaras.id'])" onmouseout="uhghl(['historial_camara_fk_historial_camara_camaras','dbo.historial_camara.camaras_id','dbo.camaras.id'])" transform='translate(7,0)' class='scene' d='M 1290 270 L 1200,270' >
+	<title>Fk fk_historial_camara_camaras
+historial_camara ref camaras ( camaras_id -&gt; id )</title>
+</path>
+<path transform='translate(7,0)' marker-start='url(#foot1p)' marker-end='url(#arrow1)'    d='M 1290 270 L 1200,270' ></path>
+<text x='1243' y='265' transform='rotate(0 1243,265)' title='Fk fk_historial_camara_camaras
+historial_camara ref camaras ( camaras_id -&gt; id )' class='relName' style='fill:#748ea7'>camaras_id</text>
+<!-- ============= Table 'puertas' ============= -->
+<rect class='table' x='1125' y='533' width='90' height='165' rx='7' ry='7' style='stroke:none'/>
+<path d='M 1125.00 559.00 L 1125.00 540.00 Q 1125.00 533.00 1132.00 533.00 L 1208.00 533.00 Q 1215.00 533.00 1215.00 540.00 L 1215.00 559.00 L1125.00 559.00 ' style='fill:url(#tbg_bfbff5);stroke:1;stroke-opacity:0.1;' />
+<rect class='table' x='1125' y='533' width='90' height='165' rx='7' ry='7' style='fill:none;stroke:#aeaebf'/>
+<line class='delim' x1='1125.000000' y1='559.000000' x2='1215.000000' y2='559.000000' style='stroke:#aeaebf'/>
+<line class='delim' x1='1140.000000' y1='559.000000' x2='1140.000000' y2='698.000000' style='stroke:#aeaebf'/>
+<line class='delim' x1='1204.000000' y1='559.000000' x2='1204.000000' y2='698.000000' style='stroke:#aeaebf'/>
+<a xlink:href='#puertas'><text x='1148' y='551'>puertas</text><title>Table dbo.puertas</title></a>
+  <use id='nn' x='1127' y='567' xlink:href='#nn'/><a xlink:href='#puertas.id'><use id='pk' x='1127' y='566' xlink:href='#pk'/><title>Pk PK_puertas ( id ) </title></a>
+<a xlink:href='#puertas.id'><text id='dbo.puertas.id' x='1143' y='576' onmouseover="hghl(['puertas_orden_trabajo_FK_puertas_orden_trabajo_puertas','dbo.puertas_orden_trabajo.puertas_id'])" onmouseout="uhghl(['puertas_orden_trabajo_FK_puertas_orden_trabajo_puertas','dbo.puertas_orden_trabajo.puertas_id'])">id</text><title>id
+* bigint</title></a>
+<a xlink:href='#puertas.id'><use id='ref' x='1204' y='566' xlink:href='#ref'/><title>Referred by puertas_orden_trabajo ( puertas_id -&gt; id ) </title></a>
+  <use id='nn' x='1127' y='582' xlink:href='#nn'/><a xlink:href='#puertas.codigo'><text id='dbo.puertas.codigo' x='1143' y='591'>codigo</text><title>codigo
+* varchar(250)</title></a>
+<text x='1212' y='588' text-anchor='end' class='colType'>t</text>  <use id='nn' x='1127' y='597' xlink:href='#nn'/><a xlink:href='#puertas.modelo'><text id='dbo.puertas.modelo' x='1143' y='606'>modelo</text><title>modelo
+* varchar(250)</title></a>
+<text x='1212' y='603' text-anchor='end' class='colType'>t</text>  <use id='nn' x='1127' y='612' xlink:href='#nn'/><a xlink:href='#puertas.ct_tipo'><text id='dbo.puertas.ct_tipo' x='1143' y='621'>ct_tipo</text><title>ct_tipo
+* bigint</title></a>
+<text x='1212' y='618' text-anchor='end' class='colType'>#</text>  <use id='nn' x='1127' y='627' xlink:href='#nn'/><a xlink:href='#puertas.marca'><text id='dbo.puertas.marca' x='1143' y='636'>marca</text><title>marca
+* varchar(250)</title></a>
+<text x='1212' y='633' text-anchor='end' class='colType'>t</text>  <use id='nn' x='1127' y='642' xlink:href='#nn'/><a xlink:href='#puertas.activo'><text id='dbo.puertas.activo' x='1143' y='651'>activo</text><title>activo
+* bit</title></a>
+<text x='1212' y='648' text-anchor='end' class='colType'>b</text>  <use id='nn' x='1127' y='657' xlink:href='#nn'/><a xlink:href='#puertas.estado'><text id='dbo.puertas.estado' x='1143' y='666'>estado</text><title>estado
+* varchar(250)</title></a>
+<text x='1212' y='663' text-anchor='end' class='colType'>t</text>  <a xlink:href='#puertas.observacion'><text id='dbo.puertas.observacion' x='1143' y='681'>observacion</text><title>observacion
+varchar(250)</title></a>
+<text x='1212' y='678' text-anchor='end' class='colType'>t</text>
+<!-- ============= Table 'server_pc' ============= -->
+<rect class='table' x='225' y='68' width='150' height='210' rx='7' ry='7' style='stroke:none'/>
+<path d='M 225.00 94.00 L 225.00 75.00 Q 225.00 68.00 232.00 68.00 L 368.00 68.00 Q 375.00 68.00 375.00 75.00 L 375.00 94.00 L225.00 94.00 ' style='fill:url(#tbg_c8f5bf);stroke:1;stroke-opacity:0.1;' />
+<rect class='table' x='225' y='68' width='150' height='210' rx='7' ry='7' style='fill:none;stroke:#b1bfae'/>
+<line class='delim' x1='225.000000' y1='94.000000' x2='375.000000' y2='94.000000' style='stroke:#b1bfae'/>
+<line class='delim' x1='240.000000' y1='94.000000' x2='240.000000' y2='278.000000' style='stroke:#b1bfae'/>
+<line class='delim' x1='364.000000' y1='94.000000' x2='364.000000' y2='278.000000' style='stroke:#b1bfae'/>
+<a xlink:href='#server_pc'><text x='273' y='86'>server_pc</text><title>Table dbo.server_pc</title></a>
+  <use id='nn' x='227' y='102' xlink:href='#nn'/><a xlink:href='#server_pc.id'><text id='dbo.server_pc.id' x='243' y='111'>id</text><title>id
+* bigint</title></a>
+<text x='372' y='108' text-anchor='end' class='colType'>#</text>  <use id='nn' x='227' y='117' xlink:href='#nn'/><a xlink:href='#server_pc.marca'><text id='dbo.server_pc.marca' x='243' y='126'>marca</text><title>marca
+* varchar(250)</title></a>
+<text x='372' y='123' text-anchor='end' class='colType'>t</text>  <use id='nn' x='227' y='132' xlink:href='#nn'/><a xlink:href='#server_pc.modelo'><text id='dbo.server_pc.modelo' x='243' y='141'>modelo</text><title>modelo
+* varchar(250)</title></a>
+<text x='372' y='138' text-anchor='end' class='colType'>t</text>  <use id='nn' x='227' y='147' xlink:href='#nn'/><a xlink:href='#server_pc.cantidad'><text id='dbo.server_pc.cantidad' x='243' y='156'>cantidad</text><title>cantidad
+* float</title></a>
+<text x='372' y='153' text-anchor='end' class='colType'>#</text>  <use id='nn' x='227' y='162' xlink:href='#nn'/><a xlink:href='#server_pc.descripcion'><text id='dbo.server_pc.descripcion' x='243' y='171'>descripcion</text><title>descripcion
+* varchar(255)</title></a>
+<text x='372' y='168' text-anchor='end' class='colType'>t</text>  <use id='nn' x='227' y='177' xlink:href='#nn'/><a xlink:href='#server_pc.ubicacion'><text id='dbo.server_pc.ubicacion' x='243' y='186'>ubicacion</text><title>ubicacion
+* varchar(250)</title></a>
+<text x='372' y='183' text-anchor='end' class='colType'>t</text>  <use id='nn' x='227' y='192' xlink:href='#nn'/><a xlink:href='#server_pc.sistema_operativo'><text id='dbo.server_pc.sistema_operativo' x='243' y='201'>sistema_operativo</text><title>sistema_operativo
+* varchar(250)</title></a>
+<text x='372' y='198' text-anchor='end' class='colType'>t</text>  <use id='nn' x='227' y='207' xlink:href='#nn'/><a xlink:href='#server_pc.memoria_ram'><text id='dbo.server_pc.memoria_ram' x='243' y='216'>memoria_ram</text><title>memoria_ram
+* varchar(250)</title></a>
+<text x='372' y='213' text-anchor='end' class='colType'>t</text>  <use id='nn' x='227' y='222' xlink:href='#nn'/><a xlink:href='#server_pc.direccion_ip'><text id='dbo.server_pc.direccion_ip' x='243' y='231'>direccion_ip</text><title>direccion_ip
+* varchar(250)</title></a>
+<text x='372' y='228' text-anchor='end' class='colType'>t</text>  <use id='nn' x='227' y='237' xlink:href='#nn'/><a xlink:href='#server_pc.capacidad_disco_duro'><text id='dbo.server_pc.capacidad_disco_duro' x='243' y='246'>capacidad_disco_duro</text><title>capacidad_disco_duro
+* varchar(250)</title></a>
+<text x='372' y='243' text-anchor='end' class='colType'>t</text>  <use id='nn' x='227' y='252' xlink:href='#nn'/><a xlink:href='#server_pc.observaciones'><text id='dbo.server_pc.observaciones' x='243' y='261'>observaciones</text><title>observaciones
+* varchar(1500)</title></a>
+<text x='372' y='258' text-anchor='end' class='colType'>t</text>
+<!-- ============= Table 'orden_trabajo' ============= -->
+<rect class='table' x='510' y='188' width='165' height='315' rx='7' ry='7' style='stroke:none'/>
+<path d='M 510.00 214.00 L 510.00 195.00 Q 510.00 188.00 517.00 188.00 L 668.00 188.00 Q 675.00 188.00 675.00 195.00 L 675.00 214.00 L510.00 214.00 ' style='fill:url(#tbg_bfd4f5);stroke:1;stroke-opacity:0.1;' />
+<rect class='table' x='510' y='188' width='165' height='315' rx='7' ry='7' style='fill:none;stroke:#aeb5bf'/>
+<line class='delim' x1='510.000000' y1='214.000000' x2='675.000000' y2='214.000000' style='stroke:#aeb5bf'/>
+<line class='delim' x1='525.000000' y1='214.000000' x2='525.000000' y2='503.000000' style='stroke:#aeb5bf'/>
+<line class='delim' x1='664.000000' y1='214.000000' x2='664.000000' y2='503.000000' style='stroke:#aeb5bf'/>
+<a xlink:href='#orden_trabajo'><text x='555' y='206'>orden_trabajo</text><title>Table dbo.orden_trabajo</title></a>
+  <use id='nn' x='512' y='222' xlink:href='#nn'/><a xlink:href='#orden_trabajo.id'><use id='pk' x='512' y='221' xlink:href='#pk'/><title>Pk PK_orden_trabajo ( id ) </title></a>
+<a xlink:href='#orden_trabajo.id'><text id='dbo.orden_trabajo.id' x='528' y='231' onmouseover="hghl(['camaras_orden_trabajo_FK_camaras_orden_trabajo_orden_trabajo','dbo.camaras_orden_trabajo.orden_trabajo_id','puertas_orden_trabajo_FK_puertas_orden_trabajo_orden_trabajo1','dbo.puertas_orden_trabajo.orden_trabajo_id'])" onmouseout="uhghl(['camaras_orden_trabajo_FK_camaras_orden_trabajo_orden_trabajo','dbo.camaras_orden_trabajo.orden_trabajo_id','puertas_orden_trabajo_FK_puertas_orden_trabajo_orden_trabajo1','dbo.puertas_orden_trabajo.orden_trabajo_id'])">id</text><title>id
+* bigint</title></a>
+<a xlink:href='#orden_trabajo.id'><use id='ref' x='664' y='221' xlink:href='#ref'/><title>Referred by camaras_orden_trabajo ( orden_trabajo_id -&gt; id ) 
+Referred by puertas_orden_trabajo ( orden_trabajo_id -&gt; id ) </title></a>
+  <use id='nn' x='512' y='237' xlink:href='#nn'/><a xlink:href='#orden_trabajo.num_ticket'><text id='dbo.orden_trabajo.num_ticket' x='528' y='246'>num_ticket</text><title>num_ticket
+* bigint</title></a>
+<text x='672' y='243' text-anchor='end' class='colType'>#</text>  <a xlink:href='#orden_trabajo.num_ord_trab'><text id='dbo.orden_trabajo.num_ord_trab' x='528' y='261'>num_ord_trab</text><title>num_ord_trab
+bigint</title></a>
+<text x='672' y='258' text-anchor='end' class='colType'>#</text>  <use id='nn' x='512' y='267' xlink:href='#nn'/><a xlink:href='#orden_trabajo.empresa_id'><text id='dbo.orden_trabajo.empresa_id' x='528' y='276' onmouseover="hghl(['orden_trabajo_FK_orden_trabajo_empresa','dbo.empresa.id'])" onmouseout="uhghl(['orden_trabajo_FK_orden_trabajo_empresa','dbo.empresa.id'])">empresa_id</text><title>empresa_id
+* bigint</title></a>
+<a xlink:href='#orden_trabajo.empresa_id'><use id='fk' x='664' y='266' xlink:href='#fk'/><title>References empresa ( empresa_id -&gt; id ) </title></a>
+  <use id='nn' x='512' y='282' xlink:href='#nn'/><a xlink:href='#orden_trabajo.ct_sistema'><text id='dbo.orden_trabajo.ct_sistema' x='528' y='291'>ct_sistema</text><title>ct_sistema
+* bigint</title></a>
+<text x='672' y='288' text-anchor='end' class='colType'>#</text>  <use id='nn' x='512' y='297' xlink:href='#nn'/><a xlink:href='#orden_trabajo.ct_servicio'><text id='dbo.orden_trabajo.ct_servicio' x='528' y='306'>ct_servicio</text><title>ct_servicio
+* bigint</title></a>
+<text x='672' y='303' text-anchor='end' class='colType'>#</text>  <use id='nn' x='512' y='312' xlink:href='#nn'/><a xlink:href='#orden_trabajo.descripcion'><text id='dbo.orden_trabajo.descripcion' x='528' y='321'>descripcion</text><title>descripcion
+* varchar(250)</title></a>
+<text x='672' y='318' text-anchor='end' class='colType'>t</text>  <a xlink:href='#orden_trabajo.fecha_inicio'><text id='dbo.orden_trabajo.fecha_inicio' x='528' y='336'>fecha_inicio</text><title>fecha_inicio
+datetime2(7)</title></a>
+<text x='672' y='333' text-anchor='end' class='colType'>d</text>  <a xlink:href='#orden_trabajo.fecha_termino'><text id='dbo.orden_trabajo.fecha_termino' x='528' y='351'>fecha_termino</text><title>fecha_termino
+datetime2(7)</title></a>
+<text x='672' y='348' text-anchor='end' class='colType'>d</text>  <a xlink:href='#orden_trabajo.hora_termino'><text id='dbo.orden_trabajo.hora_termino' x='528' y='366'>hora_termino</text><title>hora_termino
+time(16)</title></a>
+<text x='672' y='363' text-anchor='end' class='colType'>d</text>  <use id='nn' x='512' y='372' xlink:href='#nn'/><a xlink:href='#orden_trabajo.activo'><text id='dbo.orden_trabajo.activo' x='528' y='381'>activo</text><title>activo
+* bit</title></a>
+<text x='672' y='378' text-anchor='end' class='colType'>b</text>  <a xlink:href='#orden_trabajo.fecha_creacion'><text id='dbo.orden_trabajo.fecha_creacion' x='528' y='396'>fecha_creacion</text><title>fecha_creacion
+datetime2(7)</title></a>
+<text x='672' y='393' text-anchor='end' class='colType'>d</text>  <a xlink:href='#orden_trabajo.cliente_id'><text id='dbo.orden_trabajo.cliente_id' x='528' y='411' onmouseover="hghl(['orden_trabajo_FK_orden_trabajo_cliente','dbo.cliente.id'])" onmouseout="uhghl(['orden_trabajo_FK_orden_trabajo_cliente','dbo.cliente.id'])">cliente_id</text><title>cliente_id
+bigint</title></a>
+<a xlink:href='#orden_trabajo.cliente_id'><use id='fk' x='664' y='401' xlink:href='#fk'/><title>References cliente ( cliente_id -&gt; id ) </title></a>
+  <a xlink:href='#orden_trabajo.tecnico_id'><text id='dbo.orden_trabajo.tecnico_id' x='528' y='426' onmouseover="hghl(['orden_trabajo_FK_orden_trabajo_tecnico','dbo.tecnico.id'])" onmouseout="uhghl(['orden_trabajo_FK_orden_trabajo_tecnico','dbo.tecnico.id'])">tecnico_id</text><title>tecnico_id
+bigint</title></a>
+<a xlink:href='#orden_trabajo.tecnico_id'><use id='fk' x='664' y='416' xlink:href='#fk'/><title>References tecnico ( tecnico_id -&gt; id ) </title></a>
+  <a xlink:href='#orden_trabajo.detalle_orden_trabajo_id'><text id='dbo.orden_trabajo.detalle_orden_trabajo_id' x='528' y='441' onmouseover="hghl(['orden_trabajo_FK_orden_trabajo_detalle_orden_trabajo','dbo.detalle_orden_trabajo.id'])" onmouseout="uhghl(['orden_trabajo_FK_orden_trabajo_detalle_orden_trabajo','dbo.detalle_orden_trabajo.id'])">detalle_orden_trabajo_id</text><title>detalle_orden_trabajo_id
+bigint</title></a>
+<a xlink:href='#orden_trabajo.detalle_orden_trabajo_id'><use id='fk' x='664' y='431' xlink:href='#fk'/><title>References detalle_orden_trabajo ( detalle_orden_trabajo_id -&gt; id ) </title></a>
+  <a xlink:href='#orden_trabajo.solucion'><text id='dbo.orden_trabajo.solucion' x='528' y='456'>solucion</text><title>solucion
+varchar(1500)</title></a>
+<text x='672' y='453' text-anchor='end' class='colType'>t</text>  <a xlink:href='#orden_trabajo.solucion_tecnica'><text id='dbo.orden_trabajo.solucion_tecnica' x='528' y='471'>solucion_tecnica</text><title>solucion_tecnica
+varchar(1500)</title></a>
+<text x='672' y='468' text-anchor='end' class='colType'>t</text>  <use id='nn' x='512' y='477' xlink:href='#nn'/><a xlink:href='#orden_trabajo.estado'><text id='dbo.orden_trabajo.estado' x='528' y='486'>estado</text><title>estado
+* int</title></a>
+<text x='672' y='483' text-anchor='end' class='colType'>#</text>
+<!-- ============= Table 'camaras_orden_trabajo' ============= -->
+<rect class='table' x='825' y='248' width='135' height='105' rx='7' ry='7' style='stroke:none'/>
+<path d='M 825.00 274.00 L 825.00 255.00 Q 825.00 248.00 832.00 248.00 L 953.00 248.00 Q 960.00 248.00 960.00 255.00 L 960.00 274.00 L825.00 274.00 ' style='fill:url(#tbg_bfd4f5);stroke:1;stroke-opacity:0.1;' />
+<rect class='table' x='825' y='248' width='135' height='105' rx='7' ry='7' style='fill:none;stroke:#aeb5bf'/>
+<line class='delim' x1='825.000000' y1='274.000000' x2='960.000000' y2='274.000000' style='stroke:#aeb5bf'/>
+<line class='delim' x1='840.000000' y1='274.000000' x2='840.000000' y2='353.000000' style='stroke:#aeb5bf'/>
+<line class='delim' x1='949.000000' y1='274.000000' x2='949.000000' y2='353.000000' style='stroke:#aeb5bf'/>
+<a xlink:href='#camaras_orden_trabajo'><text x='832' y='266'>camaras_orden_trabajo</text><title>Table dbo.camaras_orden_trabajo</title></a>
+  <use id='nn' x='827' y='282' xlink:href='#nn'/><a xlink:href='#camaras_orden_trabajo.id'><use id='pk' x='827' y='281' xlink:href='#pk'/><title>Pk camaras_orden_trabajo_pk ( id ) </title></a>
+<a xlink:href='#camaras_orden_trabajo.id'><text id='dbo.camaras_orden_trabajo.id' x='843' y='291'>id</text><title>id
+* bigint</title></a>
+<text x='957' y='288' text-anchor='end' class='colType'>#</text>  <use id='nn' x='827' y='297' xlink:href='#nn'/><a xlink:href='#camaras_orden_trabajo.orden_trabajo_id'><text id='dbo.camaras_orden_trabajo.orden_trabajo_id' x='843' y='306' onmouseover="hghl(['camaras_orden_trabajo_FK_camaras_orden_trabajo_orden_trabajo','dbo.orden_trabajo.id'])" onmouseout="uhghl(['camaras_orden_trabajo_FK_camaras_orden_trabajo_orden_trabajo','dbo.orden_trabajo.id'])">orden_trabajo_id</text><title>orden_trabajo_id
+* bigint</title></a>
+<a xlink:href='#camaras_orden_trabajo.orden_trabajo_id'><use id='fk' x='949' y='296' xlink:href='#fk'/><title>References orden_trabajo ( orden_trabajo_id -&gt; id ) </title></a>
+  <use id='nn' x='827' y='312' xlink:href='#nn'/><a xlink:href='#camaras_orden_trabajo.camaras_id'><text id='dbo.camaras_orden_trabajo.camaras_id' x='843' y='321' onmouseover="hghl(['camaras_orden_trabajo_fk_camaras','dbo.camaras.id'])" onmouseout="uhghl(['camaras_orden_trabajo_fk_camaras','dbo.camaras.id'])">camaras_id</text><title>camaras_id
+* bigint</title></a>
+<a xlink:href='#camaras_orden_trabajo.camaras_id'><use id='fk' x='949' y='311' xlink:href='#fk'/><title>References camaras ( camaras_id -&gt; id ) </title></a>
+  <use id='nn' x='827' y='327' xlink:href='#nn'/><a xlink:href='#camaras_orden_trabajo.activo'><text id='dbo.camaras_orden_trabajo.activo' x='843' y='336'>activo</text><title>activo
+* bit default 1</title></a>
+<text x='957' y='333' text-anchor='end' class='colType'>b</text>
+<!-- ============= Table 'detalle_orden_trabajo' ============= -->
+<rect class='table' x='600' y='593' width='120' height='105' rx='7' ry='7' style='stroke:none'/>
+<path d='M 600.00 619.00 L 600.00 600.00 Q 600.00 593.00 607.00 593.00 L 713.00 593.00 Q 720.00 593.00 720.00 600.00 L 720.00 619.00 L600.00 619.00 ' style='fill:url(#tbg_f5ddbf);stroke:1;stroke-opacity:0.1;' />
+<rect class='table' x='600' y='593' width='120' height='105' rx='7' ry='7' style='fill:none;stroke:#bfb7ae'/>
+<line class='delim' x1='600.000000' y1='619.000000' x2='720.000000' y2='619.000000' style='stroke:#bfb7ae'/>
+<line class='delim' x1='615.000000' y1='619.000000' x2='615.000000' y2='698.000000' style='stroke:#bfb7ae'/>
+<line class='delim' x1='709.000000' y1='619.000000' x2='709.000000' y2='698.000000' style='stroke:#bfb7ae'/>
+<a xlink:href='#detalle_orden_trabajo'><text x='603' y='611'>detalle_orden_trabajo</text><title>Table dbo.detalle_orden_trabajo</title></a>
+  <use id='nn' x='602' y='627' xlink:href='#nn'/><a xlink:href='#detalle_orden_trabajo.id'><use id='pk' x='602' y='626' xlink:href='#pk'/><title>Pk PK_detalle_orden_trabajo ( id ) </title></a>
+<a xlink:href='#detalle_orden_trabajo.id'><text id='dbo.detalle_orden_trabajo.id' x='618' y='636' onmouseover="hghl(['orden_trabajo_FK_orden_trabajo_detalle_orden_trabajo','dbo.orden_trabajo.detalle_orden_trabajo_id'])" onmouseout="uhghl(['orden_trabajo_FK_orden_trabajo_detalle_orden_trabajo','dbo.orden_trabajo.detalle_orden_trabajo_id'])">id</text><title>id
+* bigint</title></a>
+<a xlink:href='#detalle_orden_trabajo.id'><use id='ref' x='709' y='626' xlink:href='#ref'/><title>Referred by orden_trabajo ( detalle_orden_trabajo_id -&gt; id ) </title></a>
+  <use id='nn' x='602' y='642' xlink:href='#nn'/><a xlink:href='#detalle_orden_trabajo.cantidad'><text id='dbo.detalle_orden_trabajo.cantidad' x='618' y='651'>cantidad</text><title>cantidad
+* int</title></a>
+<text x='717' y='648' text-anchor='end' class='colType'>#</text>  <use id='nn' x='602' y='657' xlink:href='#nn'/><a xlink:href='#detalle_orden_trabajo.descripcion'><text id='dbo.detalle_orden_trabajo.descripcion' x='618' y='666'>descripcion</text><title>descripcion
+* varchar(250)</title></a>
+<text x='717' y='663' text-anchor='end' class='colType'>t</text>  <use id='nn' x='602' y='672' xlink:href='#nn'/><a xlink:href='#detalle_orden_trabajo.activo'><text id='dbo.detalle_orden_trabajo.activo' x='618' y='681'>activo</text><title>activo
+* bit</title></a>
+<text x='717' y='678' text-anchor='end' class='colType'>b</text>
+<!-- ============= Table 'intercomunicadores' ============= -->
+<rect class='table' x='60' y='68' width='105' height='135' rx='7' ry='7' style='stroke:none'/>
+<path d='M 60.00 94.00 L 60.00 75.00 Q 60.00 68.00 67.00 68.00 L 158.00 68.00 Q 165.00 68.00 165.00 75.00 L 165.00 94.00 L60.00 94.00 ' style='fill:url(#tbg_c8f5bf);stroke:1;stroke-opacity:0.1;' />
+<rect class='table' x='60' y='68' width='105' height='135' rx='7' ry='7' style='fill:none;stroke:#b1bfae'/>
+<line class='delim' x1='60.000000' y1='94.000000' x2='165.000000' y2='94.000000' style='stroke:#b1bfae'/>
+<line class='delim' x1='75.000000' y1='94.000000' x2='75.000000' y2='203.000000' style='stroke:#b1bfae'/>
+<line class='delim' x1='154.000000' y1='94.000000' x2='154.000000' y2='203.000000' style='stroke:#b1bfae'/>
+<a xlink:href='#intercomunicadores'><text x='63' y='86'>intercomunicadores</text><title>Table dbo.intercomunicadores</title></a>
+  <use id='nn' x='62' y='102' xlink:href='#nn'/><a xlink:href='#intercomunicadores.id'><text id='dbo.intercomunicadores.id' x='78' y='111'>id</text><title>id
+* bigint</title></a>
+<text x='162' y='108' text-anchor='end' class='colType'>#</text>  <use id='nn' x='62' y='117' xlink:href='#nn'/><a xlink:href='#intercomunicadores.numero'><text id='dbo.intercomunicadores.numero' x='78' y='126'>numero</text><title>numero
+* int</title></a>
+<text x='162' y='123' text-anchor='end' class='colType'>#</text>  <use id='nn' x='62' y='132' xlink:href='#nn'/><a xlink:href='#intercomunicadores.puerta'><text id='dbo.intercomunicadores.puerta' x='78' y='141'>puerta</text><title>puerta
+* varchar(250)</title></a>
+<text x='162' y='138' text-anchor='end' class='colType'>t</text>  <use id='nn' x='62' y='147' xlink:href='#nn'/><a xlink:href='#intercomunicadores.ubicacion'><text id='dbo.intercomunicadores.ubicacion' x='78' y='156'>ubicacion</text><title>ubicacion
+* varchar(250)</title></a>
+<text x='162' y='153' text-anchor='end' class='colType'>t</text>  <use id='nn' x='62' y='162' xlink:href='#nn'/><a xlink:href='#intercomunicadores.observaciones'><text id='dbo.intercomunicadores.observaciones' x='78' y='171'>observaciones</text><title>observaciones
+* varchar(250)</title></a>
+<text x='162' y='168' text-anchor='end' class='colType'>t</text>  <use id='nn' x='62' y='177' xlink:href='#nn'/><a xlink:href='#intercomunicadores.estado'><text id='dbo.intercomunicadores.estado' x='78' y='186'>estado</text><title>estado
+* bit</title></a>
+<text x='162' y='183' text-anchor='end' class='colType'>b</text>
+<!-- ============= Table 'catalogo' ============= -->
+<rect class='table' x='390' y='68' width='90' height='135' rx='7' ry='7' style='stroke:none'/>
+<path d='M 390.00 94.00 L 390.00 75.00 Q 390.00 68.00 397.00 68.00 L 473.00 68.00 Q 480.00 68.00 480.00 75.00 L 480.00 94.00 L390.00 94.00 ' style='fill:url(#tbg_c8f5bf);stroke:1;stroke-opacity:0.1;' />
+<rect class='table' x='390' y='68' width='90' height='135' rx='7' ry='7' style='fill:none;stroke:#b1bfae'/>
+<line class='delim' x1='390.000000' y1='94.000000' x2='480.000000' y2='94.000000' style='stroke:#b1bfae'/>
+<line class='delim' x1='405.000000' y1='94.000000' x2='405.000000' y2='203.000000' style='stroke:#b1bfae'/>
+<line class='delim' x1='469.000000' y1='94.000000' x2='469.000000' y2='203.000000' style='stroke:#b1bfae'/>
+<a xlink:href='#catalogo'><text x='411' y='86'>catalogo</text><title>Table dbo.catalogo</title></a>
+  <use id='nn' x='392' y='102' xlink:href='#nn'/><a xlink:href='#catalogo.id'><use id='pk' x='392' y='101' xlink:href='#pk'/><title>Pk PK_catalogo ( id ) </title></a>
+<a xlink:href='#catalogo.id'><text id='dbo.catalogo.id' x='408' y='111'>id</text><title>id
+* int</title></a>
+<text x='477' y='108' text-anchor='end' class='colType'>#</text>  <use id='nn' x='392' y='117' xlink:href='#nn'/><a xlink:href='#catalogo.nombre'><text id='dbo.catalogo.nombre' x='408' y='126'>nombre</text><title>nombre
+* varchar(250)</title></a>
+<text x='477' y='123' text-anchor='end' class='colType'>t</text>  <a xlink:href='#catalogo.catalogo_id'><text id='dbo.catalogo.catalogo_id' x='408' y='141'>catalogo_id</text><title>catalogo_id
+varchar(1)</title></a>
+<text x='477' y='138' text-anchor='end' class='colType'>t</text>  <use id='nn' x='392' y='147' xlink:href='#nn'/><a xlink:href='#catalogo.orden'><text id='dbo.catalogo.orden' x='408' y='156'>orden</text><title>orden
+* int</title></a>
+<text x='477' y='153' text-anchor='end' class='colType'>#</text>  <a xlink:href='#catalogo.valor'><text id='dbo.catalogo.valor' x='408' y='171'>valor</text><title>valor
+varchar(1)</title></a>
+<text x='477' y='168' text-anchor='end' class='colType'>t</text>  <use id='nn' x='392' y='177' xlink:href='#nn'/><a xlink:href='#catalogo.activo'><text id='dbo.catalogo.activo' x='408' y='186'>activo</text><title>activo
+* bit</title></a>
+<text x='477' y='183' text-anchor='end' class='colType'>b</text>
+<!-- ============= Table 'sysdiagrams' ============= -->
+<rect class='table' x='75' y='218' width='90' height='120' rx='7' ry='7' style='stroke:none'/>
+<path d='M 75.00 244.00 L 75.00 225.00 Q 75.00 218.00 82.00 218.00 L 158.00 218.00 Q 165.00 218.00 165.00 225.00 L 165.00 244.00 L75.00 244.00 ' style='fill:url(#tbg_c8f5bf);stroke:1;stroke-opacity:0.1;' />
+<rect class='table' x='75' y='218' width='90' height='120' rx='7' ry='7' style='fill:none;stroke:#b1bfae'/>
+<line class='delim' x1='75.000000' y1='244.000000' x2='165.000000' y2='244.000000' style='stroke:#b1bfae'/>
+<line class='delim' x1='90.000000' y1='244.000000' x2='90.000000' y2='338.000000' style='stroke:#b1bfae'/>
+<line class='delim' x1='154.000000' y1='244.000000' x2='154.000000' y2='338.000000' style='stroke:#b1bfae'/>
+<a xlink:href='#sysdiagrams'><text x='87' y='236'>sysdiagrams</text><title>Table dbo.sysdiagrams</title></a>
+  <use id='nn' x='77' y='252' xlink:href='#nn'/><a xlink:href='#sysdiagrams.diagram_id'><use id='pk' x='77' y='251' xlink:href='#pk'/><title>Pk PK__sysdiagr__C2B05B619B3C3DA4 ( diagram_id ) </title></a>
+<a xlink:href='#sysdiagrams.diagram_id'><text id='dbo.sysdiagrams.diagram_id' x='93' y='261'>diagram_id</text><title>diagram_id
+* int</title></a>
+<text x='162' y='258' text-anchor='end' class='colType'>#</text>  <use id='nn' x='77' y='267' xlink:href='#nn'/><a xlink:href='#sysdiagrams.name'><use id='unq' x='77' y='266' xlink:href='#unq'/><title>Unq UK_principal_name ( principal_id, name ) </title></a>
+<a xlink:href='#sysdiagrams.name'><text id='dbo.sysdiagrams.name' x='93' y='276'>name</text><title>name
+* sysname</title></a>
+<text x='162' y='273' text-anchor='end' class='colType'>t</text>  <use id='nn' x='77' y='282' xlink:href='#nn'/><a xlink:href='#sysdiagrams.principal_id'><use id='unq' x='77' y='281' xlink:href='#unq'/><title>Unq UK_principal_name ( principal_id, name ) </title></a>
+<a xlink:href='#sysdiagrams.principal_id'><text id='dbo.sysdiagrams.principal_id' x='93' y='291'>principal_id</text><title>principal_id
+* int</title></a>
+<text x='162' y='288' text-anchor='end' class='colType'>#</text>  <a xlink:href='#sysdiagrams.version'><text id='dbo.sysdiagrams.version' x='93' y='306'>version</text><title>version
+int</title></a>
+<text x='162' y='303' text-anchor='end' class='colType'>#</text>  <a xlink:href='#sysdiagrams.definition'><text id='dbo.sysdiagrams.definition' x='93' y='321'>definition</text><title>definition
+varbinary(max)</title></a>
+<text x='162' y='318' text-anchor='end' class='colType'>~</text>
+<!-- ============= Table 'tecnico' ============= -->
+<rect class='table' x='270' y='308' width='75' height='120' rx='7' ry='7' style='stroke:none'/>
+<path d='M 270.00 334.00 L 270.00 315.00 Q 270.00 308.00 277.00 308.00 L 338.00 308.00 Q 345.00 308.00 345.00 315.00 L 345.00 334.00 L270.00 334.00 ' style='fill:url(#tbg_bfbff5);stroke:1;stroke-opacity:0.1;' />
+<rect class='table' x='270' y='308' width='75' height='120' rx='7' ry='7' style='fill:none;stroke:#aeaebf'/>
+<line class='delim' x1='270.000000' y1='334.000000' x2='345.000000' y2='334.000000' style='stroke:#aeaebf'/>
+<line class='delim' x1='285.000000' y1='334.000000' x2='285.000000' y2='428.000000' style='stroke:#aeaebf'/>
+<line class='delim' x1='334.000000' y1='334.000000' x2='334.000000' y2='428.000000' style='stroke:#aeaebf'/>
+<a xlink:href='#tecnico'><text x='287' y='326'>tecnico</text><title>Table dbo.tecnico</title></a>
+  <use id='nn' x='272' y='342' xlink:href='#nn'/><a xlink:href='#tecnico.id'><use id='pk' x='272' y='341' xlink:href='#pk'/><title>Pk PK_tecnico ( id ) </title></a>
+<a xlink:href='#tecnico.id'><text id='dbo.tecnico.id' x='288' y='351' onmouseover="hghl(['orden_trabajo_FK_orden_trabajo_tecnico','dbo.orden_trabajo.tecnico_id'])" onmouseout="uhghl(['orden_trabajo_FK_orden_trabajo_tecnico','dbo.orden_trabajo.tecnico_id'])">id</text><title>id
+* bigint</title></a>
+<a xlink:href='#tecnico.id'><use id='ref' x='334' y='341' xlink:href='#ref'/><title>Referred by orden_trabajo ( tecnico_id -&gt; id ) </title></a>
+  <use id='nn' x='272' y='357' xlink:href='#nn'/><a xlink:href='#tecnico.nombres'><text id='dbo.tecnico.nombres' x='288' y='366'>nombres</text><title>nombres
+* varchar(250)</title></a>
+<text x='342' y='363' text-anchor='end' class='colType'>t</text>  <use id='nn' x='272' y='372' xlink:href='#nn'/><a xlink:href='#tecnico.apellidos'><text id='dbo.tecnico.apellidos' x='288' y='381'>apellidos</text><title>apellidos
+* varchar(250)</title></a>
+<text x='342' y='378' text-anchor='end' class='colType'>t</text>  <use id='nn' x='272' y='387' xlink:href='#nn'/><a xlink:href='#tecnico.celular'><text id='dbo.tecnico.celular' x='288' y='396'>celular</text><title>celular
+* varchar(10)</title></a>
+<text x='342' y='393' text-anchor='end' class='colType'>t</text>  <use id='nn' x='272' y='402' xlink:href='#nn'/><a xlink:href='#tecnico.activo'><text id='dbo.tecnico.activo' x='288' y='411'>activo</text><title>activo
+* bit</title></a>
+<text x='342' y='408' text-anchor='end' class='colType'>b</text>
+<!-- ============= Table 'empresa' ============= -->
+<rect class='table' x='195' y='548' width='75' height='135' rx='7' ry='7' style='stroke:none'/>
+<path d='M 195.00 574.00 L 195.00 555.00 Q 195.00 548.00 202.00 548.00 L 263.00 548.00 Q 270.00 548.00 270.00 555.00 L 270.00 574.00 L195.00 574.00 ' style='fill:url(#tbg_f5ddbf);stroke:1;stroke-opacity:0.1;' />
+<rect class='table' x='195' y='548' width='75' height='135' rx='7' ry='7' style='fill:none;stroke:#bfb7ae'/>
+<line class='delim' x1='195.000000' y1='574.000000' x2='270.000000' y2='574.000000' style='stroke:#bfb7ae'/>
+<line class='delim' x1='210.000000' y1='574.000000' x2='210.000000' y2='683.000000' style='stroke:#bfb7ae'/>
+<line class='delim' x1='259.000000' y1='574.000000' x2='259.000000' y2='683.000000' style='stroke:#bfb7ae'/>
+<a xlink:href='#empresa'><text x='209' y='566'>empresa</text><title>Table dbo.empresa</title></a>
+  <use id='nn' x='197' y='582' xlink:href='#nn'/><a xlink:href='#empresa.id'><use id='pk' x='197' y='581' xlink:href='#pk'/><title>Pk PK_empresa ( id ) </title></a>
+<a xlink:href='#empresa.id'><text id='dbo.empresa.id' x='213' y='591' onmouseover="hghl(['orden_trabajo_FK_orden_trabajo_empresa','dbo.orden_trabajo.empresa_id'])" onmouseout="uhghl(['orden_trabajo_FK_orden_trabajo_empresa','dbo.orden_trabajo.empresa_id'])">id</text><title>id
+* bigint</title></a>
+<a xlink:href='#empresa.id'><use id='ref' x='259' y='581' xlink:href='#ref'/><title>Referred by orden_trabajo ( empresa_id -&gt; id ) </title></a>
+  <use id='nn' x='197' y='597' xlink:href='#nn'/><a xlink:href='#empresa.nombre'><text id='dbo.empresa.nombre' x='213' y='606'>nombre</text><title>nombre
+* varchar(250)</title></a>
+<text x='267' y='603' text-anchor='end' class='colType'>t</text>  <use id='nn' x='197' y='612' xlink:href='#nn'/><a xlink:href='#empresa.direccion'><text id='dbo.empresa.direccion' x='213' y='621'>direccion</text><title>direccion
+* varchar(250)</title></a>
+<text x='267' y='618' text-anchor='end' class='colType'>t</text>  <use id='nn' x='197' y='627' xlink:href='#nn'/><a xlink:href='#empresa.edificio'><text id='dbo.empresa.edificio' x='213' y='636'>edificio</text><title>edificio
+* varchar(250)</title></a>
+<text x='267' y='633' text-anchor='end' class='colType'>t</text>  <use id='nn' x='197' y='642' xlink:href='#nn'/><a xlink:href='#empresa.ubicacion'><text id='dbo.empresa.ubicacion' x='213' y='651'>ubicacion</text><title>ubicacion
+* varchar(250)</title></a>
+<text x='267' y='648' text-anchor='end' class='colType'>t</text>  <use id='nn' x='197' y='657' xlink:href='#nn'/><a xlink:href='#empresa.activo'><text id='dbo.empresa.activo' x='213' y='666'>activo</text><title>activo
+* bit</title></a>
+<text x='267' y='663' text-anchor='end' class='colType'>b</text>
+<!-- ============= Table 'puertas_orden_trabajo' ============= -->
+<rect class='table' x='795' y='428' width='135' height='105' rx='7' ry='7' style='stroke:none'/>
+<path d='M 795.00 454.00 L 795.00 435.00 Q 795.00 428.00 802.00 428.00 L 923.00 428.00 Q 930.00 428.00 930.00 435.00 L 930.00 454.00 L795.00 454.00 ' style='fill:url(#tbg_bfbff5);stroke:1;stroke-opacity:0.1;' />
+<rect class='table' x='795' y='428' width='135' height='105' rx='7' ry='7' style='fill:none;stroke:#aeaebf'/>
+<line class='delim' x1='795.000000' y1='454.000000' x2='930.000000' y2='454.000000' style='stroke:#aeaebf'/>
+<line class='delim' x1='810.000000' y1='454.000000' x2='810.000000' y2='533.000000' style='stroke:#aeaebf'/>
+<line class='delim' x1='919.000000' y1='454.000000' x2='919.000000' y2='533.000000' style='stroke:#aeaebf'/>
+<a xlink:href='#puertas_orden_trabajo'><text x='803' y='446'>puertas_orden_trabajo</text><title>Table dbo.puertas_orden_trabajo</title></a>
+  <use id='nn' x='797' y='462' xlink:href='#nn'/><a xlink:href='#puertas_orden_trabajo.id'><use id='pk' x='797' y='461' xlink:href='#pk'/><title>Pk PK_puertas_orden_trabajo ( id ) </title></a>
+<a xlink:href='#puertas_orden_trabajo.id'><text id='dbo.puertas_orden_trabajo.id' x='813' y='471'>id</text><title>id
+* bigint</title></a>
+<text x='927' y='468' text-anchor='end' class='colType'>#</text>  <use id='nn' x='797' y='477' xlink:href='#nn'/><a xlink:href='#puertas_orden_trabajo.orden_trabajo_id'><text id='dbo.puertas_orden_trabajo.orden_trabajo_id' x='813' y='486' onmouseover="hghl(['puertas_orden_trabajo_FK_puertas_orden_trabajo_orden_trabajo1','dbo.orden_trabajo.id'])" onmouseout="uhghl(['puertas_orden_trabajo_FK_puertas_orden_trabajo_orden_trabajo1','dbo.orden_trabajo.id'])">orden_trabajo_id</text><title>orden_trabajo_id
+* bigint</title></a>
+<a xlink:href='#puertas_orden_trabajo.orden_trabajo_id'><use id='fk' x='919' y='476' xlink:href='#fk'/><title>References orden_trabajo ( orden_trabajo_id -&gt; id ) </title></a>
+  <use id='nn' x='797' y='492' xlink:href='#nn'/><a xlink:href='#puertas_orden_trabajo.puertas_id'><text id='dbo.puertas_orden_trabajo.puertas_id' x='813' y='501' onmouseover="hghl(['puertas_orden_trabajo_FK_puertas_orden_trabajo_puertas','dbo.puertas.id'])" onmouseout="uhghl(['puertas_orden_trabajo_FK_puertas_orden_trabajo_puertas','dbo.puertas.id'])">puertas_id</text><title>puertas_id
+* bigint</title></a>
+<a xlink:href='#puertas_orden_trabajo.puertas_id'><use id='fk' x='919' y='491' xlink:href='#fk'/><title>References puertas ( puertas_id -&gt; id ) </title></a>
+  <use id='nn' x='797' y='507' xlink:href='#nn'/><a xlink:href='#puertas_orden_trabajo.activo'><text id='dbo.puertas_orden_trabajo.activo' x='813' y='516'>activo</text><title>activo
+* bit</title></a>
+<text x='927' y='513' text-anchor='end' class='colType'>b</text>
+<!-- ============= Table 'cliente' ============= -->
+<rect class='table' x='45' y='428' width='105' height='120' rx='7' ry='7' style='stroke:none'/>
+<path d='M 45.00 454.00 L 45.00 435.00 Q 45.00 428.00 52.00 428.00 L 143.00 428.00 Q 150.00 428.00 150.00 435.00 L 150.00 454.00 L45.00 454.00 ' style='fill:url(#tbg_bfd4f5);stroke:1;stroke-opacity:0.1;' />
+<rect class='table' x='45' y='428' width='105' height='120' rx='7' ry='7' style='fill:none;stroke:#aeb5bf'/>
+<line class='delim' x1='45.000000' y1='454.000000' x2='150.000000' y2='454.000000' style='stroke:#aeb5bf'/>
+<line class='delim' x1='60.000000' y1='454.000000' x2='60.000000' y2='548.000000' style='stroke:#aeb5bf'/>
+<line class='delim' x1='139.000000' y1='454.000000' x2='139.000000' y2='548.000000' style='stroke:#aeb5bf'/>
+<a xlink:href='#cliente'><text x='79' y='446'>cliente</text><title>Table dbo.cliente</title></a>
+  <use id='nn' x='47' y='462' xlink:href='#nn'/><a xlink:href='#cliente.id'><use id='pk' x='47' y='461' xlink:href='#pk'/><title>Pk PK_cliente ( id ) </title></a>
+<a xlink:href='#cliente.id'><text id='dbo.cliente.id' x='63' y='471' onmouseover="hghl(['orden_trabajo_FK_orden_trabajo_cliente','dbo.orden_trabajo.cliente_id'])" onmouseout="uhghl(['orden_trabajo_FK_orden_trabajo_cliente','dbo.orden_trabajo.cliente_id'])">id</text><title>id
+* bigint</title></a>
+<a xlink:href='#cliente.id'><use id='ref' x='139' y='461' xlink:href='#ref'/><title>Referred by orden_trabajo ( cliente_id -&gt; id ) </title></a>
+  <use id='nn' x='47' y='477' xlink:href='#nn'/><a xlink:href='#cliente.nombre'><text id='dbo.cliente.nombre' x='63' y='486'>nombre</text><title>nombre
+* varchar(250)</title></a>
+<text x='147' y='483' text-anchor='end' class='colType'>t</text>  <use id='nn' x='47' y='492' xlink:href='#nn'/><a xlink:href='#cliente.cargo'><text id='dbo.cliente.cargo' x='63' y='501'>cargo</text><title>cargo
+* varchar(250)</title></a>
+<text x='147' y='498' text-anchor='end' class='colType'>t</text>  <use id='nn' x='47' y='507' xlink:href='#nn'/><a xlink:href='#cliente.revisado_por'><text id='dbo.cliente.revisado_por' x='63' y='516'>revisado_por</text><title>revisado_por
+* varchar(250)</title></a>
+<text x='147' y='513' text-anchor='end' class='colType'>t</text>  <use id='nn' x='47' y='522' xlink:href='#nn'/><a xlink:href='#cliente.activo'><text id='dbo.cliente.activo' x='63' y='531'>activo</text><title>activo
+* bit</title></a>
+<text x='147' y='528' text-anchor='end' class='colType'>b</text>
+<!-- ============= Table 'camaras' ============= -->
+<rect class='table' x='1035' y='158' width='165' height='285' rx='7' ry='7' style='stroke:none'/>
+<path d='M 1035.00 184.00 L 1035.00 165.00 Q 1035.00 158.00 1042.00 158.00 L 1193.00 158.00 Q 1200.00 158.00 1200.00 165.00 L 1200.00 184.00 L1035.00 184.00 ' style='fill:url(#tbg_bfd4f5);stroke:1;stroke-opacity:0.1;' />
+<rect class='table' x='1035' y='158' width='165' height='285' rx='7' ry='7' style='fill:none;stroke:#aeb5bf'/>
+<line class='delim' x1='1035.000000' y1='184.000000' x2='1200.000000' y2='184.000000' style='stroke:#aeb5bf'/>
+<line class='delim' x1='1050.000000' y1='184.000000' x2='1050.000000' y2='443.000000' style='stroke:#aeb5bf'/>
+<line class='delim' x1='1189.000000' y1='184.000000' x2='1189.000000' y2='443.000000' style='stroke:#aeb5bf'/>
+<a xlink:href='#camaras'><text x='1094' y='176'>camaras</text><title>Table dbo.camaras</title></a>
+  <use id='nn' x='1037' y='192' xlink:href='#nn'/><a xlink:href='#camaras.id'><use id='pk' x='1037' y='191' xlink:href='#pk'/><title>Pk PK_camaras ( id ) </title></a>
+<a xlink:href='#camaras.id'><text id='dbo.camaras.id' x='1053' y='201' onmouseover="hghl(['camaras_orden_trabajo_fk_camaras','dbo.camaras_orden_trabajo.camaras_id','historial_camara_fk_historial_camara_camaras','dbo.historial_camara.camaras_id','historial_camara_fk_historial_camara_camaras','dbo.historial_camara.camaras_id'])" onmouseout="uhghl(['camaras_orden_trabajo_fk_camaras','dbo.camaras_orden_trabajo.camaras_id','historial_camara_fk_historial_camara_camaras','dbo.historial_camara.camaras_id','historial_camara_fk_historial_camara_camaras','dbo.historial_camara.camaras_id'])">id</text><title>id
+* bigint</title></a>
+<a xlink:href='#camaras.id'><use id='ref' x='1189' y='191' xlink:href='#ref'/><title>Referred by camaras_orden_trabajo ( camaras_id -&gt; id ) 
+Referred by historial_camara ( camaras_id -&gt; id ) 
+Referred by historial_camara ( camaras_id -&gt; id ) </title></a>
+  <use id='nn' x='1037' y='207' xlink:href='#nn'/><a xlink:href='#camaras.ct_tipo'><text id='dbo.camaras.ct_tipo' x='1053' y='216'>ct_tipo</text><title>ct_tipo
+* bigint</title></a>
+<text x='1197' y='213' text-anchor='end' class='colType'>#</text>  <use id='nn' x='1037' y='222' xlink:href='#nn'/><a xlink:href='#camaras.codigo'><text id='dbo.camaras.codigo' x='1053' y='231'>codigo</text><title>codigo
+* varchar(250)</title></a>
+<text x='1197' y='228' text-anchor='end' class='colType'>t</text>  <use id='nn' x='1037' y='237' xlink:href='#nn'/><a xlink:href='#camaras.modelo'><text id='dbo.camaras.modelo' x='1053' y='246'>modelo</text><title>modelo
+* varchar(250)</title></a>
+<text x='1197' y='243' text-anchor='end' class='colType'>t</text>  <use id='nn' x='1037' y='252' xlink:href='#nn'/><a xlink:href='#camaras.marca'><text id='dbo.camaras.marca' x='1053' y='261'>marca</text><title>marca
+* varchar(250)</title></a>
+<text x='1197' y='258' text-anchor='end' class='colType'>t</text>  <use id='nn' x='1037' y='267' xlink:href='#nn'/><a xlink:href='#camaras.estado'><text id='dbo.camaras.estado' x='1053' y='276'>estado</text><title>estado
+* varchar(250)</title></a>
+<text x='1197' y='273' text-anchor='end' class='colType'>t</text>  <use id='nn' x='1037' y='282' xlink:href='#nn'/><a xlink:href='#camaras.ubicacion'><text id='dbo.camaras.ubicacion' x='1053' y='291'>ubicacion</text><title>ubicacion
+* varchar(250)</title></a>
+<text x='1197' y='288' text-anchor='end' class='colType'>t</text>  <a xlink:href='#camaras.activo'><text id='dbo.camaras.activo' x='1053' y='306'>activo</text><title>activo
+bit default 1</title></a>
+<text x='1197' y='303' text-anchor='end' class='colType'>b</text>  <a xlink:href='#camaras.nivel'><text id='dbo.camaras.nivel' x='1053' y='321'>nivel</text><title>nivel
+varchar(50)</title></a>
+<text x='1197' y='318' text-anchor='end' class='colType'>t</text>  <a xlink:href='#camaras.observacion'><text id='dbo.camaras.observacion' x='1053' y='336'>observacion</text><title>observacion
+varchar(2500)</title></a>
+<text x='1197' y='333' text-anchor='end' class='colType'>t</text>  <a xlink:href='#camaras.cambio_domo'><text id='dbo.camaras.cambio_domo' x='1053' y='351'>cambio_domo</text><title>cambio_domo
+bit</title></a>
+<text x='1197' y='348' text-anchor='end' class='colType'>b</text>  <a xlink:href='#camaras.funcionan_media_converter'><text id='dbo.camaras.funcionan_media_converter' x='1053' y='366'>funcionan_media_converter</text><title>funcionan_media_converter
+bit</title></a>
+<text x='1197' y='363' text-anchor='end' class='colType'>b</text>  <a xlink:href='#camaras.funciona_poe'><text id='dbo.camaras.funciona_poe' x='1053' y='381'>funciona_poe</text><title>funciona_poe
+bit</title></a>
+<text x='1197' y='378' text-anchor='end' class='colType'>b</text>  <a xlink:href='#camaras.funciona_transformador'><text id='dbo.camaras.funciona_transformador' x='1053' y='396'>funciona_transformador</text><title>funciona_transformador
+bit</title></a>
+<text x='1197' y='393' text-anchor='end' class='colType'>b</text>  <a xlink:href='#camaras.funciona_ups'><text id='dbo.camaras.funciona_ups' x='1053' y='411'>funciona_ups</text><title>funciona_ups
+bit</title></a>
+<text x='1197' y='408' text-anchor='end' class='colType'>b</text>  <a xlink:href='#camaras.funciona_directo'><text id='dbo.camaras.funciona_directo' x='1053' y='426'>funciona_directo</text><title>funciona_directo
+bit</title></a>
+<text x='1197' y='423' text-anchor='end' class='colType'>b</text>
+<!-- ============= Table 'historial_camara' ============= -->
+<rect class='table' x='1305' y='263' width='90' height='120' rx='7' ry='7' style='stroke:none'/>
+<path d='M 1305.00 289.00 L 1305.00 270.00 Q 1305.00 263.00 1312.00 263.00 L 1388.00 263.00 Q 1395.00 263.00 1395.00 270.00 L 1395.00 289.00 L1305.00 289.00 ' style='fill:url(#tbg_c1d8ee);stroke:1;stroke-opacity:0.1;' />
+<rect class='table' x='1305' y='263' width='90' height='120' rx='7' ry='7' style='fill:none;stroke:#aeb7bf'/>
+<line class='delim' x1='1305.000000' y1='289.000000' x2='1395.000000' y2='289.000000' style='stroke:#aeb7bf'/>
+<line class='delim' x1='1320.000000' y1='289.000000' x2='1320.000000' y2='383.000000' style='stroke:#aeb7bf'/>
+<line class='delim' x1='1384.000000' y1='289.000000' x2='1384.000000' y2='383.000000' style='stroke:#aeb7bf'/>
+<a xlink:href='#historial_camara'><text x='1308' y='281'>historial_camara</text><title>Table dbo.historial_camara</title></a>
+  <use id='nn' x='1307' y='297' xlink:href='#nn'/><a xlink:href='#historial_camara.id'><use id='pk' x='1307' y='296' xlink:href='#pk'/><title>Pk Pk_historial_camara ( id ) </title></a>
+<a xlink:href='#historial_camara.id'><text id='dbo.historial_camara.id' x='1323' y='306'>id</text><title>id
+* bigint
+identificador</title></a>
+<text x='1392' y='303' text-anchor='end' class='colType'>#</text>  <a xlink:href='#historial_camara.observacion'><text id='dbo.historial_camara.observacion' x='1323' y='321'>observacion</text><title>observacion
+varchar(max)
+detalle ocurrido</title></a>
+<text x='1392' y='318' text-anchor='end' class='colType'>t</text>  <a xlink:href='#historial_camara.fecha'><text id='dbo.historial_camara.fecha' x='1323' y='336'>fecha</text><title>fecha
+datetime2 default getdate()
+fecha de registo</title></a>
+<text x='1392' y='333' text-anchor='end' class='colType'>d</text>  <use id='nn' x='1307' y='342' xlink:href='#nn'/><a xlink:href='#historial_camara.estado'><text id='dbo.historial_camara.estado' x='1323' y='351'>estado</text><title>estado
+* bit default 1
+estado del registro en 1 activo 0 inactivo para borrado logico</title></a>
+<text x='1392' y='348' text-anchor='end' class='colType'>b</text>  <use id='nn' x='1307' y='357' xlink:href='#nn'/><a xlink:href='#historial_camara.camaras_id'><use id='idx' x='1307' y='356' xlink:href='#idx'/><title>idx_historial_camara ( camaras_id ) </title></a>
+<a xlink:href='#historial_camara.camaras_id'><text id='dbo.historial_camara.camaras_id' x='1323' y='366' onmouseover="hghl(['historial_camara_fk_historial_camara_camaras','dbo.camaras.id'])" onmouseout="uhghl(['historial_camara_fk_historial_camara_camaras','dbo.camaras.id'])">camaras_id</text><title>camaras_id
+* bigint
+identificador de la tabla camaras</title></a>
+<a xlink:href='#historial_camara.camaras_id'><use id='fk' x='1384' y='356' xlink:href='#fk'/><title>References camaras ( camaras_id -&gt; id ) </title></a>
+
+</g></svg></div>
+
+
+<br/><br/>
+<div class='section-header'><a name='camaras' onclick='window.scrollTo(835, 165);return false;' style='cursor:pointer;'><h2>Table camaras </h2></a></div>
+<table class='bordered'>
+<thead>
+<tr><th colspan='4'>Columns</a></th></tr>
+</thead>
+<tbody>
+	<tr>
+		<td>*<svg width='14' height='14'><use xlink:href='#pk'/></svg><svg width='14' height='14'><use xlink:href='#ref'/></svg></td>
+		<td><a name='camaras.id'>id</a></td>
+		<td> bigint  AUTOINCREMENT  </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>*</td>
+		<td><a name='camaras.ct_tipo'>ct&#95;tipo</a></td>
+		<td> bigint   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>*</td>
+		<td><a name='camaras.codigo'>codigo</a></td>
+		<td> varchar&#40; 250 &#41;   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>*</td>
+		<td><a name='camaras.modelo'>modelo</a></td>
+		<td> varchar&#40; 250 &#41;   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>*</td>
+		<td><a name='camaras.marca'>marca</a></td>
+		<td> varchar&#40; 250 &#41;   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>*</td>
+		<td><a name='camaras.estado'>estado</a></td>
+		<td> varchar&#40; 250 &#41;   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>*</td>
+		<td><a name='camaras.ubicacion'>ubicacion</a></td>
+		<td> varchar&#40; 250 &#41;   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td>
+		<td><a name='camaras.activo'>activo</a></td>
+		<td> bit   DEFAULT 1 </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td>
+		<td><a name='camaras.nivel'>nivel</a></td>
+		<td> varchar&#40; 50 &#41;   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td>
+		<td><a name='camaras.observacion'>observacion</a></td>
+		<td> varchar&#40; 2500 &#41;   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td>
+		<td><a name='camaras.cambio_domo'>cambio&#95;domo</a></td>
+		<td> bit   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td>
+		<td><a name='camaras.funcionan_media_converter'>funcionan&#95;media&#95;converter</a></td>
+		<td> bit   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td>
+		<td><a name='camaras.funciona_poe'>funciona&#95;poe</a></td>
+		<td> bit   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td>
+		<td><a name='camaras.funciona_transformador'>funciona&#95;transformador</a></td>
+		<td> bit   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td>
+		<td><a name='camaras.funciona_ups'>funciona&#95;ups</a></td>
+		<td> bit   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td>
+		<td><a name='camaras.funciona_directo'>funciona&#95;directo</a></td>
+		<td> bit   </td>
+		<td>  </td>
+	</tr>
+<tr><th colspan='4'>Indexes</th></tr>
+	<tr>		<td><svg width='14' height='14'><use xlink:href='#pk'/></svg></td><td>PK&#95;camaras</td>
+		<td> ON id</td>
+		<td>  </td>
+	</tr>
+</tbody>
+</table>
+
+<br/><br/>
+<div class='section-header'><a name='camaras_orden_trabajo' onclick='window.scrollTo(625, 255);return false;' style='cursor:pointer;'><h2>Table camaras_orden_trabajo </h2></a></div>
+<table class='bordered'>
+<thead>
+<tr><th colspan='4'>Columns</a></th></tr>
+</thead>
+<tbody>
+	<tr>
+		<td>*<svg width='14' height='14'><use xlink:href='#pk'/></svg></td>
+		<td><a name='camaras_orden_trabajo.id'>id</a></td>
+		<td> bigint  AUTOINCREMENT  </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>*<svg width='14' height='14'><use xlink:href='#fk'/></svg></td>
+		<td><a name='camaras_orden_trabajo.orden_trabajo_id'>orden&#95;trabajo&#95;id</a></td>
+		<td> bigint   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>*<svg width='14' height='14'><use xlink:href='#fk'/></svg></td>
+		<td><a name='camaras_orden_trabajo.camaras_id'>camaras&#95;id</a></td>
+		<td> bigint   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>*</td>
+		<td><a name='camaras_orden_trabajo.activo'>activo</a></td>
+		<td> bit   DEFAULT 1 </td>
+		<td>  </td>
+	</tr>
+<tr><th colspan='4'>Indexes</th></tr>
+	<tr>		<td><svg width='14' height='14'><use xlink:href='#pk'/></svg></td><td>camaras&#95;orden&#95;trabajo&#95;pk</td>
+		<td> ON id</td>
+		<td>  </td>
+	</tr>
+<tr><th colspan='4'>Foreign Keys</th></tr>
+	<tr>
+		<td><svg width='14' height='14'><use xlink:href='#fk'/></svg></td><td>fk_camaras</td>
+		<td > ( camaras&#95;id ) ref <a href='#camaras'>camaras</a> (id) </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td><svg width='14' height='14'><use xlink:href='#fk'/></svg></td><td>FK_camaras_orden_trabajo_orden_trabajo</td>
+		<td > ( orden&#95;trabajo&#95;id ) ref <a href='#orden&#95;trabajo'>orden&#95;trabajo</a> (id) </td>
+		<td>  </td>
+	</tr>
+</tbody>
+</table>
+
+<br/><br/>
+<div class='section-header'><a name='catalogo' onclick='window.scrollTo(190, 75);return false;' style='cursor:pointer;'><h2>Table catalogo </h2></a></div>
+<table class='bordered'>
+<thead>
+<tr><th colspan='4'>Columns</a></th></tr>
+</thead>
+<tbody>
+	<tr>
+		<td>*<svg width='14' height='14'><use xlink:href='#pk'/></svg></td>
+		<td><a name='catalogo.id'>id</a></td>
+		<td> int   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>*</td>
+		<td><a name='catalogo.nombre'>nombre</a></td>
+		<td> varchar&#40; 250 &#41;   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td>
+		<td><a name='catalogo.catalogo_id'>catalogo&#95;id</a></td>
+		<td> varchar&#40; 1 &#41;   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>*</td>
+		<td><a name='catalogo.orden'>orden</a></td>
+		<td> int   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td>
+		<td><a name='catalogo.valor'>valor</a></td>
+		<td> varchar&#40; 1 &#41;   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>*</td>
+		<td><a name='catalogo.activo'>activo</a></td>
+		<td> bit   </td>
+		<td>  </td>
+	</tr>
+<tr><th colspan='4'>Indexes</th></tr>
+	<tr>		<td><svg width='14' height='14'><use xlink:href='#pk'/></svg></td><td>PK&#95;catalogo</td>
+		<td> ON id</td>
+		<td>  </td>
+	</tr>
+</tbody>
+</table>
+
+<br/><br/>
+<div class='section-header'><a name='cliente' onclick='window.scrollTo(60, 435);return false;' style='cursor:pointer;'><h2>Table cliente </h2></a></div>
+<table class='bordered'>
+<thead>
+<tr><th colspan='4'>Columns</a></th></tr>
+</thead>
+<tbody>
+	<tr>
+		<td>*<svg width='14' height='14'><use xlink:href='#pk'/></svg><svg width='14' height='14'><use xlink:href='#ref'/></svg></td>
+		<td><a name='cliente.id'>id</a></td>
+		<td> bigint  AUTOINCREMENT  </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>*</td>
+		<td><a name='cliente.nombre'>nombre</a></td>
+		<td> varchar&#40; 250 &#41;   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>*</td>
+		<td><a name='cliente.cargo'>cargo</a></td>
+		<td> varchar&#40; 250 &#41;   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>*</td>
+		<td><a name='cliente.revisado_por'>revisado&#95;por</a></td>
+		<td> varchar&#40; 250 &#41;   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>*</td>
+		<td><a name='cliente.activo'>activo</a></td>
+		<td> bit   </td>
+		<td>  </td>
+	</tr>
+<tr><th colspan='4'>Indexes</th></tr>
+	<tr>		<td><svg width='14' height='14'><use xlink:href='#pk'/></svg></td><td>PK&#95;cliente</td>
+		<td> ON id</td>
+		<td>  </td>
+	</tr>
+</tbody>
+</table>
+
+<br/><br/>
+<div class='section-header'><a name='detalle_orden_trabajo' onclick='window.scrollTo(400, 600);return false;' style='cursor:pointer;'><h2>Table detalle_orden_trabajo </h2></a></div>
+<table class='bordered'>
+<thead>
+<tr><th colspan='4'>Columns</a></th></tr>
+</thead>
+<tbody>
+	<tr>
+		<td>*<svg width='14' height='14'><use xlink:href='#pk'/></svg><svg width='14' height='14'><use xlink:href='#ref'/></svg></td>
+		<td><a name='detalle_orden_trabajo.id'>id</a></td>
+		<td> bigint  AUTOINCREMENT  </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>*</td>
+		<td><a name='detalle_orden_trabajo.cantidad'>cantidad</a></td>
+		<td> int   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>*</td>
+		<td><a name='detalle_orden_trabajo.descripcion'>descripcion</a></td>
+		<td> varchar&#40; 250 &#41;   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>*</td>
+		<td><a name='detalle_orden_trabajo.activo'>activo</a></td>
+		<td> bit   </td>
+		<td>  </td>
+	</tr>
+<tr><th colspan='4'>Indexes</th></tr>
+	<tr>		<td><svg width='14' height='14'><use xlink:href='#pk'/></svg></td><td>PK&#95;detalle&#95;orden&#95;trabajo</td>
+		<td> ON id</td>
+		<td>  </td>
+	</tr>
+</tbody>
+</table>
+
+<br/><br/>
+<div class='section-header'><a name='empresa' onclick='window.scrollTo(60, 555);return false;' style='cursor:pointer;'><h2>Table empresa </h2></a></div>
+<table class='bordered'>
+<thead>
+<tr><th colspan='4'>Columns</a></th></tr>
+</thead>
+<tbody>
+	<tr>
+		<td>*<svg width='14' height='14'><use xlink:href='#pk'/></svg><svg width='14' height='14'><use xlink:href='#ref'/></svg></td>
+		<td><a name='empresa.id'>id</a></td>
+		<td> bigint  AUTOINCREMENT  </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>*</td>
+		<td><a name='empresa.nombre'>nombre</a></td>
+		<td> varchar&#40; 250 &#41;   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>*</td>
+		<td><a name='empresa.direccion'>direccion</a></td>
+		<td> varchar&#40; 250 &#41;   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>*</td>
+		<td><a name='empresa.edificio'>edificio</a></td>
+		<td> varchar&#40; 250 &#41;   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>*</td>
+		<td><a name='empresa.ubicacion'>ubicacion</a></td>
+		<td> varchar&#40; 250 &#41;   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>*</td>
+		<td><a name='empresa.activo'>activo</a></td>
+		<td> bit   </td>
+		<td>  </td>
+	</tr>
+<tr><th colspan='4'>Indexes</th></tr>
+	<tr>		<td><svg width='14' height='14'><use xlink:href='#pk'/></svg></td><td>PK&#95;empresa</td>
+		<td> ON id</td>
+		<td>  </td>
+	</tr>
+</tbody>
+</table>
+
+<br/><br/>
+<div class='section-header'><a name='historial_camara' onclick='window.scrollTo(1105, 270);return false;' style='cursor:pointer;'><h2>Table historial_camara </h2></a></div>
+<table class='bordered'>
+<thead>
+<tr><th colspan='4'>Columns</a></th></tr>
+</thead>
+<tbody>
+	<tr>
+		<td>*<svg width='14' height='14'><use xlink:href='#pk'/></svg></td>
+		<td><a name='historial_camara.id'>id</a></td>
+		<td> bigint  AUTOINCREMENT  </td>
+		<td> identificador </td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td>
+		<td><a name='historial_camara.observacion'>observacion</a></td>
+		<td> varchar&#40;max&#41;   </td>
+		<td> detalle ocurrido </td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td>
+		<td><a name='historial_camara.fecha'>fecha</a></td>
+		<td> datetime2   DEFAULT getdate() </td>
+		<td> fecha de registo </td>
+	</tr>
+	<tr>
+		<td>*</td>
+		<td><a name='historial_camara.estado'>estado</a></td>
+		<td> bit   DEFAULT 1 </td>
+		<td> estado del registro en 1 activo 0 inactivo para borrado logico </td>
+	</tr>
+	<tr>
+		<td>*<svg width='14' height='14'><use xlink:href='#idx'/></svg><svg width='14' height='14'><use xlink:href='#fk'/></svg></td>
+		<td><a name='historial_camara.camaras_id'>camaras&#95;id</a></td>
+		<td> bigint   </td>
+		<td> identificador de la tabla camaras </td>
+	</tr>
+<tr><th colspan='4'>Indexes</th></tr>
+	<tr>		<td><svg width='14' height='14'><use xlink:href='#pk'/></svg></td><td>Pk&#95;historial&#95;camara</td>
+		<td> ON id</td>
+		<td>  </td>
+	</tr>
+	<tr>		<td><svg width='14' height='14'><use xlink:href='#idx'/></svg></td><td>idx&#95;historial&#95;camara</td>
+		<td> ON camaras&#95;id</td>
+		<td>  </td>
+	</tr>
+<tr><th colspan='4'>Foreign Keys</th></tr>
+	<tr>
+		<td><svg width='14' height='14'><use xlink:href='#fk'/></svg></td><td>fk_historial_camara_camaras</td>
+		<td > ( camaras&#95;id ) ref <a href='#camaras'>camaras</a> (id) </td>
+		<td>  </td>
+	</tr>
+</tbody>
+</table>
+
+<br/><br/>
+<div class='section-header'><a name='intercomunicadores' onclick='window.scrollTo(60, 75);return false;' style='cursor:pointer;'><h2>Table intercomunicadores </h2></a></div>
+<table class='bordered'>
+<thead>
+<tr><th colspan='4'>Columns</a></th></tr>
+</thead>
+<tbody>
+	<tr>
+		<td>*</td>
+		<td><a name='intercomunicadores.id'>id</a></td>
+		<td> bigint  AUTOINCREMENT  </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>*</td>
+		<td><a name='intercomunicadores.numero'>numero</a></td>
+		<td> int   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>*</td>
+		<td><a name='intercomunicadores.puerta'>puerta</a></td>
+		<td> varchar&#40; 250 &#41;   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>*</td>
+		<td><a name='intercomunicadores.ubicacion'>ubicacion</a></td>
+		<td> varchar&#40; 250 &#41;   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>*</td>
+		<td><a name='intercomunicadores.observaciones'>observaciones</a></td>
+		<td> varchar&#40; 250 &#41;   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>*</td>
+		<td><a name='intercomunicadores.estado'>estado</a></td>
+		<td> bit   </td>
+		<td>  </td>
+	</tr>
+</tbody>
+</table>
+
+<br/><br/>
+<div class='section-header'><a name='orden_trabajo' onclick='window.scrollTo(310, 195);return false;' style='cursor:pointer;'><h2>Table orden_trabajo </h2></a></div>
+<table class='bordered'>
+<thead>
+<tr><th colspan='4'>Columns</a></th></tr>
+</thead>
+<tbody>
+	<tr>
+		<td>*<svg width='14' height='14'><use xlink:href='#pk'/></svg><svg width='14' height='14'><use xlink:href='#ref'/></svg></td>
+		<td><a name='orden_trabajo.id'>id</a></td>
+		<td> bigint  AUTOINCREMENT  </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>*</td>
+		<td><a name='orden_trabajo.num_ticket'>num&#95;ticket</a></td>
+		<td> bigint   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td>
+		<td><a name='orden_trabajo.num_ord_trab'>num&#95;ord&#95;trab</a></td>
+		<td> bigint   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>*<svg width='14' height='14'><use xlink:href='#fk'/></svg></td>
+		<td><a name='orden_trabajo.empresa_id'>empresa&#95;id</a></td>
+		<td> bigint   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>*</td>
+		<td><a name='orden_trabajo.ct_sistema'>ct&#95;sistema</a></td>
+		<td> bigint   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>*</td>
+		<td><a name='orden_trabajo.ct_servicio'>ct&#95;servicio</a></td>
+		<td> bigint   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>*</td>
+		<td><a name='orden_trabajo.descripcion'>descripcion</a></td>
+		<td> varchar&#40; 250 &#41;   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td>
+		<td><a name='orden_trabajo.fecha_inicio'>fecha&#95;inicio</a></td>
+		<td> datetime2&#40; 7 &#41;   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td>
+		<td><a name='orden_trabajo.fecha_termino'>fecha&#95;termino</a></td>
+		<td> datetime2&#40; 7 &#41;   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td>
+		<td><a name='orden_trabajo.hora_termino'>hora&#95;termino</a></td>
+		<td> time&#40; 16 &#41;   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>*</td>
+		<td><a name='orden_trabajo.activo'>activo</a></td>
+		<td> bit   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td>
+		<td><a name='orden_trabajo.fecha_creacion'>fecha&#95;creacion</a></td>
+		<td> datetime2&#40; 7 &#41;   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td><svg width='14' height='14'><use xlink:href='#fk'/></svg></td>
+		<td><a name='orden_trabajo.cliente_id'>cliente&#95;id</a></td>
+		<td> bigint   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td><svg width='14' height='14'><use xlink:href='#fk'/></svg></td>
+		<td><a name='orden_trabajo.tecnico_id'>tecnico&#95;id</a></td>
+		<td> bigint   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td><svg width='14' height='14'><use xlink:href='#fk'/></svg></td>
+		<td><a name='orden_trabajo.detalle_orden_trabajo_id'>detalle&#95;orden&#95;trabajo&#95;id</a></td>
+		<td> bigint   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td>
+		<td><a name='orden_trabajo.solucion'>solucion</a></td>
+		<td> varchar&#40; 1500 &#41;   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td>
+		<td><a name='orden_trabajo.solucion_tecnica'>solucion&#95;tecnica</a></td>
+		<td> varchar&#40; 1500 &#41;   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>*</td>
+		<td><a name='orden_trabajo.estado'>estado</a></td>
+		<td> int   </td>
+		<td>  </td>
+	</tr>
+<tr><th colspan='4'>Indexes</th></tr>
+	<tr>		<td><svg width='14' height='14'><use xlink:href='#pk'/></svg></td><td>PK&#95;orden&#95;trabajo</td>
+		<td> ON id</td>
+		<td>  </td>
+	</tr>
+<tr><th colspan='4'>Foreign Keys</th></tr>
+	<tr>
+		<td><svg width='14' height='14'><use xlink:href='#fk'/></svg></td><td>FK_orden_trabajo_cliente</td>
+		<td > ( cliente&#95;id ) ref <a href='#cliente'>cliente</a> (id) </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td><svg width='14' height='14'><use xlink:href='#fk'/></svg></td><td>FK_orden_trabajo_detalle_orden_trabajo</td>
+		<td > ( detalle&#95;orden&#95;trabajo&#95;id ) ref <a href='#detalle&#95;orden&#95;trabajo'>detalle&#95;orden&#95;trabajo</a> (id) </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td><svg width='14' height='14'><use xlink:href='#fk'/></svg></td><td>FK_orden_trabajo_empresa</td>
+		<td > ( empresa&#95;id ) ref <a href='#empresa'>empresa</a> (id) </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td><svg width='14' height='14'><use xlink:href='#fk'/></svg></td><td>FK_orden_trabajo_tecnico</td>
+		<td > ( tecnico&#95;id ) ref <a href='#tecnico'>tecnico</a> (id) </td>
+		<td>  </td>
+	</tr>
+</tbody>
+</table>
+
+<br/><br/>
+<div class='section-header'><a name='puertas' onclick='window.scrollTo(925, 540);return false;' style='cursor:pointer;'><h2>Table puertas </h2></a></div>
+<table class='bordered'>
+<thead>
+<tr><th colspan='4'>Columns</a></th></tr>
+</thead>
+<tbody>
+	<tr>
+		<td>*<svg width='14' height='14'><use xlink:href='#pk'/></svg><svg width='14' height='14'><use xlink:href='#ref'/></svg></td>
+		<td><a name='puertas.id'>id</a></td>
+		<td> bigint  AUTOINCREMENT  </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>*</td>
+		<td><a name='puertas.codigo'>codigo</a></td>
+		<td> varchar&#40; 250 &#41;   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>*</td>
+		<td><a name='puertas.modelo'>modelo</a></td>
+		<td> varchar&#40; 250 &#41;   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>*</td>
+		<td><a name='puertas.ct_tipo'>ct&#95;tipo</a></td>
+		<td> bigint   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>*</td>
+		<td><a name='puertas.marca'>marca</a></td>
+		<td> varchar&#40; 250 &#41;   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>*</td>
+		<td><a name='puertas.activo'>activo</a></td>
+		<td> bit   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>*</td>
+		<td><a name='puertas.estado'>estado</a></td>
+		<td> varchar&#40; 250 &#41;   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td>
+		<td><a name='puertas.observacion'>observacion</a></td>
+		<td> varchar&#40; 250 &#41;   </td>
+		<td>  </td>
+	</tr>
+<tr><th colspan='4'>Indexes</th></tr>
+	<tr>		<td><svg width='14' height='14'><use xlink:href='#pk'/></svg></td><td>PK&#95;puertas</td>
+		<td> ON id</td>
+		<td>  </td>
+	</tr>
+</tbody>
+</table>
+
+<br/><br/>
+<div class='section-header'><a name='puertas_orden_trabajo' onclick='window.scrollTo(595, 435);return false;' style='cursor:pointer;'><h2>Table puertas_orden_trabajo </h2></a></div>
+<table class='bordered'>
+<thead>
+<tr><th colspan='4'>Columns</a></th></tr>
+</thead>
+<tbody>
+	<tr>
+		<td>*<svg width='14' height='14'><use xlink:href='#pk'/></svg></td>
+		<td><a name='puertas_orden_trabajo.id'>id</a></td>
+		<td> bigint  AUTOINCREMENT  </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>*<svg width='14' height='14'><use xlink:href='#fk'/></svg></td>
+		<td><a name='puertas_orden_trabajo.orden_trabajo_id'>orden&#95;trabajo&#95;id</a></td>
+		<td> bigint   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>*<svg width='14' height='14'><use xlink:href='#fk'/></svg></td>
+		<td><a name='puertas_orden_trabajo.puertas_id'>puertas&#95;id</a></td>
+		<td> bigint   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>*</td>
+		<td><a name='puertas_orden_trabajo.activo'>activo</a></td>
+		<td> bit   </td>
+		<td>  </td>
+	</tr>
+<tr><th colspan='4'>Indexes</th></tr>
+	<tr>		<td><svg width='14' height='14'><use xlink:href='#pk'/></svg></td><td>PK&#95;puertas&#95;orden&#95;trabajo</td>
+		<td> ON id</td>
+		<td>  </td>
+	</tr>
+<tr><th colspan='4'>Foreign Keys</th></tr>
+	<tr>
+		<td><svg width='14' height='14'><use xlink:href='#fk'/></svg></td><td>FK_puertas_orden_trabajo_orden_trabajo1</td>
+		<td > ( orden&#95;trabajo&#95;id ) ref <a href='#orden&#95;trabajo'>orden&#95;trabajo</a> (id) </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td><svg width='14' height='14'><use xlink:href='#fk'/></svg></td><td>FK_puertas_orden_trabajo_puertas</td>
+		<td > ( puertas&#95;id ) ref <a href='#puertas'>puertas</a> (id) </td>
+		<td>  </td>
+	</tr>
+</tbody>
+</table>
+
+<br/><br/>
+<div class='section-header'><a name='server_pc' onclick='window.scrollTo(60, 75);return false;' style='cursor:pointer;'><h2>Table server_pc </h2></a></div>
+<table class='bordered'>
+<thead>
+<tr><th colspan='4'>Columns</a></th></tr>
+</thead>
+<tbody>
+	<tr>
+		<td>*</td>
+		<td><a name='server_pc.id'>id</a></td>
+		<td> bigint  AUTOINCREMENT  </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>*</td>
+		<td><a name='server_pc.marca'>marca</a></td>
+		<td> varchar&#40; 250 &#41;   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>*</td>
+		<td><a name='server_pc.modelo'>modelo</a></td>
+		<td> varchar&#40; 250 &#41;   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>*</td>
+		<td><a name='server_pc.cantidad'>cantidad</a></td>
+		<td> float   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>*</td>
+		<td><a name='server_pc.descripcion'>descripcion</a></td>
+		<td> varchar&#40; 255 &#41;   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>*</td>
+		<td><a name='server_pc.ubicacion'>ubicacion</a></td>
+		<td> varchar&#40; 250 &#41;   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>*</td>
+		<td><a name='server_pc.sistema_operativo'>sistema&#95;operativo</a></td>
+		<td> varchar&#40; 250 &#41;   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>*</td>
+		<td><a name='server_pc.memoria_ram'>memoria&#95;ram</a></td>
+		<td> varchar&#40; 250 &#41;   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>*</td>
+		<td><a name='server_pc.direccion_ip'>direccion&#95;ip</a></td>
+		<td> varchar&#40; 250 &#41;   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>*</td>
+		<td><a name='server_pc.capacidad_disco_duro'>capacidad&#95;disco&#95;duro</a></td>
+		<td> varchar&#40; 250 &#41;   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>*</td>
+		<td><a name='server_pc.observaciones'>observaciones</a></td>
+		<td> varchar&#40; 1500 &#41;   </td>
+		<td>  </td>
+	</tr>
+</tbody>
+</table>
+
+<br/><br/>
+<div class='section-header'><a name='sysdiagrams' onclick='window.scrollTo(60, 225);return false;' style='cursor:pointer;'><h2>Table sysdiagrams </h2></a></div>
+<table class='bordered'>
+<thead>
+<tr><th colspan='4'>Columns</a></th></tr>
+</thead>
+<tbody>
+	<tr>
+		<td>*<svg width='14' height='14'><use xlink:href='#pk'/></svg></td>
+		<td><a name='sysdiagrams.diagram_id'>diagram&#95;id</a></td>
+		<td> int  AUTOINCREMENT  </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>*<svg width='14' height='14'><use xlink:href='#unq'/></svg></td>
+		<td><a name='sysdiagrams.name'>name</a></td>
+		<td> sysname   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>*<svg width='14' height='14'><use xlink:href='#unq'/></svg></td>
+		<td><a name='sysdiagrams.principal_id'>principal&#95;id</a></td>
+		<td> int   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td>
+		<td><a name='sysdiagrams.version'>version</a></td>
+		<td> int   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td>
+		<td><a name='sysdiagrams.definition'>definition</a></td>
+		<td> varbinary&#40;max&#41;   </td>
+		<td>  </td>
+	</tr>
+<tr><th colspan='4'>Indexes</th></tr>
+	<tr>		<td><svg width='14' height='14'><use xlink:href='#pk'/></svg></td><td>PK&#95;&#95;sysdiagr&#95;&#95;C2B05B619B3C3DA4</td>
+		<td> ON diagram&#95;id</td>
+		<td>  </td>
+	</tr>
+	<tr>		<td><svg width='14' height='14'><use xlink:href='#unq'/></svg></td><td>UK&#95;principal&#95;name</td>
+		<td> ON principal&#95;id&#44; name</td>
+		<td>  </td>
+	</tr>
+</tbody>
+</table>
+
+<br/><br/>
+<div class='section-header'><a name='tecnico' onclick='window.scrollTo(70, 315);return false;' style='cursor:pointer;'><h2>Table tecnico </h2></a></div>
+<table class='bordered'>
+<thead>
+<tr><th colspan='4'>Columns</a></th></tr>
+</thead>
+<tbody>
+	<tr>
+		<td>*<svg width='14' height='14'><use xlink:href='#pk'/></svg><svg width='14' height='14'><use xlink:href='#ref'/></svg></td>
+		<td><a name='tecnico.id'>id</a></td>
+		<td> bigint  AUTOINCREMENT  </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>*</td>
+		<td><a name='tecnico.nombres'>nombres</a></td>
+		<td> varchar&#40; 250 &#41;   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>*</td>
+		<td><a name='tecnico.apellidos'>apellidos</a></td>
+		<td> varchar&#40; 250 &#41;   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>*</td>
+		<td><a name='tecnico.celular'>celular</a></td>
+		<td> varchar&#40; 10 &#41;   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>*</td>
+		<td><a name='tecnico.activo'>activo</a></td>
+		<td> bit   </td>
+		<td>  </td>
+	</tr>
+<tr><th colspan='4'>Indexes</th></tr>
+	<tr>		<td><svg width='14' height='14'><use xlink:href='#pk'/></svg></td><td>PK&#95;tecnico</td>
+		<td> ON id</td>
+		<td>  </td>
+	</tr>
+</tbody>
+</table>
+
+<p align='right'><a href='http://www.dbschema.com' style='color:#aaa'>Powered by DbSchema</a></p></body></html>
