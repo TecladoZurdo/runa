@@ -23,15 +23,15 @@ class OrdenTrabajoController extends Controller
      */
     public function indexAction(Request $request)
     {
-      //-- inicializacion de la clase orden de trabajo
+      //-- inicialización de la clase orden de trabajo
     	$ordenTrabajo = new OrdenTrabajo();
-      //-- creacion del formulario
+      //-- creación del formulario
     	$form = $this->createForm(OrdenTrabajoType::class,$ordenTrabajo);
       //-- recibe los datos en caso de respuesta del frontend
       $form->handleRequest($request);
       //-- control si el formulario fue enviado con datos correctos
       if ($form->isSubmitted() && $form->isValid()){
-        //-- obtencion de datos de los campos del formulario
+        //-- obtención de datos de los campos del formulario
         $dataForm = $this->getRequest()->get($form->getName());
         $estadoForm = $this->getRequest()->get('estado');
 
@@ -48,21 +48,21 @@ class OrdenTrabajoController extends Controller
       }
 
 
-        //-- se defin si esta activo en el sistema
+        //-- se define si esta activo en el sistema
         $ordenTrabajo->setActivo(true);
 
         //-- se envia a guardar en la base
         $em->persist($ordenTrabajo);
 
 
-        //-- construye una lsita de camaras
+        //-- construye una lista de cámaras
         if (@$dataForm['camaras']){
           $listCamaras = $dataForm['camaras'];
         }else {
           $listCamaras=null;
         }
 
-        //-- si existe camaras definidas se procede a recorrer e
+        //-- si existe cámaras definidas se procede a recorrer e
         //-- insertar en la tabla
         if ($listCamaras){
           $camaraRepo = $em->getRepository(Repositorios::$camaras);
@@ -121,12 +121,12 @@ class OrdenTrabajoController extends Controller
     }
 
     /**
-    *Proceso para edicion
+    *Proceso para edición
     *@Route("/editar/{id}",name="_editar",defaults={"id"=0})
     */
     public function editarAction(Request $request,$id){
-      //-- proceso de recuperacion de datos de la orden de trabajo
-      //--- y presentacion para la edicion de datos
+      //-- proceso de recuperación de datos de la orden de trabajo
+      //--- y presentación para la edición de datos
 
       $em = $this->getDoctrine()->getManager();
 
@@ -134,17 +134,17 @@ class OrdenTrabajoController extends Controller
 
       $ordenTrabajoItem = $OTrepositorio->findOneBy(array("id"=>$id));
 
-      //-- inicializacion de la clase orden de trabajo
+      //-- inicialización de la clase orden de trabajo
       $ordenTrabajo = new OrdenTrabajo();
       $ordenTrabajo = $ordenTrabajoItem;
       $numeroTicket =$ordenTrabajoItem->getNumTicket();
-      //-- creacion del formulario
+      //-- creación del formulario
       $form = $this->createForm(OrdenTrabajoEditType::class,$ordenTrabajo);
       //-- recibe los datos en caso de respuesta del frontend
       $form->handleRequest($request);
       if ($form->isSubmitted() && $form->isValid()){
 
-        //-- obtencion de datos de los campos del formulario
+        //-- obtención de datos de los campos del formulario
         $dataForm = $this->getRequest()->get($form->getName());
         $estadoForm = $this->getRequest()->get('cerrado');
         $ordenTrabajo->setNumTicket($numeroTicket);
