@@ -65,7 +65,7 @@ class OrdenTrabajo
     /**
      * @var string
      *
-     * @ORM\Column(name="descripcion", type="string", length=500, nullable=true)
+     * @ORM\Column(name="descripcion", type="string", length=1500, nullable=true)
      */
     private $descripcion;
 
@@ -640,7 +640,7 @@ class OrdenTrabajo
     /**
      * Get estado
      *
-     * @return integer 
+     * @return integer
      */
     public function getEstado()
     {
