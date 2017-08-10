@@ -16,6 +16,7 @@ use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Utilitarios\UtilBundle\Controller\Repositorios;
 use Utilitarios\UtilBundle\Controller\VarCatalogo;
 
+//-- Crea la clase orden Trabajo
 class OrdenTrabajoType extends AbstractType
 {
     /**

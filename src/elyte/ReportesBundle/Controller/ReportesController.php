@@ -73,7 +73,7 @@ class ReportesController extends Controller
          }
 
          $dtOrdenPago['body'] =$tableDatos;
-       }else { //-- en caso de no tener ningun dato se envia en blanco
+       }else { //-- en caso de no tener ningún dato se envia en blanco
           $dtOrdenPago['header']=array();
           $dtOrdenPago['campos']=array();
           $dtOrdenPago['body'] =null;
