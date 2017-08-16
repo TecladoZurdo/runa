@@ -1,5 +1,11 @@
 {% extends 'base.html.twig' %}
 
+{% block stylesheets %}
+  <link rel="stylesheet" href="{{asset("assetic/dataTables_css.css")}}">
+   <link rel="stylesheet" href="{{asset("css/buttons.dataTables.min.css")}}">
+  <link rel="stylesheet" href="{{asset("css/responsive.semanticui.min.css")}}">
+{% endblock %}
+
 {% block contenido %}
 <div class="ui container">
  <h2 class="ui header">
@@ -11,12 +17,109 @@
  </h2>
 </div>
 <br>
+<div class="ui action input">
+  <input type="text" placeholder="Código cámara...">
+  <button class="ui button">Buscar</button>
+</div>
+</div>
+<div class="ui divider"></div>
 <div class="ui container">
-  <label>Buscar </label>
-  <div class="ui input">
-  <input type="text" placeholder="Código ...">
+<table id="Tcamaras_historial" class="ui celled table" cellspacing="0" width="100%">
+<thead>
+  <tr>
+
+ 	<th>Código</th>
+ 	<th>Modelo</th>
+ 	<th>Obserbación</th>
+ 	<th>Acción</th>
+
+  </tr>
+</thead>
+
+<tfoot>
+<tr>
+
+ 	<th>Código</th>
+ 	<th>Modelo</th>
+ 	<th>Obserbación</th>
+ 	<th>Acción</th>
+ 	
+  </tr>
+ </tfoot>
+
+ </table>
 </div>
-{{form_start(form ,{'attr':{'class':'ui form'}})}}
-{{form_end(form)}}
-</div>
+
+{% endblock %}
+
+
+{% block javascripts %}
+<script type="text/javascript" src="{{asset("assetic/jquery_dataTable_js.js")}}"></script>
+<script type="text/javascript" src="{{asset("assetic/dataTable_semantic_js.js")}}"></script>
+<script type="text/javascript" src="{{asset("js/datatables/dataTables.buttons.min.js")}}"></script>
+<script type="text/javascript" src="{{asset("js/datatables/buttons.flash.min.js")}}"></script>
+<script type="text/javascript" src="{{asset("js/datatables/jszip.min.js")}}"></script>
+<script type="text/javascript" src="{{asset("js/datatables/pdfmake.min.js")}}"></script>
+<script type="text/javascript" src="{{asset("js/datatables/vfs_fonts.js")}}"></script>
+<script type="text/javascript" src="{{asset("js/datatables/buttons.html5.min.js")}}"></script>
+<script type="text/javascript" src="{{asset("js/datatables/buttons.print.min.js")}}"></script>
+<script type="text/javascript" src="{{asset("js/datatables/dataTables.responsive.min.js")}}"></script>
+<script type="text/javascript" src="{{asset("js/datatables/responsive.semanticui.min.js")}}"></script>
+<script type="text/javascript">
+var table =$('#Tcamaras_historial').DataTable({
+   dom: 'Blrtip',
+        buttons: [
+            'copy', 'csv', 'excel', 'pdf', 'print'
+        ],
+        "columnDefs": [
+        //  {
+        //     "targets": -1,
+        //     "data": null,
+        //     "defaultContent": "<button class='ui primary button'>Editar</button>"
+        // },
+        // {
+        //         "targets": [ 0 ],
+        //         "visible": false
+        // }
+       ],
+  responsive: {
+            details: {
+                display: $.fn.dataTable.Responsive.display.modal( {
+                    header: function ( row ) {
+                         var data = row.data();
+                         return 'Detalles para  '+data[0]+' '+data[3];
+                    }
+                } ),
+                renderer: $.fn.dataTable.Responsive.renderer.tableAll( {
+                    tableClass: 'ui table'
+                } )
+            }
+        }
+
+});
+$('#TdataOrdenTrabajo tbody').on( 'click', 'button', function () {
+        var data = table.row( $(this).parents('tr')).data();
+
+        window.location.href="{{path('_editar')}}/"+data[0];
+    } );
+
+    // Setup - add a text input to each footer cell
+    $('#TdataOrdenTrabajo tfoot th').each( function () {
+        var title = $(this).text();
+        $(this).html( '<input type="text" placeholder="Buscar:   '+title+'" />' );
+    } );
+
+    // Apply the search
+        table.columns().every( function () {
+            var that = this;
+
+            $( 'input', this.footer() ).on( 'keyup change', function () {
+                if ( that.search() !== this.value ) {
+                    that
+                        .search( this.value )
+                        .draw();
+                }
+            } );
+        } );
+</script>
 {% endblock %}
