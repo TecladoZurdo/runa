@@ -32,8 +32,18 @@ class RegistroCamarasController extends Controller {
 	  $em = $this->getDoctrine()->getManager();
 	  $repositorio = $em->getRepository(Repositorios::$camaras);
 	  $list = $repositorio->findBy(array('codigo'=>$codigo));
-	  
-  	return new JsonResponse($list);
+	  if ($list){
+	  	foreach ($list as $key => $value) {
+	  		# code...
+	  		$output[] = array('codigo'=>$value->getId(), 'modelo'=>$value->getCodigo(), 'observacion'=>$value->getobservacion(),'action'=>null);
+			$hide[] = array('id'=>$value->getId());
+	  	}
+	  	
+	  }else {
+	  	$output[]=array('codigo'=>null, 'modelo'=>null, 'observacion'=>null,'action'=>null);
+	  }
+	  $camara["data"] = $output;
+  	return new JsonResponse($camara);
   }
 
 }

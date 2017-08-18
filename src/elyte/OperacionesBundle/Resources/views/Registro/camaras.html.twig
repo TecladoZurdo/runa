@@ -65,21 +65,27 @@
 <script type="text/javascript" src="{{asset("js/datatables/dataTables.responsive.min.js")}}"></script>
 <script type="text/javascript" src="{{asset("js/datatables/responsive.semanticui.min.js")}}"></script>
 <script type="text/javascript">
+var codigo='0';
 var table =$('#Tcamaras_historial').DataTable({
+    ajax:{
+    	"url": "{{path('_getCamara')}}/"+codigo,
+    	"datatype": "json",
+        "cache":false,		
+        "contentType": "application/json; charset=utf-8",
+        "type": "POST"},
+    columns: [
+    		{"data":"codigo"},
+    		{"data":"modelo"},
+    		{"data":"observacion"},
+    		{"data":"action"}
+    ],
+    
    dom: 'Blrtip',
         buttons: [
             'copy', 'csv', 'excel', 'pdf', 'print'
         ],
         "columnDefs": [
-        //  {
-        //     "targets": -1,
-        //     "data": null,
-        //     "defaultContent": "<button class='ui primary button'>Editar</button>"
-        // },
-        // {
-        //         "targets": [ 0 ],
-        //         "visible": false
-        // }
+        
        ],
   responsive: {
             details: {
