@@ -28,8 +28,8 @@
 <thead>
   <tr>
 
+ 	<th>Id</th>
  	<th>Código</th>
- 	<th>Modelo</th>
  	<th>Observación</th>
  	<th>Acción</th>
   </tr>
@@ -38,8 +38,8 @@
 <tfoot>
 <tr>
 
+ 	<th>Id</th>
  	<th>Código</th>
- 	<th>Modelo</th>
  	<th>Observación</th>
  	<th>Acción</th>
 
@@ -67,11 +67,11 @@
 <script type="text/javascript">
 var codigo='0';
 var table =$('#Tcamaras_historial').DataTable({
-   
+
     ajax:{
     	"url": "{{path('_getCamara')}}/"+codigo,
     	"datatype": "json",
-        "cache":false,		
+        "cache":false,
         "contentType": "application/json; charset=utf-8",
         "type": "POST"},
     columns: [
@@ -80,13 +80,13 @@ var table =$('#Tcamaras_historial').DataTable({
     		{"data":"observacion"},
     		{"data":"action"}
     ],
-    
+
    dom: 'Blrtip',
         buttons: [
             'copy', 'csv', 'excel', 'pdf', 'print'
         ],
         "columnDefs": [
-        
+
        ],
   responsive: {
             details: {
@@ -114,6 +114,6 @@ var table =$('#Tcamaras_historial').DataTable({
     //alert(newUrl);
     table.ajax.url(newUrl).load();
   })
-;     
+;
 </script>
 {% endblock %}
