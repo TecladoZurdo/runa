@@ -18,7 +18,7 @@
 </div>
 <br>
 <div class="ui action input">
-  <input type="text" placeholder="Código cámara...">
+  <input id='code' type="text" placeholder="Código cámara...">
   <button class="ui button">Buscar</button>
 </div>
 </div>
@@ -67,6 +67,7 @@
 <script type="text/javascript">
 var codigo='0';
 var table =$('#Tcamaras_historial').DataTable({
+   
     ajax:{
     	"url": "{{path('_getCamara')}}/"+codigo,
     	"datatype": "json",
@@ -102,29 +103,17 @@ var table =$('#Tcamaras_historial').DataTable({
         }
 
 });
-$('#TdataOrdenTrabajo tbody').on( 'click', 'button', function () {
-        var data = table.row( $(this).parents('tr')).data();
 
-        window.location.href="{{path('_editar')}}/"+data[0];
-    } );
 
-    // Setup - add a text input to each footer cell
-    $('#TdataOrdenTrabajo tfoot th').each( function () {
-        var title = $(this).text();
-        $(this).html( '<input type="text" placeholder="Buscar:   '+title+'" />' );
-    } );
-
-    // Apply the search
-        table.columns().every( function () {
-            var that = this;
-
-            $( 'input', this.footer() ).on( 'keyup change', function () {
-                if ( that.search() !== this.value ) {
-                    that
-                        .search( this.value )
-                        .draw();
-                }
-            } );
-        } );
+   $('.ui.button')
+  .on('click', function() {
+    codigo=$('#code').val();
+    //alert(codigo);
+    //$('#Tcamaras_historial').DataTable().draw();
+    var newUrl = "{{path('_getCamara')}}/"+codigo;
+    //alert(newUrl);
+    table.ajax.url(newUrl).load();
+  })
+;     
 </script>
 {% endblock %}
