@@ -78,7 +78,16 @@ var table =$('#Tcamaras_historial').DataTable({
     		{"data":"codigo"},
     		{"data":"modelo"},
     		{"data":"observacion"},
-    		{"data":"action"}
+    		{render:function(data,type,row){
+        console.log(row);
+          if(row.action !=null)
+           {return "<button class='ui primary button'>Add</button>";}
+           else{
+          return "";
+         }
+          
+        }
+      }
     ],
 
    dom: 'Blrtip',

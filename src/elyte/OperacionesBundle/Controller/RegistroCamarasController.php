@@ -35,14 +35,15 @@ class RegistroCamarasController extends Controller {
 	  if ($list){
 	  	foreach ($list as $key => $value) {
 	  		# code...
-	  		$output[] = array('codigo'=>$value->getId(), 'modelo'=>$value->getCodigo(), 'observacion'=>$value->getobservacion(),'action'=>null);
-			$hide[] = array('id'=>$value->getId());
+	  		$output[] = array('codigo'=>$value->getId(), 'modelo'=>$value->getCodigo(), 'observacion'=>$value->getobservacion(),'action'=>true,"_data"=>array('id'=>$value->getId()));
+			//$output[] = array('id'=>$value->getId());
 	  	}
 	  	
 	  }else {
 	  	$output[]=array('codigo'=>null, 'modelo'=>null, 'observacion'=>null,'action'=>null);
 	  }
 	  $camara["data"] = $output;
+	  
   	return new JsonResponse($camara);
   }
 
