@@ -5,6 +5,7 @@ namespace BD\DaoBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 
 class CamarasType extends AbstractType
 {
@@ -13,7 +14,13 @@ class CamarasType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('ctTipo')->add('codigo')->add('modelo')->add('marca')->add('activo')->add('estado')->add('ubicacion')->add('nivel')->add('observacion')->add('cambioDomo')->add('funcionanMediaConverter')->add('funcionaPoe')->add('funcionaTransformador')->add('funcionaUps')->add('funcionaDirecto');
+        $builder
+        //->add('ctTipo')
+        //->add('codigo')
+        ->add('modelo',TextType::class)
+        ->add('marca',TextType::class)
+        //->add('activo')
+        ->add('estado',TextType::class)->add('ubicacion')->add('nivel',TextType::class)->add('observacion')->add('cambioDomo')->add('funcionanMediaConverter')->add('funcionaPoe')->add('funcionaTransformador')->add('funcionaUps')->add('funcionaDirecto');
     }
     
     /**

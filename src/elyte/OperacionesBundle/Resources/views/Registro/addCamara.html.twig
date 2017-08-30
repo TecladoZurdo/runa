@@ -1,0 +1,78 @@
+{% extends 'base.html.twig' %}
+{% block contenido %}
+<div class="ui container">
+	<h2 class="ui header">
+		<i class="sticky note icon"></i>
+		<div class="content">
+			Nuevo Historial
+			<div class="sub header">Para la camara código &nbsp&nbsp&nbsp <b class='ui red tag label'>{{codigo}}</b></div>
+		</div>
+	</h2>
+</div>
+
+<div class="ui container">
+  {{form_start(form,{'attr':{'class':'ui form'}})}}
+  <div class='fields'>
+  	<div class="four wide field">
+     <label for="">Modelo</label>
+  	{{form_widget(form.modelo)}}
+  	</div>
+  	<div class="four wide field">
+     <label for="">Marca</label>
+  	{{form_widget(form.marca)}}
+  	</div>
+  	<div class="four wide field">
+     <label for="">Estado</label>
+  	{{form_widget(form.estado)}}
+  	</div>
+  </div>
+  <div class="field">
+     <label for="">Ubicación</label>
+  	{{form_widget(form.ubicacion)}}
+  </div>
+  <div class="field">
+     <label for="">Nivel</label>
+  	{{form_widget(form.nivel)}}
+  </div>
+  <div class="field">
+     <label for="">Observación</label>
+  	{{form_widget(form.observacion)}}
+  </div>
+  
+  <div class="fields">
+  <div class="field">
+     <label for="">Cambio Domo</label>
+  	{{form_widget(form.cambioDomo)}}
+  </div>
+  <div class="field">
+     <label for="">Funciona media converter</label>
+  	{{form_widget(form.funcionanMediaConverter)}}
+  </div>
+  <div class="field">
+     <label for="">Funciona con Poe</label>
+  	{{form_widget(form.funcionaPoe)}}
+  </div>
+  <div class="field">
+     <label for="">Funciona con Transformador</label>
+  	{{form_widget(form.funcionaTransformador)}}
+  </div>
+  <div class="field">
+     <label for="">Funciona con UPS</label>
+  	{{form_widget(form.funcionaUps)}}
+  </div>
+  <div class="field">
+     <label for="">Funciona directo</label>
+  	{{form_widget(form.funcionaDirecto)}}
+  </div>
+  </div>
+  <input type="hidden" name="codigo" value={{codigo}}>
+  <button type="submmit" name="button" class="ui primary button">Guardar</button>
+	<div class="ui error message"></div>
+  {{form_end(form)}}
+</div>
+
+{% endblock %}
+
+{% block javascripts %}
+
+{% endblock %}

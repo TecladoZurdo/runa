@@ -80,7 +80,7 @@ var table =$('#Tcamaras_historial').DataTable({
     		{"data":"observacion"},
     		{render:function(data,type,row){
         console.log(row);
-          if(row.action !=null)
+          if(row.action ==true)
            {return "<button class='ui primary button'>Add</button>";}
            else{
           return "";
@@ -113,6 +113,11 @@ var table =$('#Tcamaras_historial').DataTable({
 
 });
 
+$('#Tcamaras_historial tbody').on( 'click', 'button', function () {
+        var data = table.row( $(this).parents('tr')).data();
+        //console.log(data._data.id);
+        window.location.href="{{path('_addCamara')}}/"+data._data.id;
+    } );
 
    $('.ui.button')
   .on('click', function() {
