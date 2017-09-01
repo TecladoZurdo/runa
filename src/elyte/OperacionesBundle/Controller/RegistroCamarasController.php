@@ -35,13 +35,17 @@ class RegistroCamarasController extends Controller {
 	  if ($list){
 	  	foreach ($list as $key => $value) {
 	  		# code...
-
-	  		$output[] = array('codigo'=>$value->getId(), 'modelo'=>$value->getCodigo(), 'observacion'=>$value->getobservacion(),'action'=>$value->getActivo(),"_data"=>array('id'=>$value->getId()));
+	  		if ($value->getFechaCreacion()== null){
+	  			$fechaCreacion=null;
+	  		}else {
+	  			$fechaCreacion=$value->getFechaCreacion()->format('Y-m-d H:i:s');
+	  		}
+	  		$output[] = array('codigo'=>$value->getId(), 'modelo'=>$value->getCodigo(), 'observacion'=>$value->getobservacion(),'fechaRegistro'=>$fechaCreacion,'action'=>$value->getActivo(),"_data"=>array('id'=>$value->getId()));
 			//$output[] = array('id'=>$value->getId());
 	  	}
 	  	
 	  }else {
-	  	$output[]=array('codigo'=>null, 'modelo'=>null, 'observacion'=>null,'action'=>null);
+	  	$output[]=array('codigo'=>null, 'modelo'=>null, 'observacion'=>null,'fechaRegistro'=>null,'action'=>null);
 	  }
 	  $camara["data"] = $output;
 	  
@@ -89,7 +93,7 @@ class RegistroCamarasController extends Controller {
   		//-- ponemos en estado inactivo al anterior codigo 
   		$camaraByCodeActivo->setActivo(false);
 
-
+  		$camara->setFechaCreacion(new \DateTime());
 		$camara->setCodigo($datacodigo);
 		$camara->setCtTipo(1);
 		$camara->setActivo(true);

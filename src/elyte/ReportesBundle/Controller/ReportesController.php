@@ -212,7 +212,7 @@ class ReportesController extends Controller
        $em = $this->getDoctrine()->getManager();
        $repoEntity = $em->getRepository(Repositorios::$camaras);
        //-- busco todas las camaras
-       $camaras = $repoEntity->findAll();
+       $camaras = $repoEntity->findBy(array('activo'=>true));
 
        if ($camaras){
           //-- cabecera de la tabla

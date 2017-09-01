@@ -31,6 +31,7 @@
  	<th>Id</th>
  	<th>Código</th>
  	<th>Observación</th>
+  <th>Fecha Modificación</th>
  	<th>Acción</th>
   </tr>
 </thead>
@@ -41,6 +42,7 @@
  	<th>Id</th>
  	<th>Código</th>
  	<th>Observación</th>
+  <th>Fecha Modificación</th>
  	<th>Acción</th>
 
   </tr>
@@ -78,6 +80,7 @@ var table =$('#Tcamaras_historial').DataTable({
     		{"data":"codigo"},
     		{"data":"modelo"},
     		{"data":"observacion"},
+        {"data":"fechaRegistro"},
     		{render:function(data,type,row){
         console.log(row);
           if(row.action ==true)

@@ -66,7 +66,7 @@ class Camaras
     /**
      * @var string
      *
-     * @ORM\Column(name="ubicacion", type="text", length=8, nullable=true)
+     * @ORM\Column(name="ubicacion", type="text", length=250, nullable=true)
      */
     private $ubicacion;
 
@@ -125,6 +125,13 @@ class Camaras
      * @ORM\Column(name="funciona_directo", type="boolean", nullable=true)
      */
     private $funcionaDirecto;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="fecha_creacion", type="datetime", nullable=true)
+     */
+    private $fechaCreacion;
 
     /**
      * Get id
@@ -479,5 +486,28 @@ class Camaras
     public function getObservacion()
     {
         return $this->observacion;
+    }
+
+    /**
+     * Set fechaCreacion
+     *
+     * @param \DateTime $fechaCreacion
+     * @return Camaras
+     */
+    public function setFechaCreacion($fechaCreacion)
+    {
+        $this->fechaCreacion = $fechaCreacion;
+
+        return $this;
+    }
+
+    /**
+     * Get fechaCreacion
+     *
+     * @return \DateTime 
+     */
+    public function getFechaCreacion()
+    {
+        return $this->fechaCreacion;
     }
 }

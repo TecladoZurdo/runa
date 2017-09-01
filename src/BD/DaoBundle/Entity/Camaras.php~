@@ -73,7 +73,7 @@ class Camaras
     /**
      * @var string
      *
-     * @ORM\Column(name="nivel", type="text", length=50, nullable=true)
+     * @ORM\Column(name="nivel", type="text", length=250, nullable=true)
      */
     private $nivel;
 
@@ -125,6 +125,13 @@ class Camaras
      * @ORM\Column(name="funciona_directo", type="boolean", nullable=true)
      */
     private $funcionaDirecto;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="fecha_creacion", type="datetime", nullable=true)
+     */
+    private $fechaCreacion;
 
     /**
      * Get id
@@ -456,5 +463,28 @@ class Camaras
     public function getFuncionaDirecto()
     {
         return $this->funcionaDirecto;
+    }
+
+    /**
+     * Set observacion
+     *
+     * @param string $observacion
+     * @return Camaras
+     */
+    public function setObservacion($observacion)
+    {
+        $this->observacion = $observacion;
+
+        return $this;
+    }
+
+    /**
+     * Get observacion
+     *
+     * @return string
+     */
+    public function getObservacion()
+    {
+        return $this->observacion;
     }
 }
